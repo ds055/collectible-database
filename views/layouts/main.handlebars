@@ -1,0 +1,46 @@
+<html lang='en'>
+
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Project 2</title>
+  </head>
+
+  <body>
+    <div class=''>
+      <header class=''>
+        <h1>
+          {{#if logged_in}}
+            <a href='/home'>Project 2</a>
+          {{else}}
+            <a href='/'>Project 2</a>
+          {{/if}}
+        </h1>
+        <nav>
+          <!-- Conditionally render login or logout links -->
+          {{#if logged_in}}
+            <a href='/home'>home</a>
+
+            <a href='/profile'>profile</a>
+
+            <button class='' id='logout'>logout</button>
+          {{else}}
+            <a href='/login'>Login or Sign-up</a>
+          {{/if}}
+        </nav>
+      </header>
+      <main class=''>
+        <!-- Render the sub layout -->
+        {{{body}}}
+      </main>
+      <footer>
+
+      </footer>
+    </div>
+
+    {{#if logged_in}}
+      <script src='/js/logout.js'></script>
+    {{/if}}
+  </body>
+
+</html>
