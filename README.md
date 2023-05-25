@@ -1,2 +1,1 @@
-# collectible-database
-test
+# project-2-starter-code
