@@ -5,29 +5,29 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     {{!-- <link rel = "stylesheet" href = "/public/css/output.css"> --}}
       <script src="https://cdn.tailwindcss.com"></script>
-    <title>Project 2</title>
+    <title>Coolectible$</title>
   </head>
 
   <body class = 'bg-gradient-to-t from-indigo-100 from-60% to-rose-100 drop-shadow-xl'>
     <div class=''>
-      <header class='p-6 text-4xl bg-indigo-500 text-white items-center flex justify-between drop-shadow-lg'>
+      <header class='py-6 px-10 font-bold md:text-4xl sm:text-2xl bg-indigo-500 text-white items-center flex justify-between drop-shadow-lg'>
         <h1>
           {{#if logged_in}}
-            <a href='/home'>Project 2</a>
+            <a href='/home'>COOLECTIBLE$</a>
           {{else}}
-            <a href='/'>Project 2</a>
+            <a href='/'>COOLECTIBLE$</a>
           {{/if}}
         </h1>
         <nav>
           <!-- Conditionally render login or logout links -->
           {{#if logged_in}}
-            <a href='/home'>home</a>
+            <a href='/home'>Home</a>
 
-            <a href='/profile'>profile</a>
+            <a href='/profile'>Profile</a>
 
-            <button class='' id='logout'>logout</button>
+            <button class='' id='logout'>Logout</button>
           {{else}}
-            <a href='/login'>Login or Sign-up</a>
+            <a class = 'mx-2' href='/login'>Login/Sign-up</a>
           {{/if}}
         </nav>
       </header>
