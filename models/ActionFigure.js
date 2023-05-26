@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, INTEGER } = require('sequelize');
 const sequelize = require('../config/config');
 
 class ActionFigure extends Model {}
@@ -6,12 +6,12 @@ class ActionFigure extends Model {}
 ActionFigure.init(
   {
     id: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
         allowNull: false, 
         primaryKey: true,
         autoIncrement: true,
     },
-    figure_name: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false, 
       validate: {
@@ -37,30 +37,47 @@ ActionFigure.init(
         }
     },
     release_year: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
         validate: {
           min: 0,
           max: 9999
         }
     }, 
     barcode: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
         validate: {
           len: [0, 15]
         }
     },
-    price: {
-        type: DataTypes.INT,
+    condition: {
+        type: DataTypes.STRING,
         validate: {
-          len: [0, 10]
+          len: [0, 40]
+        }
+    },
+    price: {
+        type: DataTypes.FLOAT,
+        validate: {
+          len: [0, 12]
         }
     },
     image: {
         type: DataTypes.STRING,
-    }
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
+    },
   },
   {
-    sequelize
+    sequelize,
+    timestamps: false, 
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'action_figure'
   }
 );
 

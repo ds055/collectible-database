@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/config');
 
-class ActionFigure extends Model {}
+class Cards extends Model {}
 
-ActionFigure.init(
+Cards.init(
   {
     id: {
         type: DataTypes.INT,
@@ -11,24 +11,33 @@ ActionFigure.init(
         primaryKey: true,
         autoIncrement: true,
     },
-    figure_name: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false, 
       validate: {
         len: [0, 40]
       }
     },
-    line: {
-        type: DataTypes.STRING,
-        validate: {
-          len: [0, 40]
-        }
-    }, 
     series: {
         type: DataTypes.STRING,
         validate: {
           len: [0, 40]
         }
+    }, 
+    set: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 40]
+      }
+    }, 
+    subtype: {
+        type: DataTypes.STRING,
+        validate: {
+          len: [0, 40]
+        }
+    },
+    holographic: {
+      type: DataTypes.BOOLEAN,
     },
     manufacturer: {
         type: DataTypes.STRING,
@@ -43,11 +52,11 @@ ActionFigure.init(
           max: 9999
         }
     }, 
-    barcode: {
-        type: DataTypes.INT,
-        validate: {
-          len: [0, 15]
-        }
+    condition: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 40]
+      }
     },
     price: {
         type: DataTypes.INT,
@@ -64,4 +73,4 @@ ActionFigure.init(
   }
 );
 
-module.exports = ActionFigure;
+module.exports = Cards;
