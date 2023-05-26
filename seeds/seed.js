@@ -1,7 +1,8 @@
 const sequelize = require('../config/connection');
-const { User } = require('../models');
+const { User, ActionFigures } = require('../models');
 
 const userData = require('./userData.json');
+const actionFigureData = require('./figuresData.json')
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -10,6 +11,11 @@ const seedDatabase = async () => {
     individualHooks: true,
     returning: true,
   });
+
+  const actionfigure = await ActionFigures.bulkCreate(actionFigureData, {
+    individualHooks: true, 
+    returning: true
+  })
 
   process.exit(0);
 };
