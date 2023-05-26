@@ -1,12 +1,12 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/config');
+const sequelize = require('../config/connection');
 
-class Cards extends Model {}
+class Card extends Model {}
 
-Cards.init(
+Card.init(
   {
     id: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
         allowNull: false, 
         primaryKey: true,
         autoIncrement: true,
@@ -59,18 +59,29 @@ Cards.init(
       }
     },
     price: {
-        type: DataTypes.INT,
+        type: DataTypes.FLOAT,
         validate: {
           len: [0, 10]
         }
     },
     image: {
         type: DataTypes.STRING,
-    }
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
+    },
   },
   {
-    sequelize
+    sequelize,
+    timestamps: false, 
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'card'
   }
 );
 
-module.exports = Cards;
+module.exports = Card;
