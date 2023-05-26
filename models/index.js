@@ -1,5 +1,13 @@
 const User = require('./User');
+const ActionFigure = require('./ActionFigure')
 
 // Write Table relationships here
 
-module.exports = { User };
+User.hasMany(ActionFigure, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
+});
+
+
+
+module.exports = { User, ActionFigure };
