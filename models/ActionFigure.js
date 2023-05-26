@@ -1,5 +1,5 @@
-const { Model, DataTypes, INTEGER } = require('sequelize');
-const sequelize = require('../config/config');
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class ActionFigure extends Model {}
 
@@ -44,7 +44,7 @@ ActionFigure.init(
         }
     }, 
     barcode: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
         validate: {
           len: [0, 15]
         }

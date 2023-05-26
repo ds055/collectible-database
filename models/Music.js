@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/config');
+const sequelize = require('../config/connection');
 
-class ActionFigure extends Model {}
+class Music extends Model {}
 
-ActionFigure.init(
+Music.init(
   {
     id: {
         type: DataTypes.INT,
@@ -60,8 +60,12 @@ ActionFigure.init(
     }
   },
   {
-    sequelize
+    sequelize,
+    timestamps: false, 
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'music'
   }
 );
 
-module.exports = ActionFigure;
+module.exports = Music;

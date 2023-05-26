@@ -8,6 +8,8 @@ User.hasMany(ActionFigure, {
     onDelete: 'CASCADE'
 });
 
-
+ActionFigure.belongsTo(User, {
+    foreignKey: 'user_id'
+})
 
 module.exports = { User, ActionFigure };
