@@ -28,7 +28,10 @@ router.get('/:id', async (req, res) => {
 // create a new action figure
 router.post('/', async (req, res) => {
   try {
-    const actionFigureData = await ActionFigure.create(req.body);
+    const actionFigureData = await ActionFigure.create({
+      ...req.body,
+      user_id: req.session.user_id,
+    });
     res.status(200).json(actionFigureData);
   } catch (err) {
     res.status(400).json(err);
@@ -41,6 +44,7 @@ router.put('/:id', async (req, res) => {
     const actionFigureData = await ActionFigure.update(req.body, {
       where: {
         id: req.params.id,
+        user_id: req.session.user_id,
       },
     });
     if (!actionFigureData) {
@@ -59,6 +63,7 @@ router.delete('/:id', async (req, res) => {
     const actionFigureData = await ActionFigure.destroy({
       where: {
         id: req.params.id,
+        user_id: req.session.user_id,
       },
     });
     if (!actionFigureData) {
