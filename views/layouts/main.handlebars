@@ -3,12 +3,14 @@
   <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    {{!-- <link rel = "stylesheet" href = "/public/css/output.css"> --}}
+      <script src="https://cdn.tailwindcss.com"></script>
     <title>Project 2</title>
   </head>
 
-  <body>
+  <body class = 'bg-gradient-to-t from-indigo-100 from-60% to-rose-100 drop-shadow-xl'>
     <div class=''>
-      <header class=''>
+      <header class='p-6 text-4xl bg-indigo-500 text-white items-center flex justify-between drop-shadow-lg'>
         <h1>
           {{#if logged_in}}
             <a href='/home'>Project 2</a>
@@ -29,7 +31,7 @@
           {{/if}}
         </nav>
       </header>
-      <main class=''>
+      <main class='flex justify-center items-center min-h-screen'>
         <!-- Render the sub layout -->
         {{{body}}}
       </main>
