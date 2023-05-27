@@ -61,6 +61,12 @@ const signupFormHandler = async (event) => {
   const last_name = document.querySelector('#last-name-signup').value.trim();
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
+  const password_confirmation = document.querySelector('#password-signup-confirmation').value.trim();
+
+  if (password !== password_confirmation) {
+    showError(signupFormEl, "Passwords do not match.")
+    return;
+  }
 
   const bodyObj = {
     first_name,
