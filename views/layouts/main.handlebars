@@ -10,22 +10,22 @@
 
   <body class = 'bg-gradient-to-t from-indigo-100 from-60% to-rose-100 drop-shadow-xl'>
     <div class=''>
-      <header class='py-6 px-10 font-bold md:text-4xl sm:text-2xl bg-indigo-500 text-white items-center flex justify-between drop-shadow-lg'>
+      <header class='py-6 px-8 font-bold md:text-4xl sm:text-2xl bg-indigo-500 text-white items-center flex justify-between drop-shadow-lg'>
         <h1>
           {{#if logged_in}}
-            <a href='/home'>COOLECTIBLE$</a>
+            <a href='/home' class = 'md:text-5xl sm:text-2xl'>COOLECTIBLE$</a>
           {{else}}
-            <a href='/'>COOLECTIBLE$</a>
+            <a href='/' class = 'md:text-5xl sm:text-2xl'>COOLECTIBLE$</a>
           {{/if}}
         </h1>
         <nav>
           <!-- Conditionally render login or logout links -->
           {{#if logged_in}}
-            <a href='/home'>Home</a>
+            <a href='/home' class = 'mx-2' >Home</a>
 
-            <a href='/profile'>Profile</a>
+            <a href='/profile' class = 'mx-2' >Profile</a>
 
-            <button class='' id='logout'>Logout</button>
+            <button class='mx-2' id='logout'>Logout</button>
           {{else}}
             <a class = 'mx-2' href='/login'>Login/Sign-up</a>
           {{/if}}
