@@ -106,9 +106,6 @@ const signupFormHandler = async (event) => {
 if(loginFormEl){
   loginFormEl.addEventListener('submit', loginFormHandler);
 }
-/* loginFormEl.addEventListener('submit', loginFormHandler); */
-
-/* signupFormEl.addEventListener('submit', signupFormHandler); */
 
 if(signupFormEl){
   signupFormEl.addEventListener('submit', signupFormHandler);
