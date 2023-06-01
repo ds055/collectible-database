@@ -3,54 +3,46 @@ const sequelize = require('../config/connection');
 
 class Music extends Model {}
 
+//  Format (LP, Vinyl, CD, Album, EP, etc.): not null -- ENUM define own types in SQL: Only choose from certain options that are previously defined 
+// -- work around with drop down menu
+
 Music.init(
   {
     id: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
         allowNull: false, 
         primaryKey: true,
         autoIncrement: true,
     },
-    figure_name: {
+    album_name: {
       type: DataTypes.STRING,
       allowNull: false, 
       validate: {
         len: [0, 40]
       }
     },
-    line: {
-        type: DataTypes.STRING,
-        validate: {
-          len: [0, 40]
-        }
-    }, 
-    series: {
-        type: DataTypes.STRING,
-        validate: {
-          len: [0, 40]
-        }
-    },
-    manufacturer: {
-        type: DataTypes.STRING,
-        validate: {
-          len: [0, 40]
-        }
+    artist: {
+      type: DataTypes.STRING,
+      allowNull: false, 
+      validate: {
+        len: [0, 40]
+      }
     },
     release_year: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
         validate: {
           min: 0,
           max: 9999
         }
     }, 
     barcode: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
         validate: {
           len: [0, 15]
         }
     },
     price: {
-        type: DataTypes.INT,
+        type: DataTypes.INTEGER,
         validate: {
           len: [0, 10]
         }
