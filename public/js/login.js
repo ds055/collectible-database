@@ -2,8 +2,8 @@ const loginFormEl = document.querySelector('#login-form');
 const signupFormEl = document.querySelector('#signup-form');
 
 const showError = (parentEl, errorText) => {
-  const errorPEl = document.createElement('p');
-  errorPEl.classList.add('error-element');
+  const errorPEl = document.createElement('div');
+  errorPEl.classList.add('.text-white');
   errorPEl.textContent = errorText;
   parentEl.appendChild(errorPEl);
 };
@@ -103,10 +103,10 @@ const signupFormHandler = async (event) => {
   }
 };
 
-if(loginFormEl){
+if (loginFormEl) {
   loginFormEl.addEventListener('submit', loginFormHandler);
 }
 
-if(signupFormEl){
+if (signupFormEl) {
   signupFormEl.addEventListener('submit', signupFormHandler);
 }
