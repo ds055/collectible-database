@@ -103,6 +103,10 @@ const signupFormHandler = async (event) => {
   }
 };
 
-loginFormEl.addEventListener('submit', loginFormHandler);
+if(loginFormEl){
+  loginFormEl.addEventListener('submit', loginFormHandler);
+}
 
-signupFormEl.addEventListener('submit', signupFormHandler);
+if(signupFormEl){
+  signupFormEl.addEventListener('submit', signupFormHandler);
+}
