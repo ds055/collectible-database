@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, ValidationError } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
@@ -37,6 +37,11 @@ User.init(
       allowNull: false,
       validate: {
         len: [8],
+        validationCheck(value) {
+          if (value.length < 8) {
+            throw new ValidationError('Password must have more than 8 characters');
+          }
+        }
       },
     },
   },
