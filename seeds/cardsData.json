@@ -1,0 +1,38 @@
+[
+	{
+		"name": "Charizard",
+		"series": "Pokemon TCG",
+		"set": "Base--Unlimited",
+		"subtype": "Pokemon",
+		"holographic": true,
+		"manufacturer": "Wizards of the Coast",
+		"release_year": "1999",
+        "condition": "Used",
+		"price":  250.00, 
+        "user_id": 3
+	},
+    {
+		"name": "Magneto",
+		"series": "Fleer Metal Marvel",
+		"set": "Metal Marvel",
+		"subtype": "",
+		"holographic": true,
+		"manufacturer": "Fleer",
+		"release_year": "1995",
+        "condition": "Very Good",
+		"price":  15.00, 
+        "user_id": 3
+	},
+    {
+		"name": "Blacker Lotus",
+		"series": "Magic the Gathering",
+		"set": "Unglued",
+		"subtype": "Artifact",
+		"holographic": false,
+		"manufacturer": "Wizards of the Coast",
+		"release_year": "1998",
+        "condition": "Near Mint",
+		"price":  20.00, 
+        "user_id": 3
+	}
+]

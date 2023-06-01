@@ -1,11 +1,39 @@
-{
-    "id": 1,
-	"name": "Combat Belt Beatman",
-	"line": "Batman: The Animated Series",
-	"series": "Series 1",
-	"manufacturer": "Kenner",
-	"release_year": 1992,
-	"barcode": 123456789123,
-	"condition": "Excellent",
-	"price":  19.99
-}
+[
+	{
+		"id": 1,
+		"name": "Combat Belt Beatman",
+		"line": "Batman: The Animated Series",
+		"series": "Series 1",
+		"manufacturer": "Kenner",
+		"release_year": 1992,
+		"barcode": 123456789123,
+		"condition": "Excellent",
+		"price":  19.99,
+		"user_id": 4
+	},
+	{
+		"id": 1,
+		"name": "Hobgoblin",
+		"line": "Spiderman: The Animated Series",
+		"series": "Series 1",
+		"manufacturer": "Toy Biz",
+		"release_year": 1994,
+		"barcode": 438456789123,
+		"condition": "Very Good",
+		"price":  30.00,
+		"user_id": 4
+	},
+	{
+		"id": 1,
+		"name": "Dracula Monster",
+		"line": "The Real Ghostbusters",
+		"series": "Monsters",
+		"manufacturer": "Kenner",
+		"release_year": 1986,
+		"barcode": 589456789123,
+		"condition": "Good",
+		"price":  35.63,
+		"user_id": 4
+	}
+]
+

@@ -1,67 +1,91 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/config');
 
-class ActionFigure extends Model {}
+class Coin extends Model {}
 
-ActionFigure.init(
+Coin.init(
   {
     id: {
-        type: DataTypes.INT,
-        allowNull: false, 
-        primaryKey: true,
-        autoIncrement: true,
+      type: DataTypes.INTEGER,
+      allowNull: false, 
+      primaryKey: true,
+      autoIncrement: true,
     },
-    figure_name: {
+    denomination: {
       type: DataTypes.STRING,
       allowNull: false, 
       validate: {
         len: [0, 40]
-      }
+      },
     },
-    line: {
-        type: DataTypes.STRING,
-        validate: {
-          len: [0, 40]
-        }
+    country: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [0, 40]
+      },
     }, 
-    series: {
-        type: DataTypes.STRING,
-        validate: {
-          len: [0, 40]
-        }
+    time_period: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [0, 40]
+      },
     },
-    manufacturer: {
-        type: DataTypes.STRING,
-        validate: {
-          len: [0, 40]
-        }
+    coin_finish: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 40]
+      },
     },
-    release_year: {
-        type: DataTypes.INT,
-        validate: {
-          min: 0,
-          max: 9999
-        }
-    }, 
-    barcode: {
-        type: DataTypes.INT,
-        validate: {
-          len: [0, 15]
-        }
+    mint_mark: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 40]
+      },
+    },
+    design_theme: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 40]
+      },
+    },
+    artist: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 40]
+      },
+    },
+    condition: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 40]
+      },
     },
     price: {
-        type: DataTypes.INT,
-        validate: {
-          len: [0, 10]
-        }
+      type: DataTypes.FLOAT,
+      validate: {
+        len: [0, 12]
+      },
     },
     image: {
-        type: DataTypes.STRING,
-    }
+      type: DataTypes.STRING,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
+    },
   },
   {
-    sequelize
+    sequelize,
+    timestamps: false, 
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'coin'
   }
 );
 
-module.exports = ActionFigure;
+module.exports = Coin;

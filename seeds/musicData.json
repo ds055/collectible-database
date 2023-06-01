@@ -1,0 +1,39 @@
+[
+	{
+		"album_name": "Minecraft Volume Alpha",
+		"artist": "C418",
+        "genre": "Electronic",
+        "style": "Soundtrack, Chiptune",
+		"release_year": 2022,
+		"format": "vinyl",
+		"pressing_info": "limited",
+		"barcode": 804297824376,
+        "condition": "very good",
+		"price":  68.00, 
+        "user_id": 2
+	},
+    {
+		"album_name": "For the First Time",
+		"artist": "Black Country, New Road",
+        "genre": "Rock",
+        "style": "Experimental, Post-Punk",
+		"release_year": 2021,
+		"format": "vinyl",
+		"pressing_info": "200 copies",
+        "condition": "fine",
+		"price":  226.00, 
+        "user_id": 2
+	},
+    {
+		"album_name": "I let It in And It Took Everything",
+		"artist": "Loathe",
+        "genre": "Rock",
+        "style": "Hardcore, Shoegaze",
+		"release_year": 2020,
+		"format": "vinyl",
+		"pressing_info": "250 copies",
+        "condition": "perfect",
+		"price":  149.00, 
+        "user_id": 2
+	}
+]
