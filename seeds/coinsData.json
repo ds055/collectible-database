@@ -1,0 +1,38 @@
+[
+	{
+		"denomination": "farthing",
+		"country": "Great Britain",
+		"time_period": "1937",
+		"coin_finish": "Matte Proof",
+		"mint_mark": "",
+		"design_theme": "King George VI",
+		"artist": "T.H. Paget",
+        "condition": "About Uncirculated",
+		"price":  1800.00, 
+        "user_id": 1
+	},
+    {
+		"denomination": "penny",
+		"country": "United States",
+		"time_period": "1834",
+		"coin_finish": "100% copper composition",
+		"mint_mark": "Philadelphia",
+		"design_theme": "Coronet Liberty Head",
+		"artist": "Robert Scot",
+        "condition": "Extremely Fine",
+		"price":  738.00, 
+        "user_id": 1
+	},
+    {
+		"denomination": "$5",
+		"country": "Cook Islands",
+		"time_period": "2021",
+		"coin_finish": "silk",
+		"mint_mark": "B.H. Mayer",
+		"design_theme": "Athena's Owl",
+		"artist": "T.H. Paget",
+        "condition": "good",
+		"price":  77.59, 
+        "user_id": 1
+	}
+]

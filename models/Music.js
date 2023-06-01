@@ -9,47 +9,85 @@ class Music extends Model {}
 Music.init(
   {
     id: {
-        type: DataTypes.INTEGER,
-        allowNull: false, 
-        primaryKey: true,
-        autoIncrement: true,
+      type: DataTypes.INTEGER,
+      allowNull: false, 
+      primaryKey: true,
+      autoIncrement: true,
     },
     album_name: {
       type: DataTypes.STRING,
       allowNull: false, 
       validate: {
         len: [0, 40]
-      }
+      },
     },
     artist: {
       type: DataTypes.STRING,
       allowNull: false, 
       validate: {
         len: [0, 40]
-      }
+      },
+    },
+    genre: {
+      type: DataTypes.STRING, 
+      validate: {
+        len: [0, 40]
+      },
+    },
+    style: {
+      type: DataTypes.STRING, 
+      validate: {
+        len: [0, 40]
+      },
     },
     release_year: {
-        type: DataTypes.INTEGER,
-        validate: {
-          min: 0,
-          max: 9999
-        }
+      type: DataTypes.INTEGER,
+      validate: {
+        min: 0,
+        max: 9999
+      },
     }, 
+    format: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [0, 40]
+      },
+    }, 
+    pressing_info: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 40]
+      },
+    },
     barcode: {
-        type: DataTypes.INTEGER,
-        validate: {
-          len: [0, 15]
-        }
+      type: DataTypes.BIGINT,
+      validate: {
+        len: [0, 15]
+      },
+    },
+    condition: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [0, 40]
+      },
     },
     price: {
-        type: DataTypes.INTEGER,
-        validate: {
-          len: [0, 10]
-        }
+      type: DataTypes.FLOAT,
+      validate: {
+        len: [0, 12]
+      },
     },
     image: {
-        type: DataTypes.STRING,
-    }
+      type: DataTypes.STRING,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,

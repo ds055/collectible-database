@@ -16,50 +16,50 @@ ActionFigure.init(
       allowNull: false, 
       validate: {
         len: [0, 40]
-      }
+      },
     },
     line: {
         type: DataTypes.STRING,
         validate: {
           len: [0, 40]
-        }
+        },
     }, 
     series: {
         type: DataTypes.STRING,
         validate: {
           len: [0, 40]
-        }
+        },
     },
     manufacturer: {
         type: DataTypes.STRING,
         validate: {
           len: [0, 40]
-        }
+        },
     },
     release_year: {
         type: DataTypes.INTEGER,
         validate: {
           min: 0,
           max: 9999
-        }
+        },
     }, 
     barcode: {
         type: DataTypes.BIGINT,
         validate: {
           len: [0, 15]
-        }
+        },
     },
     condition: {
         type: DataTypes.STRING,
         validate: {
           len: [0, 40]
-        }
+        },
     },
     price: {
         type: DataTypes.FLOAT,
         validate: {
           len: [0, 12]
-        }
+        },
     },
     image: {
         type: DataTypes.STRING,
