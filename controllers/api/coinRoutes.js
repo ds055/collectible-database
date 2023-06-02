@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Coin } = require('../../models');
+const withAuth = require('../../middleware/auth');
 
 // get all Coins
 router.get('/', async (req, res) => {
@@ -26,7 +27,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // create a new Coin
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const CoinData = await Coin.create({
       ...req.body,
@@ -39,7 +40,7 @@ router.post('/', async (req, res) => {
 });
 
 // update a Coin by id
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   try {
     const CoinData = await Coin.update(req.body, {
       where: {
@@ -58,7 +59,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // delete a Coin by id
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const CoinData = await Coin.destroy({
       where: {

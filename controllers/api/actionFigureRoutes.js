@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { ActionFigure } = require('../../models');
+const withAuth = require('../../middleware/auth');
 
 // get all action figures
 router.get('/', async (req, res) => {
@@ -26,7 +27,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // create a new action figure
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const actionFigureData = await ActionFigure.create({
       ...req.body,
@@ -39,7 +40,7 @@ router.post('/', async (req, res) => {
 });
 
 // update an action figure by id
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   try {
     const actionFigureData = await ActionFigure.update(req.body, {
       where: {
@@ -58,7 +59,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // delete an action figure by id
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const actionFigureData = await ActionFigure.destroy({
       where: {

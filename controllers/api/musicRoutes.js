@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Music } = require('../../models');
+const withAuth = require('../../middleware/auth');
 
 // get all music
 router.get('/', async (req, res) => {
@@ -26,7 +27,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // create a new music
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const MusicData = await Music.create({
       ...req.body,
@@ -39,7 +40,7 @@ router.post('/', async (req, res) => {
 });
 
 // update music by id
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   try {
     const MusicData = await Music.update(req.body, {
       where: {
@@ -58,7 +59,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // delete music by id
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const MusicData = await Music.destroy({
       where: {
