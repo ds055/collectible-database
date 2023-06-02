@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Card } = require('../../models');
+const withAuth = require('../../middleware/auth');
 
 // get all cards
 router.get('/', async (req, res) => {
@@ -26,7 +27,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // create a new card
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const CardData = await Card.create({
       ...req.body,
@@ -39,7 +40,7 @@ router.post('/', async (req, res) => {
 });
 
 // update a card by id
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   try {
     const CardData = await Card.update(req.body, {
       where: {
@@ -58,12 +59,12 @@ router.put('/:id', async (req, res) => {
 });
 
 // delete a card by id
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const CardData = await Card.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+        // user_id: req.session.user_id,
       },
     });
     if (!CardData) {
