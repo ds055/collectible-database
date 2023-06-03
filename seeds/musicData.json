@@ -10,7 +10,8 @@
 		"barcode": 804297824376,
         "condition": "very good",
 		"price":  68.00, 
-        "user_id": 2
+        "user_id": 2,
+		"image": "https://d1e9ycqe323hkh.cloudfront.net/items/224212799186.jpg"
 	},
     {
 		"album_name": "For the First Time",
@@ -22,7 +23,8 @@
 		"pressing_info": "200 copies",
         "condition": "fine",
 		"price":  226.00, 
-        "user_id": 2
+        "user_id": 2,
+		"image": "https://f4.bcbits.com/img/0022159050_71.jpg"
 	},
     {
 		"album_name": "I let It in And It Took Everything",
@@ -34,6 +36,72 @@
 		"pressing_info": "250 copies",
         "condition": "perfect",
 		"price":  149.00, 
-        "user_id": 2
+        "user_id": 2,
+		"image": "https://i.discogs.com/INkHg3aokd35OyhfZdeGKhH2CdKxx0THUrSyIQ_1iSc/rs:fit/g:sm/q:90/h:596/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE0Nzg0/MTg0LTE1ODE3Mjk5/OTctMTYzNC5qcGVn.jpeg"
+	},
+	{
+		"album_name": "Elvis",
+		"artist": "Loathe",
+        "genre": "Rock",
+        "style": "Hardcore, Shoegaze",
+		"release_year": 2020,
+		"format": "vinyl",
+		"pressing_info": "250 copies",
+        "condition": "perfect",
+		"price":  149.00, 
+        "user_id": 2,
+		"image": "https://i.discogs.com/xBk50BmiY-S7gamw0EVjV7xpHV0byPmVbMeMaMA1XzM/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE4MDgy/MzctMTQ5Nzc4MDUz/MC01Njc5LmpwZWc.jpeg"
+	},
+	{
+		"album_name": "Batman: Animated Series",
+		"artist": "Loathe",
+        "genre": "Rock",
+        "style": "Hardcore, Shoegaze",
+		"release_year": 2020,
+		"format": "vinyl",
+		"pressing_info": "250 copies",
+        "condition": "perfect",
+		"price":  149.00, 
+        "user_id": 2,
+		"image": "https://m.media-amazon.com/images/I/4194mAevubL._UF1000,1000_QL80_.jpg"
+	},
+	{
+		"album_name": "Mega Man",
+		"artist": "Loathe",
+        "genre": "Rock",
+        "style": "Hardcore, Shoegaze",
+		"release_year": 2020,
+		"format": "vinyl",
+		"pressing_info": "250 copies",
+        "condition": "perfect",
+		"price":  149.00, 
+        "user_id": 2,
+		"image": "https://cdn.shopify.com/s/files/1/1226/8710/products/MM-1_2-Black-Front-Render_grande.jpg?v=1639501512"
+	},
+	{
+		"album_name": "Lord of the Rings",
+		"artist": "Loathe",
+        "genre": "Rock",
+        "style": "Hardcore, Shoegaze",
+		"release_year": 2020,
+		"format": "vinyl",
+		"pressing_info": "250 copies",
+        "condition": "perfect",
+		"price":  149.00, 
+        "user_id": 2,
+		"image": "https://preview.redd.it/a6yn3k4w18o11.jpg?auto=webp&s=1d102677b21c8ce8543f343c1e783ecb4356792e"
+	},
+	{
+		"album_name": "Spider-man: The Video Game",
+		"artist": "Loathe",
+        "genre": "Rock",
+        "style": "Hardcore, Shoegaze",
+		"release_year": 2020,
+		"format": "vinyl",
+		"pressing_info": "250 copies",
+        "condition": "perfect",
+		"price":  149.00, 
+        "user_id": 2,
+		"image": "https://i.discogs.com/mzDcBlXub4bdnjUDec3mPKTq2V15gV0cLvnbcwMVK50/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEzMTg0/NzE3LTE1NDk1NTI4/NzgtNjU2OC5qcGVn.jpeg"
 	}
 ]

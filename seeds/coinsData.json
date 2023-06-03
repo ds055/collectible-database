@@ -9,7 +9,8 @@
 		"artist": "T.H. Paget",
         "condition": "About Uncirculated",
 		"price":  1800.00, 
-        "user_id": 1
+        "user_id": 1,
+		"image": "https://s3.amazonaws.com/ngccoin-production/world-coin-price-guide/121641b.jpg"
 	},
     {
 		"denomination": "penny",
@@ -21,7 +22,8 @@
 		"artist": "Robert Scot",
         "condition": "Extremely Fine",
 		"price":  738.00, 
-        "user_id": 1
+        "user_id": 1,
+		"image": "https://s3.amazonaws.com/ngccoin-production/us-coin-explorer/4914130-002o.jpg"
 	},
     {
 		"denomination": "$5",
@@ -33,6 +35,72 @@
 		"artist": "T.H. Paget",
         "condition": "good",
 		"price":  77.59, 
-        "user_id": 1
+        "user_id": 1,
+		"image": "https://www.govmint.com/media/catalog/product/cache/daa9fcb3626fb352519f90131abc98d6/3/7/376156_1.jpg"
+	},
+	{
+		"denomination": "1 Cent",
+		"country": "Cook Islands",
+		"time_period": "2021",
+		"coin_finish": "silk",
+		"mint_mark": "B.H. Mayer",
+		"design_theme": "Athena's Owl",
+		"artist": "T.H. Paget",
+        "condition": "good",
+		"price":  77.59, 
+        "user_id": 1,
+		"image": "https://www.usmint.gov/wordpress/wp-content/uploads/2022/12/2023-lincoln-penny-uncirculated-obverse-philadelphia.jpg"
+	},
+	{
+		"denomination": "Gold Buffalo",
+		"country": "Cook Islands",
+		"time_period": "2021",
+		"coin_finish": "silk",
+		"mint_mark": "B.H. Mayer",
+		"design_theme": "Athena's Owl",
+		"artist": "T.H. Paget",
+        "condition": "good",
+		"price":  77.59, 
+        "user_id": 1,
+		"image": "https://catalog.usmint.gov/on/demandware.static/-/Sites-usm-master-catalog-us/default/dw52d9dd9c/images/hi-res/coin-programs/American-Buffalo/23el_c.jpg"
+	},
+	{
+		"denomination": "Tiny Replica",
+		"country": "Cook Islands",
+		"time_period": "2021",
+		"coin_finish": "silk",
+		"mint_mark": "B.H. Mayer",
+		"design_theme": "Athena's Owl",
+		"artist": "T.H. Paget",
+        "condition": "good",
+		"price":  77.59, 
+        "user_id": 1,
+		"image": "https://cdn.shopify.com/s/files/1/1280/3657/products/SP-TINY-2O-SET-4.jpg?v=1604608192"
+	},
+	{
+		"denomination": "Sacagawea Coin",
+		"country": "Cook Islands",
+		"time_period": "2021",
+		"coin_finish": "silk",
+		"mint_mark": "B.H. Mayer",
+		"design_theme": "Athena's Owl",
+		"artist": "T.H. Paget",
+        "condition": "good",
+		"price":  77.59, 
+        "user_id": 1,
+		"image": "https://cf.ltkcdn.net/antiques/images/orig/338129-1600x1066-sacagawea-dollar-coins-1440917312.jpg"
+	},
+	{
+		"denomination": "Lion Queen",
+		"country": "Cook Islands",
+		"time_period": "2021",
+		"coin_finish": "silk",
+		"mint_mark": "B.H. Mayer",
+		"design_theme": "Athena's Owl",
+		"artist": "T.H. Paget",
+        "condition": "good",
+		"price":  77.59, 
+        "user_id": 1,
+		"image": "https://www.royalmintmuseum.org.uk/siteassets/collection/coins/coin-teaser-v2.jpg"
 	}
 ]

@@ -25,7 +25,9 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {{#if collection}}
           {{#each collection as |collection|}}
-          <a href="/dashboard/collection/{{id}}"><p>{{ name }}</p></a>
+          <a href="/dashboard/collection/{{id}}"><p>{{ name }}</p>
+          <img src="{{ image }}"
+          </a>
           {{/each}}
         {{/if}}
         {{#if coin}}

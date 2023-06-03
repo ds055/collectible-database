@@ -9,7 +9,8 @@
 		"release_year": "1999",
         "condition": "Used",
 		"price":  250.00, 
-        "user_id": 3
+        "user_id": 3,
+		"image": "https://www.govmint.com/media/catalog/product/cache/daa9fcb3626fb352519f90131abc98d6/3/7/376156_1.jpg"
 	},
     {
 		"name": "Magneto",
@@ -21,7 +22,8 @@
 		"release_year": "1995",
         "condition": "Very Good",
 		"price":  15.00, 
-        "user_id": 3
+        "user_id": 3,
+		"image": "https://i.ebayimg.com/images/g/DnQAAOSwYuBigacn/s-l1600.jpg"
 	},
     {
 		"name": "Blacker Lotus",
@@ -33,6 +35,72 @@
 		"release_year": "1998",
         "condition": "Near Mint",
 		"price":  20.00, 
-        "user_id": 3
+        "user_id": 3,
+		"image": "https://static.cardkingdom.com/images/magic-the-gathering/beta/black-lotus-65988.jpg"
+	},
+	{
+		"name": "Rage",
+		"series": "Magic the Gathering",
+		"set": "Unglued",
+		"subtype": "Artifact",
+		"holographic": false,
+		"manufacturer": "Wizards of the Coast",
+		"release_year": "1998",
+        "condition": "Near Mint",
+		"price":  20.00, 
+        "user_id": 3,
+		"image": "https://cf.geekdo-images.com/sbNH13JZqKh2d2P72IMnIg__itemrep/img/mU7COlACJSqX4dqABrhTuisSgw4=/fit-in/246x300/filters:strip_icc()/pic181293.jpg"
+	},
+	{
+		"name": "Mr. Freeze",
+		"series": "Magic the Gathering",
+		"set": "Unglued",
+		"subtype": "Artifact",
+		"holographic": false,
+		"manufacturer": "Wizards of the Coast",
+		"release_year": "1998",
+        "condition": "Near Mint",
+		"price":  20.00, 
+        "user_id": 3,
+		"image": "https://crystal-cdn1.crystalcommerce.com/photos/235730/Mr_Freeze_Cold_Blooded_3597.jpg"
+	},
+	{
+		"name": "Dracula",
+		"series": "Magic the Gathering",
+		"set": "Unglued",
+		"subtype": "Artifact",
+		"holographic": false,
+		"manufacturer": "Wizards of the Coast",
+		"release_year": "1998",
+        "condition": "Near Mint",
+		"price":  20.00, 
+        "user_id": 3,
+		"image": "https://marvelsnapzone.com/wp-content/themes/blocksy-child/assets/media/cards/dracula.webp?v=25"
+	},
+	{
+		"name": "Archer ARC-2R",
+		"series": "Magic the Gathering",
+		"set": "Unglued",
+		"subtype": "Artifact",
+		"holographic": false,
+		"manufacturer": "Wizards of the Coast",
+		"release_year": "1998",
+        "condition": "Near Mint",
+		"price":  20.00, 
+        "user_id": 3,
+		"image": "https://external-preview.redd.it/qUnFC22By4tNmdjr-hOvtWUMlBgO3KFWz1ZvjYeFFpQ.jpg?width=640&crop=smart&auto=webp&s=7eb71aaf5fabf0b54e8cafecca4a151edf9b30e4"
+	},
+	{
+		"name": "Blue-Eyes White Dragon",
+		"series": "Magic the Gathering",
+		"set": "Unglued",
+		"subtype": "Artifact",
+		"holographic": false,
+		"manufacturer": "Wizards of the Coast",
+		"release_year": "1998",
+        "condition": "Near Mint",
+		"price":  20.00, 
+        "user_id": 3,
+		"image": "https://qph.cf2.quoracdn.net/main-qimg-98732885e1731509a4ce78d853dd0173-pjlq"
 	}
 ]

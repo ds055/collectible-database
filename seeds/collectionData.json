@@ -1,0 +1,86 @@
+[
+	{
+		"id": 1,
+		"name": "My Cards",
+		"collection_type": "Card",
+		"user_id": 3,
+		"image": "https://www.govmint.com/media/catalog/product/cache/daa9fcb3626fb352519f90131abc98d6/3/7/376156_1.jpg"
+	},
+	{
+		"id": 2,
+		"name": "My Coins",
+		"collection_type": "Coin",
+		"user_id": 1,
+		"image": "https://www.govmint.com/media/catalog/product/cache/daa9fcb3626fb352519f90131abc98d6/3/7/376156_1.jpg"
+	},
+	{
+		"id": 3,
+		"name": "My Music",
+		"collection_type": "Music",
+		"user_id": 2,
+		"image": "https://d1e9ycqe323hkh.cloudfront.net/items/224212799186.jpg"
+	},
+	{
+		"id": 4,
+		"name": "My Figures",
+		"collection_type": "Action Figure",
+		"user_id": 4,
+		"image": "https://i.ebayimg.com/images/g/ngkAAOSwGHBjRso9/s-l1600.jpg"
+	},
+	{
+		"id": 5,
+		"name": "Soundtrack Stuff",
+		"collection_type": "Music",
+		"user_id": 2,
+		"image": "https://f4.bcbits.com/img/0022159050_71.jpg"
+	},
+	{
+		"id": 6,
+		"name": "Rando Trackos",
+		"collection_type": "Music",
+		"user_id": 2,
+		"image": "https://i.discogs.com/INkHg3aokd35OyhfZdeGKhH2CdKxx0THUrSyIQ_1iSc/rs:fit/g:sm/q:90/h:596/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE0Nzg0/MTg0LTE1ODE3Mjk5/OTctMTYzNC5qcGVn.jpeg"
+	},
+	{
+		"id": 7,
+		"name": "My Jam",
+		"collection_type": "Music",
+		"user_id": 2,
+		"image": "https://i.discogs.com/xBk50BmiY-S7gamw0EVjV7xpHV0byPmVbMeMaMA1XzM/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE4MDgy/MzctMTQ5Nzc4MDUz/MC01Njc5LmpwZWc.jpeg"
+	},
+	{
+		"id": 8,
+		"name": "Snoozefest",
+		"collection_type": "Music",
+		"user_id": 2,
+		"image": "https://i.discogs.com/xBk50BmiY-S7gamw0EVjV7xpHV0byPmVbMeMaMA1XzM/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE4MDgy/MzctMTQ5Nzc4MDUz/MC01Njc5LmpwZWc.jpeg"
+	},
+	{
+		"id": 9,
+		"name": "Chilling with my broskis",
+		"collection_type": "Music",
+		"user_id": 2,
+		"image": "https://m.media-amazon.com/images/I/4194mAevubL._UF1000,1000_QL80_.jpg"
+	},
+	{
+		"id": 10,
+		"name": "Date Night",
+		"collection_type": "Music",
+		"user_id": 2,
+		"image": "https://cdn.shopify.com/s/files/1/1226/8710/products/MM-1_2-Black-Front-Render_grande.jpg?v=1639501512"
+	},
+	{
+		"id": 11,
+		"name": "Good Old Days",
+		"collection_type": "Music",
+		"user_id": 2,
+		"image": "https://preview.redd.it/a6yn3k4w18o11.jpg?auto=webp&s=1d102677b21c8ce8543f343c1e783ecb4356792e"
+	},
+	{
+		"id": 12,
+		"name": "Rage Against the Machine",
+		"collection_type": "Music",
+		"user_id": 2,
+		"image": "https://i.discogs.com/mzDcBlXub4bdnjUDec3mPKTq2V15gV0cLvnbcwMVK50/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEzMTg0/NzE3LTE1NDk1NTI4/NzgtNjU2OC5qcGVn.jpeg"
+	}
+]

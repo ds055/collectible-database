@@ -1,0 +1,290 @@
+[
+	{
+		"music_id": 1,
+		"collection_id": 3
+	},
+	{
+		"music_id": 2,
+		"collection_id": 3
+	},
+	{
+		"music_id": 3,
+		"collection_id": 3
+	},	
+	{
+		"music_id": 4,
+		"collection_id": 3
+	},
+	{
+		"music_id": 5,
+		"collection_id": 3
+	},
+	{
+		"music_id": 6,
+		"collection_id": 3
+	},
+	{
+		"music_id": 7,
+		"collection_id": 3
+	},
+	{
+		"music_id": 8,
+		"collection_id": 3
+	},
+	{
+		"music_id": 1,
+		"collection_id": 5
+	},
+	{
+		"music_id": 2,
+		"collection_id": 5
+	},
+	{
+		"music_id": 3,
+		"collection_id": 5
+	},	
+	{
+		"music_id": 4,
+		"collection_id": 5
+	},
+	{
+		"music_id": 5,
+		"collection_id": 5
+	},
+	{
+		"music_id": 6,
+		"collection_id": 5
+	},
+	{
+		"music_id": 7,
+		"collection_id": 5
+	},
+	{
+		"music_id": 8,
+		"collection_id": 5
+	},
+	{
+		"music_id": 1,
+		"collection_id": 6
+	},
+	{
+		"music_id": 2,
+		"collection_id": 6
+	},
+	{
+		"music_id": 3,
+		"collection_id": 6
+	},	
+	{
+		"music_id": 4,
+		"collection_id": 6
+	},
+	{
+		"music_id": 5,
+		"collection_id": 6
+	},
+	{
+		"music_id": 6,
+		"collection_id": 6
+	},
+	{
+		"music_id": 7,
+		"collection_id": 6
+	},
+	{
+		"music_id": 8,
+		"collection_id": 6
+	},
+	{
+		"music_id": 1,
+		"collection_id": 7
+	},
+	{
+		"music_id": 2,
+		"collection_id": 7
+	},
+	{
+		"music_id": 3,
+		"collection_id": 7
+	},	
+	{
+		"music_id": 4,
+		"collection_id": 7
+	},
+	{
+		"music_id": 5,
+		"collection_id": 7
+	},
+	{
+		"music_id": 6,
+		"collection_id": 7
+	},
+	{
+		"music_id": 7,
+		"collection_id": 7
+	},
+	{
+		"music_id": 8,
+		"collection_id": 7
+	},
+	{
+		"music_id": 1,
+		"collection_id": 8
+	},
+	{
+		"music_id": 2,
+		"collection_id": 8
+	},
+	{
+		"music_id": 3,
+		"collection_id": 8
+	},	
+	{
+		"music_id": 4,
+		"collection_id": 8
+	},
+	{
+		"music_id": 5,
+		"collection_id": 8
+	},
+	{
+		"music_id": 6,
+		"collection_id": 8
+	},
+	{
+		"music_id": 7,
+		"collection_id": 8
+	},
+	{
+		"music_id": 8,
+		"collection_id": 8
+	},
+	{
+		"music_id": 1,
+		"collection_id": 9
+	},
+	{
+		"music_id": 2,
+		"collection_id": 9
+	},
+	{
+		"music_id": 3,
+		"collection_id": 9
+	},	
+	{
+		"music_id": 4,
+		"collection_id": 9
+	},
+	{
+		"music_id": 5,
+		"collection_id": 9
+	},
+	{
+		"music_id": 6,
+		"collection_id": 9
+	},
+	{
+		"music_id": 7,
+		"collection_id": 9
+	},
+	{
+		"music_id": 8,
+		"collection_id": 9
+	},
+	{
+		"music_id": 1,
+		"collection_id": 10
+	},
+	{
+		"music_id": 2,
+		"collection_id": 10
+	},
+	{
+		"music_id": 3,
+		"collection_id": 10
+	},	
+	{
+		"music_id": 4,
+		"collection_id": 10
+	},
+	{
+		"music_id": 5,
+		"collection_id": 10
+	},
+	{
+		"music_id": 6,
+		"collection_id": 10
+	},
+	{
+		"music_id": 7,
+		"collection_id": 10
+	},
+	{
+		"music_id": 8,
+		"collection_id": 10
+	},
+	{
+		"music_id": 1,
+		"collection_id": 11
+	},
+	{
+		"music_id": 2,
+		"collection_id": 11
+	},
+	{
+		"music_id": 3,
+		"collection_id": 11
+	},	
+	{
+		"music_id": 4,
+		"collection_id": 11
+	},
+	{
+		"music_id": 5,
+		"collection_id": 11
+	},
+	{
+		"music_id": 6,
+		"collection_id": 11
+	},
+	{
+		"music_id": 7,
+		"collection_id": 11
+	},
+	{
+		"music_id": 8,
+		"collection_id": 11
+	},
+	{
+		"music_id": 1,
+		"collection_id": 12
+	},
+	{
+		"music_id": 2,
+		"collection_id": 12
+	},
+	{
+		"music_id": 3,
+		"collection_id": 12
+	},	
+	{
+		"music_id": 4,
+		"collection_id": 12
+	},
+	{
+		"music_id": 5,
+		"collection_id": 12
+	},
+	{
+		"music_id": 6,
+		"collection_id": 12
+	},
+	{
+		"music_id": 7,
+		"collection_id": 12
+	},
+	{
+		"music_id": 8,
+		"collection_id": 12
+	}
+]
