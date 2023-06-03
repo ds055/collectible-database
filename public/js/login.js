@@ -3,13 +3,14 @@ const signupFormEl = document.querySelector('#signup-form');
 
 const showError = (parentEl, errorText) => {
   const errorPEl = document.createElement('div');
-  errorPEl.classList.add('.text-white');
+  errorPEl.classList.add('error-element', 'text-white', 'text-center', 'font-bold', 'text-2xl');
   errorPEl.textContent = errorText;
   parentEl.appendChild(errorPEl);
 };
 
 const removeAllErrors = () => {
   const allErrors = document.querySelectorAll('.error-element');
+  console.log(allErrors)
   allErrors.forEach((el) => el.remove());
 };
 
