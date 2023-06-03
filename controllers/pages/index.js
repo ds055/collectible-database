@@ -2,15 +2,12 @@ const router = require('express').Router();
 const path = require('path');
 const withAuth = require('../../middleware/auth');
 
-const profile = require('./profile');
+const dashboard = require('./dashboard');
 const home = require('./home');
 const login = require('./login');
 const signUp = require('./sign-up');
-const collections = require('./collection')
 
-router.use('/profile', withAuth, profile);
-
-router.use('/collections', withAuth, collections);
+router.use('/dashboard', withAuth, dashboard);
 
 router.use('/home', withAuth, home);
 
