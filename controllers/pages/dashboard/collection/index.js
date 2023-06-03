@@ -1,8 +1,9 @@
 const { ActionFigure, Coin, Collection, Music, Card } = require('../../../../models');
+const withAuth = require('../../../../middleware/auth')
 
 const router = require('express').Router();
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         const collectionData = await Collection.findAll({
             where: {user_id: req.session.user_id}
@@ -17,7 +18,7 @@ router.get('/', async (req, res) => {
 });
 
 // TODO: req.session.logged_in to other routes
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
     try {
         const collectionData = await Collection.findByPk(req.params.id, {
             include: [ActionFigure, Music, Coin, Card]
@@ -25,6 +26,7 @@ router.get('/:id', async (req, res) => {
         
         const parsedData = collectionData.get({ plain: true })
 
+        console.log(parsedData)
 
         if(parsedData.music.length > 0) {
             const music = parsedData.music;
@@ -38,8 +40,8 @@ router.get('/:id', async (req, res) => {
             const coin = parsedData.coins;
             res.render('collections', { coin, logged_in: req.session.logged_in });
         }
-        else if(parsedData.card.length > 0) {
-            const card = parsedData.card;
+        else if(parsedData.cards.length > 0) {
+            const card = parsedData.cards;
             res.render('collections', { card, logged_in: req.session.logged_in });    
         }
         else {
@@ -51,7 +53,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.get('/coin', async (req, res) => {
+router.get('/coin', withAuth, async (req, res) => {
 try {
     // find all posts with User names via userId foreign key--returns only the username
     const coinData = await Coin.findAll({
@@ -70,7 +72,7 @@ try {
     }
 })
 
-router.get('/figure', async (req, res) => {
+router.get('/figure', withAuth, async (req, res) => {
     try {
         // find all posts with User names via userId foreign key--returns only the username
         const figureData = await ActionFigure.findAll({
