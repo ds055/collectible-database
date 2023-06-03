@@ -1,30 +1,19 @@
-        
 {{#each coin as |coin|}}
 <div class="p-4">
     <div class="h-full border-2 border-black border-opacity-60 bg-indigo-400 rounded-lg overflow-hidden drop-shadow-2xl">
-    <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="https://dummyimage.com/720x400" alt="blog">
-    <div class="p-6">
-        <h2 class="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">CATEGORY</h2>
-        <h1 class="title-font text-lg font-medium text-gray-900 mb-3">The Catalyzer</h1>
-        <p class="leading-relaxed mb-3">{{ denomination }}
-{{ country }}
-{{ time_period }}
-{{ coin_finish }}
-{{ mint_mark }}
-{{ design_theme }}
-{{ artist }}
-{{ condition }}
-{{ prince }}
-{{ image }}</p>
-        <div class="flex items-center flex-wrap">
-        <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
-            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14"></path>
-            <path d="M12 5l7 7-7 7"></path>
-            </svg>
-        </a>
+        <img class="lg:h-96 md:h-48 w-full object-scale-down object-center" src="{{ image }}" alt="blog">
+        <div class="p-6">
+            <h1 class="text-center title-font text-lg font-bold text-gray-900 mb-3">{{ denomination }}{{ country }}</h1>
+            <ul class="leading-relaxed text-black mb-3">
+                <li><span class="underline">Line:</span> {{ time_period }}</li>
+                <li><span class="underline">Series:</span> {{ coin_finish }} </li>
+                <li><span class="underline">Manufacturer:</span> {{ mint_mark }} </li>
+                <li><span class="underline">Released:</span> {{ design_theme }} </li>
+                <li><span class="underline">Barcode:</span> {{ artist }} </li>
+                <li><span class="underline">Condition:</span> {{ condition }} </li>
+                <li><span class="underline">Price:</span> {{ price }} </li>
+            </ul>
         </div>
-    </div>
     </div>
 </div>
 {{/each}}

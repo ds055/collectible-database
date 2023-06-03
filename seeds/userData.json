@@ -1,23 +1,27 @@
 [
   {
+    "id": 1,
     "first_name": "Sal",
     "last_name": "Manella",
     "email": "sal@hotmail.com",
     "password": "password12345"
   },
   {
+    "id": 2,
     "first_name": "Lernantino",
     "last_name": "Devito",
     "email": "lernantino@gmail.com",
     "password": "password12345"
   },
   {
+    "id": 3,
     "first_name": "Amiko",
     "last_name": "aol.gal",
     "email": "amiko2k20@aol.com",
     "password": "password12345"
   },
   {
+    "id": 4,
     "first_name": "Bryce",
     "last_name": "Wynn",
     "email": "bman@yahoo.com",

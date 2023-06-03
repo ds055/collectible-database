@@ -1,0 +1,34 @@
+[
+	{
+		"card_id": 1,
+		"collection_id": 1
+	},
+	{
+		"card_id": 2,
+		"collection_id": 1
+	},
+	{
+		"card_id": 3,
+		"collection_id": 1
+	},	
+	{
+		"card_id": 4,
+		"collection_id": 1
+	},
+	{
+		"card_id": 5,
+		"collection_id": 1
+	},
+	{
+		"card_id": 6,
+		"collection_id": 1
+	},
+	{
+		"card_id": 7,
+		"collection_id": 1
+	},
+	{
+		"card_id": 8,
+		"collection_id": 1
+	}
+]

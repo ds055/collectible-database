@@ -8,7 +8,8 @@
 		"barcode": 123456789123,
 		"condition": "Excellent",
 		"price":  19.99,
-		"user_id": 4
+		"user_id": 4,
+		"image": "https://www.coleka.com/media/item/202201/10/batman-the-animated-series-combat-belt-batman.webp"
 	},
 	{
 		"name": "Hobgoblin",
@@ -19,7 +20,8 @@
 		"barcode": 438456789123,
 		"condition": "Very Good",
 		"price":  30.00,
-		"user_id": 4
+		"user_id": 4,
+		"image": "https://i.ebayimg.com/images/g/nZ0AAOSwIVZh2JNb/s-l1600.jpg"
 	},
 	{
 		"name": "Dracula Monster",
@@ -30,7 +32,68 @@
 		"barcode": 589456789123,
 		"condition": "Good",
 		"price":  35.63,
-		"user_id": 4
+		"user_id": 4,
+		"image": "https://cdn.shopify.com/s/files/1/0576/0240/8617/products/IMG_20210803_181133_1024x1024@2x.jpg?v=1628039473"
+	},
+	{
+		"name": "Mr. Freeze",
+		"line": "The Real Ghostbusters",
+		"series": "Monsters",
+		"manufacturer": "Kenner",
+		"release_year": 1986,
+		"barcode": 589456789123,
+		"condition": "Good",
+		"price":  35.63,
+		"user_id": 4,
+		"image": "https://i.ebayimg.com/images/g/QYkAAOSwRA1kWZkx/s-l1600.jpg"
+	},
+	{
+		"name": "Dragon Gundam",
+		"line": "The Real Ghostbusters",
+		"series": "Monsters",
+		"manufacturer": "Kenner",
+		"release_year": 1986,
+		"barcode": 589456789123,
+		"condition": "Good",
+		"price":  35.63,
+		"user_id": 4,
+		"image": "https://gofigure.toys/media/dragon-gundam-japan.jpg"
+	},
+	{
+		"name": "Simon Belmont",
+		"line": "The Real Ghostbusters",
+		"series": "Monsters",
+		"manufacturer": "Kenner",
+		"release_year": 1986,
+		"barcode": 589456789123,
+		"condition": "Good",
+		"price":  35.63,
+		"user_id": 4,
+		"image": "https://i.ebayimg.com/images/g/XWcAAOSwDXJjThsh/s-l1600.jpg"
+	},
+	{
+		"name": "Goku",
+		"line": "The Real Ghostbusters",
+		"series": "Monsters",
+		"manufacturer": "Kenner",
+		"release_year": 1986,
+		"barcode": 589456789123,
+		"condition": "Good",
+		"price":  35.63,
+		"user_id": 4,
+		"image": "https://m.media-amazon.com/images/I/A1Dag5BFzML.jpg"
+	},
+	{
+		"name": "Magneto",
+		"line": "The Real Ghostbusters",
+		"series": "Monsters",
+		"manufacturer": "Kenner",
+		"release_year": 1986,
+		"barcode": 589456789123,
+		"condition": "Good",
+		"price":  35.63,
+		"user_id": 4,
+		"image": "https://i.ebayimg.com/images/g/ngkAAOSwGHBjRso9/s-l1600.jpg"
 	}
 ]
 
