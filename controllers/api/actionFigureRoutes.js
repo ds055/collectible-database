@@ -40,12 +40,12 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 // update an action figure by id
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const actionFigureData = await ActionFigure.update(req.body, {
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+        // user_id: req.session.user_id,
       },
     });
     if (!actionFigureData) {

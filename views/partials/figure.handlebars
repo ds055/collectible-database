@@ -1,0 +1,21 @@
+        
+{{#each figure as |figure|}}
+<div class="p-4">
+    <div class="h-full border-2 border-black border-opacity-60 bg-indigo-400 rounded-lg overflow-hidden drop-shadow-2xl">
+        <img class="lg:h-96 md:h-48 w-full object-scale-down object-center" src="{{ image }}" alt="blog">
+        <div class="p-6">
+            <h1 class="text-center title-font text-lg font-bold text-gray-900 mb-3">{{ name }}</h1>
+            <ul class="leading-relaxed text-black mb-3">
+                <li><span class="underline">Line:</span> {{ line }}</li>
+                <li><span class="underline">Series:</span> {{ series }} </li>
+                <li><span class="underline">Manufacturer:</span> {{ manufacturer }} </li>
+                <li><span class="underline">Released:</span> {{ release_year }} </li>
+                <li><span class="underline">Barcode:</span> {{ barcode }} </li>
+                <li><span class="underline">Condition:</span> {{ condition }} </li>
+                <li><span class="underline">Price:</span> {{ price }} </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{{/each}}
+
