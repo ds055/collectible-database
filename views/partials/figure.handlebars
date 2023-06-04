@@ -1,10 +1,10 @@
 {{#each figure as |figure|}}
 <div class="p-4">
     <div class="h-full border-2 border-black border-opacity-60 bg-indigo-400 rounded-lg overflow-hidden drop-shadow-2xl">
-        <img class="h-[28rem] w-full flex content-center" src="{{ image }}" alt="blog">
+        <img class="lg:h-[28rem] h-[20rem] w-full flex content-center" src="{{ image }}" alt="blog">
         <div class="p-6">
-            <h1 class="text-center title-font text-lg font-bold text-gray-900 mb-3">{{ name }}</h1>
-            <ul class="leading-relaxed text-black mb-3 divide divide-solid">
+            <h1 class="text-center title-font text-lg font-bold text-gray-900 bg-white mb-3">{{ name }}</h1>
+            <ul class="leading-relaxed text-black bg-white mb-3 divide-y divide-dotted">
                 <li class = 'my-1.5'><span class="rounded-full bg-green-400 py-1 px-2">Line:</span> {{ line }}</li>
                 <li class = 'my-1.5'><span class="rounded-full bg-green-400 py-1 px-2">Series:</span> {{ series }} </li>
                 <li class = 'my-1.5'><span class="rounded-full bg-green-400 py-1 px-2">Manufacturer:</span> {{ manufacturer }} </li>
