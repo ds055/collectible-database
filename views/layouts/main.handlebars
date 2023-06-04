@@ -10,15 +10,15 @@
 
   <body class = 'bg-gradient-to-t from-indigo-100 from-60% to-rose-100 drop-shadow-xl'>
     <div class=''>
-      <header class='py-6 px-8 font-bold md:text-4xl sm:text-2xl bg-indigo-500 text-white items-center flex justify-between drop-shadow-lg'>
+      <header class='py-6 px-8 font-bold bg-indigo-500 text-white items-center flex max-lg:flex-col justify-between drop-shadow-lg'>
         <h1>
           {{#if logged_in}}
-            <a href='/home' class = 'md:text-5xl sm:text-2xl'>COOLECTIBLE$</a>
+            <a href='/home' class = 'md:text-5xl text-3xl'>COOLECTIBLE$</a>
           {{else}}
-            <a href='/' class = 'md:text-5xl sm:text-2xl'>COOLECTIBLE$</a>
+            <a href='/' class = 'md:text-5xl text-3xl'>COOLECTIBLE$</a>
           {{/if}}
         </h1>
-        <nav class = ''>
+        <nav class = 'xl:text-4xl md:text-3xl max-lg:mt-3'>
           <!-- Conditionally render login or logout links -->
           {{#if logged_in}}
             <a href='/home' class = 'mx-2' >Home</a>

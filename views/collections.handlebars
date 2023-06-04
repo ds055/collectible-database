@@ -1,56 +1,55 @@
-{{!-- <h2>
-  Hello
-  {{first_name}}, this is your profile page. Please change me or remove me.
-</h2>
+<content class = "flex flex-col">
 
-<div class="max-w-sm w-full lg:max-w-full lg:flex">
-  <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/img/card-left.jpg')" title="Woman holding a mug">
+  <div class = 'flex justify-center'>
+    <h2 class = 'font-bold text-4xl md:text-6xl lg:text-8xl m-6 bg-gradient-to-tr from-violet-700 via-fuchsia-300 to-teal-400 bg-clip-text text-transparent'>Your Collections</h2>
   </div>
-  <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-    <div class="mb-8">
-      <div class="text-gray-900 font-bold text-xl mb-2">Can coffee make you a better developer?</div>
-      <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.</p>
-    </div>
-    <div class="flex items-center">
-      <img class="w-10 h-10 rounded-full mr-4" src="/img/jonathan.jpg" alt="Avatar of Jonathan Reinink">
-      <div class="text-sm">
-        <p class="text-gray-900 leading-none">Jonathan Reinink</p>
-        <p class="text-gray-600">Aug 18</p>
+
+  <section class="text-white body-font my-4">
+      <div class="px-10 py-16 mx-auto bg-white bg-opacity-70 rounded-lg">
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+          {{#if collection}}
+            {{#each collection as |collection|}}
+
+            <div>
+              <div class="px-2 bg-gradient-to-br from-blue-500 to-purple-500 transition duration-400 hover:scale-110 hover:drop-shadow-2xl hover:shadow-violet-600/50 2xl:w-96 lg:w-72 shadow-xl rounded-md rounded-tr-2xl rounded-bl-2xl">
+                <a href="/dashboard/collection/{{id}}">
+                <figure class="px-10 pt-10">
+                  <img src="{{ image }}" alt="" class="rounded-md" />
+                </figure>
+                <div class="items-center text-center">
+                  <h2 class="m-2 pb-2 border-b-2 font-bold text-xl">{{ name }}</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis excepturi dolorum officiis nihil, odio quidem quo natus exercitationem fuga, minus ullam ratione suscipit inventore et deserunt porro quas. Beatae, quae.</p>
+                    <button class="m-4 px-6 py-2 transition duration-400 hover:bg-green-400 rounded-full bg-blue-400">Open Collection</button>
+                </div>
+              </div>
+              </a>
+            </div>
+
+            {{/each}}
+          {{/if}}
+
+          
+          {{#if coin}}
+
+            {{>coin}}
+          
+          {{/if}}
+
+          {{#if figure}}
+            {{>figure}}
+          {{/if}}
+          
+          {{#if music}}
+            {{>music}}
+          {{/if}}
+
+          {{#if card}}
+            {{>card}}
+          {{/if}}
+          
+          </div>
+
       </div>
-    </div>
-  </div>
-</div> --}}
-<section class="text-gray-600 body-font m-10">
-    <div class="container px-10 py-24 mx-auto bg-white bg-opacity-70 rounded-lg">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {{#if collection}}
-          {{#each collection as |collection|}}
-          <a href="/dashboard/collection/{{id}}"><p>{{ name }}</p>
-          <img src="{{ image }}"
-          </a>
-          {{/each}}
-        {{/if}}
+  </section>
 
-        
-        {{#if coin}}
-
-          {{>coin}}
-        
-        {{/if}}
-
-        {{#if figure}}
-          {{>figure}}
-        {{/if}}
-        
-        {{#if music}}
-          {{>music}}
-        {{/if}}
-
-        {{#if card}}
-          {{>card}}
-        {{/if}}
-        
-        </div>
-
-    </div>
-</section>
+</content>
