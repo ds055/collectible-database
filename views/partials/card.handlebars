@@ -2,8 +2,13 @@
 <div class="p-4">
     <div class="h-full border-2 border-black border-opacity-60 bg-indigo-400 rounded-lg overflow-hidden drop-shadow-2xl">
         <img class="lg:h-96 md:h-48 w-full object-scale-down object-center" src="{{ image }}" alt="blog">
+        <div>
+            <button class="edit-btn z-50" type="button" data-type="figure" data-id="{{id}}"><i style="font-size:24px" class="fa text-white object-right-top fixed top-2 right-2 z-40 bg-indigo-800 text-lg hover:bg-white hover:text-indigo-800 rounded-lg p-1">&#xf040;</i></button>
+            <img class="lg:h-[28rem] h-[20rem] w-full flex content-center z-30" src="{{ image }}" alt="blog">
+        </div>
         <div class="p-6">
             <h1 class="text-center title-font text-lg font-bold text-gray-900 mb-3">{{ name }}</h1>
+            <input type="hidden" name="card_id" value={{id}}>
             <ul class="leading-relaxed text-black mb-3">
                 <li><span class="underline">Series:</span> {{ series }}</li>
                 <li><span class="underline">Released:</span> {{ release_year }} </li>
