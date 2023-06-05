@@ -12,12 +12,8 @@ window.onclick = function(event) {
   }
 }
 
-const cancelBtnFunction = () => {
-  const cancelBtn = document.getElementById("close");
-  cancelBtn.onclick = function() { modal.style.display = "none"};
-}
 
-// When the user clicks on the button, open the modal
+// Modal initializers
 collectionBtn.onclick = function() {
   modal.innerHTML = collectionHtml;
   cancelBtnFunction();
@@ -47,6 +43,13 @@ coolectibleBtn.onclick = function() {
   })
 }
 
+// Calls dom query to find close button on modal
+const cancelBtnFunction = () => {
+  const cancelBtn = document.getElementById("close");
+  cancelBtn.onclick = function() { modal.style.display = "none"};
+}
+
+// Generates modal for new coolectible based on drop down answer from select above
 const newFigureForm = (event) => {
     modal.innerHTML = newFigureHtml;
     cancelBtnFunction();
@@ -76,12 +79,17 @@ const newCollectionSubmit = async function(event) {
   event.preventDefault();
 
   // grab dom els
-  const name = document.querySelector('#name').value;
-  const collection_type = document.querySelector('#collection_type').value;
-  const image = document.querySelector('#url').value;
+  const name = document.querySelector('#name').value.trim() || null;
+  const collection_type = document.querySelector('#collection_type').value.trim() || null;
+  const image = document.querySelector('#url').value.trim() || null;
+
+  if(name === null){
+    generatedFail('Name cannot be empty');
+    return;
+  }
 
   // api call to create new figure
-  await fetch(`/api/collection`, {
+  let response = await fetch(`/api/collection`, {
     method: 'POST',
     body: JSON.stringify({
       name,
@@ -91,35 +99,36 @@ const newCollectionSubmit = async function(event) {
     headers: { 'Content-Type': 'application/json' },
   });
 
-  // after new figure creation
-  addSuccess();
-};
-
-// Check for empty string
-const emptyStringCheck = (value) => {
-  if (value === ""){
-    return null;
+  // error handling and confirmation message
+  if(response.ok){
+    addSuccess();
+  } else {
+    addFailed();
   }
-}
+};
 
 // Adds new figure via api call
 const addNewActionFigure = async function(event) {
   event.preventDefault();
 
-  console.log("hit")
   // grab dom els
-  const name = document.querySelector('#name').value;
-  const line = document.querySelector('#line').value;
-  const series = document.querySelector('#series').value;
-  const manufacturer = document.querySelector('#manufacturer').value;
-  const release_year = emptyStringCheck(document.querySelector('#release_year').value);
-  const barcode = emptyStringCheck(document.querySelector('#barcode').value);
-  const condition = document.querySelector('#condition').value;
-  const price = emptyStringCheck(document.querySelector('#price').value);
-  const image = document.querySelector('#url').value;
-console.log(name, line, series, manufacturer)
+  const name = document.querySelector('#name').value.trim() || null;
+  const line = document.querySelector('#line').value.trim() || null;
+  const series = document.querySelector('#series').value.trim() || null;
+  const manufacturer = document.querySelector('#manufacturer').value.trim() || null;
+  const release_year = document.querySelector('#release_year').value.trim() || null;
+  const barcode = document.querySelector('#barcode').value.trim() || null;
+  const condition = document.querySelector('#condition').value.trim() || null;
+  const price = document.querySelector('#price').value.trim() || null;
+  const image = document.querySelector('#url').value.trim() || null;
+
+  if(name === null){
+    generatedFail('Name cannot be empty');
+    return;
+  }
+
   // api call to create new figure
-  await fetch(`/api/actionfigure`, {
+ let response = await fetch(`/api/actionfigure`, {
     method: 'POST',
     body: JSON.stringify({
       name,
@@ -135,8 +144,12 @@ console.log(name, line, series, manufacturer)
     headers: { 'Content-Type': 'application/json' },
   });
 
-  // after new figure creation
-  addSuccess();
+    // error handling and confirmation message
+    if(response.ok){
+      addSuccess();
+    } else {
+      addFailed();
+    }
 };
 
 // Adds new music entry via api call
@@ -144,21 +157,32 @@ const addNewMusic = async function(event) {
   event.preventDefault();
 
   // grab dom els
-  const album_name = document.querySelector('#album_name').value;
-  const artist = document.querySelector('#artist').value;
-  const genre = document.querySelector('#genre').value;
-  const style = document.querySelector('#style').value;
-  const release_year = emptyStringCheck(document.querySelector('#release_year').value);
-  const format = document.querySelector('#format').value;
-  const pressing_info = document.querySelector('#pressing_info').value;
-  const barcode = emptyStringCheck(document.querySelector('#barcode').value);
-  const condition = document.querySelector('#condition').value;
-  const price = emptyStringCheck(document.querySelector('#price').value);
-  const image = document.querySelector('#url').value;
+  const album_name = document.querySelector('#album_name').value.trim() || null;
+  const artist = document.querySelector('#artist').value.trim() || null;
+  const genre = document.querySelector('#genre').value.trim() || null;
+  const style = document.querySelector('#style').value.trim() || null;
+  const release_year = document.querySelector('#release_year').value.trim() || null;
+  const format = document.querySelector('#format').value.trim() || null;
+  const pressing_info = document.querySelector('#pressing_info').value.trim() || null;
+  const barcode = document.querySelector('#barcode').value.trim() || null;
+  const condition = document.querySelector('#condition').value.trim() || null;
+  const price = document.querySelector('#price').value.trim() || null;
+  const image = document.querySelector('#url').value.trim() || null;
 
+  // Handling required fields
+  if(album_name === null){
+    generatedFail('Album Name cannot be empty');
+    return;
+  } else if(artist === null){
+    generatedFail('Artist name cannot be empty');
+    return;
+  } else if(format === null){
+    generatedFail('Format cannot be empty');
+    return;
+  }
 
   // api call to create new music
-  await fetch(`/api/music`, {
+  let response = await fetch(`/api/music`, {
     method: 'POST',
     body: JSON.stringify({
       album_name,
@@ -176,8 +200,12 @@ const addNewMusic = async function(event) {
     headers: { 'Content-Type': 'application/json' },
   });
 
-  // after new music creation
-  addSuccess();
+  // error handling and confirmation message
+  if(response.ok){
+    addSuccess();
+  } else {
+    addFailed();
+  }
 };
 
 
@@ -186,20 +214,31 @@ const addNewCoin = async function(event) {
   event.preventDefault();
 
   // grab dom els
-  const denomination = document.querySelector('#denomination').value;
-  const country = document.querySelector('#country').value;
-  const time_period = document.querySelector('#time_period').value;
-  const coin_finish = document.querySelector('#coin_finish').value;
-  const mint_mark = document.querySelector('#mint_mark').value;
-  const design_theme = document.querySelector('#design_theme').value;
-  const artist = document.querySelector('#artist').value;
-  const condition = document.querySelector('#condition').value;
-  const price = emptyStringCheck(document.querySelector('#price').value);
-  const image = document.querySelector('#url').value;
+  const denomination = document.querySelector('#denomination').value.trim() || null;
+  const country = document.querySelector('#country').value.trim() || null;
+  const time_period = document.querySelector('#time_period').value.trim() || null;
+  const coin_finish = document.querySelector('#coin_finish').value.trim() || null;
+  const mint_mark = document.querySelector('#mint_mark').value.trim() || null;
+  const design_theme = document.querySelector('#design_theme').value.trim() || null;
+  const artist = document.querySelector('#artist').value.trim() || null;
+  const condition = document.querySelector('#condition').value.trim() || null;
+  const price = document.querySelector('#price').value.trim() || null;
+  const image = document.querySelector('#url').value.trim() || null;
 
+  // Handling required fields
+  if(denomination === null){
+    generatedFail('Denomination cannot be empty');
+    return;
+  } else if(country === null){
+    generatedFail('Country name cannot be empty');
+    return;
+  } else if(time_period === null){
+    generatedFail('Time period cannot be empty');
+    return;
+  }
 
   // api call to create new coin
-  await fetch(`/api/coin`, {
+  let response = await fetch(`/api/coin`, {
     method: 'POST',
     body: JSON.stringify({
       denomination,
@@ -216,8 +255,12 @@ const addNewCoin = async function(event) {
     headers: { 'Content-Type': 'application/json' },
   });
 
-  // after new coin creation
-  addSuccess();
+  // error handling and confirmation message
+  if(response.ok){
+    addSuccess();
+  } else {
+    addFailed();
+  }
 };
 
 
@@ -226,20 +269,25 @@ const addNewCard = async function(event) {
   event.preventDefault();
 
   // grab dom els
-  const name = document.querySelector('#name').value;
-  const release_year = emptyStringCheck(document.querySelector('#release_year').value);
-  const series = document.querySelector('#series').value;
-  const set = document.querySelector('#set').value;
-  const subtype = document.querySelector('#subtype').value;
-  const holographic = document.querySelector('#holographic').value;
-  const manufacturer = document.querySelector('#manufacturer').value;
-  const condition = document.querySelector('#condition').value;
-  const price = emptyStringCheck(document.querySelector('#price').value);
-  const image = document.querySelector('#url').value;
+  const name = document.querySelector('#name').value.trim() || null;
+  const release_year = document.querySelector('#release_year').value.trim() || null;
+  const series = document.querySelector('#series').value.trim() || null;
+  const set = document.querySelector('#set').value.trim() || null;
+  const subtype = document.querySelector('#subtype').value.trim() || null;
+  const holographic = document.querySelector('#holographic').value.trim() || null;
+  const manufacturer = document.querySelector('#manufacturer').value.trim() || null;
+  const condition = document.querySelector('#condition').value.trim() || null;
+  const price = document.querySelector('#price').value.trim() || null;
+  const image = document.querySelector('#url').value.trim() || null;
 
+  // Handling required fields
+  if(name === null){
+    generatedFail('Name cannot be empty');
+    return;
+  }
 
   // api call to create new card
-  await fetch(`/api/card`, {
+  let response = await fetch(`/api/card`, {
     method: 'POST',
     body: JSON.stringify({
       name,
@@ -256,14 +304,45 @@ const addNewCard = async function(event) {
     headers: { 'Content-Type': 'application/json' },
   });
 
-  // after new card creation
-  addSuccess();
+  // error handling and confirmation message
+  if(response.ok){
+    addSuccess();
+  } else {
+    addFailed();
+  }
 };
 
 const addSuccess = () => {
   modal.innerHTML = successHtml;
   const cancelBtn = document.getElementById("close");
   cancelBtn.onclick = function() { modal.style.display = "none"};
+}
+
+const addFailed = () => {
+  modal.innerHTML = failedHtml;
+  const cancelBtn = document.getElementById("close");
+  cancelBtn.onclick = function() { modal.style.display = "none"};
+}
+
+const generatedFail = (msg) => {
+  modal.innerHTML = generatedFailText(msg);
+  const cancelBtn = document.getElementById("close");
+  cancelBtn.onclick = function() { modal.style.display = "none"};
+}
+
+const generatedFailText = (text) => {
+  return `
+  <div class="bg-indigo-400 m-5">
+  <p class="px-3 pt-3 text-center text-white text-2xl font-extrabold">
+      <span class="text-emerald-300">Bummer!</span>
+      <br>
+      ${text} 
+  </p>
+  <div class="flex justify-center">
+      <button id="close" type="button" class="m-4 border-2 border-black bg-indigo-500 rounded-lg text-white text-xl px-1 ms3">Cool!</button>
+  </div>
+</div>
+  `
 }
 
 const collectionHtml = `
@@ -284,7 +363,7 @@ const collectionHtml = `
           </div>
       <div class="flex flex-row w-full justify-between">
           <label class="ps-2 pt-1 font-bold text-lg" for="name">Collection Name:</label>
-          <input class="m-2" id="name" type="text" placeholder="Enter name here"> 
+          <input class="m-2" id="name" type="required" placeholder="Enter name here"> 
       </div>
       <div class="flex flex-row w-full justify-between">
           <label class="ps-2 pt-1 font-bold text-lg" for="url">Image URL:</label>
@@ -547,6 +626,19 @@ const successHtml = `
       <span class="text-emerald-300">Tubular!</span>
       <br>
       Creation Success
+  </p>
+  <div class="flex justify-center">
+      <button id="close" type="button" class="m-4 border-2 border-black bg-indigo-500 rounded-lg text-white text-xl px-1 ms3">Cool!</button>
+  </div>
+</div>
+`
+
+const generalFailedHtml = `
+<div class="bg-indigo-400 m-5">
+  <p class="px-3 pt-3 text-center text-white text-2xl font-extrabold">
+      <span class="text-emerald-300">Bummer!</span>
+      <br>
+      Something went wrong! Please try again. 
   </p>
   <div class="flex justify-center">
       <button id="close" type="button" class="m-4 border-2 border-black bg-indigo-500 rounded-lg text-white text-xl px-1 ms3">Cool!</button>
