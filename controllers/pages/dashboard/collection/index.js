@@ -17,7 +17,44 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
 
-// TODO: req.session.logged_in to other routes
+router.get('/coin', withAuth, async (req, res) => {
+try {
+    // find all posts with User names via userId foreign key--returns only the username
+    const coinData = await Coin.findAll({
+        where: {user_id: 1}
+    });
+
+    // translate data to plain
+    const coin = coinData.map((coin) => coin.get({ plain: true}));
+    // render all-posts page with posts data and logged_in bool from session 
+    res.render('collections', { 
+        coin,
+        logged_in: req.session.logged_in
+    });
+    } catch (err) {
+    res.status(500).json(err);
+    }
+})
+
+router.get('/figure', withAuth, async (req, res) => {
+    try {
+        // find all posts with User names via userId foreign key--returns only the username
+        const figureData = await ActionFigure.findAll({
+            where: {user_id: req.session.user_id}
+        });
+        // translate data to plain
+        const figure = figureData.map((figure) => figure.get({ plain: true}));
+        // render all-posts page with posts data and logged_in bool from session 
+        res.render('collections', { 
+            figure,
+            logged_in: req.session.logged_in
+        });
+        } catch (err) {
+        res.status(500).json(err);
+        }
+    })
+
+    // TODO: req.session.logged_in to other routes
 router.get('/:id', withAuth, async (req, res) => {
     try {
         const collectionData = await Collection.findByPk(req.params.id, {
@@ -25,8 +62,6 @@ router.get('/:id', withAuth, async (req, res) => {
         })
         
         const parsedData = collectionData.get({ plain: true })
-
-        console.log(parsedData)
 
         if(parsedData.music.length > 0) {
             const music = parsedData.music;
@@ -52,43 +87,5 @@ router.get('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
     }
 });
-
-router.get('/coin', withAuth, async (req, res) => {
-try {
-    // find all posts with User names via userId foreign key--returns only the username
-    const coinData = await Coin.findAll({
-        where: {user_id: 1}
-    });
-
-    // translate data to plain
-    const coin = coinData.map((coin) => coin.get({ plain: true}));
-    // render all-posts page with posts data and logged_in bool from session 
-    res.render('collections', { 
-        coin,
-        logged_in: req.session.logged_in
-    });
-    } catch (err) {
-    res.status(500).json(err);
-    }
-})
-
-router.get('/figure', withAuth, async (req, res) => {
-    try {
-        // find all posts with User names via userId foreign key--returns only the username
-        const figureData = await ActionFigure.findAll({
-            where: {user_id: 4}
-        });
-    
-        // translate data to plain
-        const figure = figureData.map((figure) => figure.get({ plain: true}));
-        // render all-posts page with posts data and logged_in bool from session 
-        res.render('collections', { 
-            figure,
-            logged_in: req.session.logged_in
-        });
-        } catch (err) {
-        res.status(500).json(err);
-        }
-    })
 
 module.exports = router;

@@ -31,6 +31,7 @@ router.post('/', withAuth, async (req, res) => {
   try {
     const actionFigureData = await ActionFigure.create({
       ...req.body,
+      
       user_id: req.session.user_id,
     });
     res.status(200).json(actionFigureData);
@@ -45,7 +46,7 @@ router.put('/:id', async (req, res) => {
     const actionFigureData = await ActionFigure.update(req.body, {
       where: {
         id: req.params.id,
-        // user_id: req.session.user_id,
+        user_id: req.session.user_id,
       },
     });
     if (!actionFigureData) {
