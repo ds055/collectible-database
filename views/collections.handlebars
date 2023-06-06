@@ -8,6 +8,16 @@
         <button class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" id="addCollectionBtn">Add Collection</button>
         <button class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" id="addCoolectibleBtn">Add Coolectible</button>
   </div>
+      <form id="view-all-form" class="flex justify-center items-center mt-5">
+        <label class="font-bold text-lg" for="view-all">View All Your:</label>
+            <select class="ms-3 me-4" id="view-all-choice" name="type-select">
+            <option value="figure">Action Figures</option>
+            <option value="card">Cards</option>
+            <option value="coin">Coins</option>
+            <option value="music">Music</option>
+            </select> 
+        <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
+    </form>
   {{/if}}
   {{#unless collection}}
   <div class = 'flex justify-center'>
