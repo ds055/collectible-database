@@ -11,11 +11,9 @@ router.get('/', withAuth, async (req, res) => {
 
         const collection = collectionData.map((collection) => collection.get({ plain: true }))
 
-        console.log(collection)
-
         if(collection.length === 0){
             const noCollections = true;
-            res.render('bigEmpty', {noCollections})
+            res.render('bigEmpty', {noCollections, logged_in: req.session.logged_in})
         }else {
             res.render('collections', { collection, logged_in: req.session.logged_in });
         }
@@ -90,17 +88,21 @@ router.get('/:id', withAuth, async (req, res) => {
             res.render('collections', { card, collectionId, logged_in: req.session.logged_in });    
         }
         else {
-            switch(parsedData.type) {
+            switch(parsedData.collection_type) {
                 case 'Action Figure': 
+                    const figure = true;
                     res.render('bigEmpty', { figure, collectionId, logged_in: req.session.logged_in})
                     break;
                 case 'Coin':
+                    const coin = true;
                     res.render('bigEmpty', { coin, collectionId, logged_in: req.session.logged_in})
                     break;
                 case 'Music':
+                    const music = true;
                     res.render('bigEmpty', { music, collectionId, logged_in: req.session.logged_in})
                     break;
                 case 'Card':
+                    const card = true;
                     res.render('bigEmpty', { card, collectionId, logged_in: req.session.logged_in})
             }
         }
