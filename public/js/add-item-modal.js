@@ -12,7 +12,6 @@ window.onclick = function(event) {
   }
 }
 
-
 // Modal initializers
 collectionBtn.onclick = function() {
   modal.innerHTML = collectionHtml;
