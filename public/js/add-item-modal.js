@@ -315,7 +315,7 @@ const addNewCard = async function (event) {
 const addSuccess = () => {
   modal.innerHTML = successHtml;
   const cancelBtn = document.getElementById("close");
-  cancelBtn.onclick = function () { modal.style.display = "none" };
+  cancelBtn.onclick = function () {  document.location.reload() };
 }
 
 const addFailed = () => {
