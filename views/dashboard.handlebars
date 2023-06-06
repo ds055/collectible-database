@@ -1,10 +1,20 @@
 
 
 <section class="text-gray-600 body-font">
-    <div class="flex felx-row justify-center">
+    <div class="flex flex-row justify-center pt-6">
         <button class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" id="addCollectionBtn">Add Collection</button>
         <button class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" id="addCoolectibleBtn">Add Coolectible</button>
     </div>
+    <form id="view-all-form" class="flex justify-center items-center mt-5">
+        <label class="font-bold text-lg" for="view-all">View All Your:</label>
+            <select class="ms-3 me-4" id="view-all-choice" name="type-select">
+            <option value="figure">Action Figures</option>
+            <option value="card">Cards</option>
+            <option value="coin">Coins</option>
+            <option value="music">Music</option>
+            </select> 
+        <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
+    </form>
     {{!-- Modal Container --}}
     <div class="flex flex-row justify-center sticky inset-x-1/4 inset-y-1/4 z-50">
         <!-- Trigger/Open The Modal -->
@@ -71,4 +81,5 @@
 </section>
 
 {{!-- Script to generate and handel modal interaction --}}
+<script src="/js/view-all.js"></script>
 <script src="/js/add-item-modal.js"></script>

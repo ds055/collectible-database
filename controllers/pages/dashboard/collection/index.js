@@ -23,25 +23,27 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
 
+// Get all coins
 router.get('/coin', withAuth, async (req, res) => {
-    try {
-        // find all posts with User names via userId foreign key--returns only the username
-        const coinData = await Coin.findAll({
-            where: { user_id: 1 }
-        });
+try {
+    // find all posts with User names via userId foreign key--returns only the username
+    const coinData = await Coin.findAll({
+        where: {user_id: req.session.user_id}
+    });
 
-        // translate data to plain
-        const coin = coinData.map((coin) => coin.get({ plain: true }));
-        // render all-posts page with posts data and logged_in bool from session 
-        res.render('collections', {
-            coin,
-            logged_in: req.session.logged_in
-        });
+    // translate data to plain
+    const coin = coinData.map((coin) => coin.get({ plain: true}));
+    // render all-posts page with posts data and logged_in bool from session 
+    res.render('view-all', { 
+        coin,
+        logged_in: req.session.logged_in
+    });
     } catch (err) {
         res.status(500).json(err);
     }
 })
 
+// Get all figures
 router.get('/figure', withAuth, async (req, res) => {
     try {
         // find all posts with User names via userId foreign key--returns only the username
@@ -51,7 +53,7 @@ router.get('/figure', withAuth, async (req, res) => {
         // translate data to plain
         const figure = figureData.map((figure) => figure.get({ plain: true }));
         // render all-posts page with posts data and logged_in bool from session 
-        res.render('collections', {
+        res.render('view-all', { 
             figure,
             logged_in: req.session.logged_in
         });
@@ -60,7 +62,45 @@ router.get('/figure', withAuth, async (req, res) => {
     }
 })
 
-// TODO: req.session.logged_in to other routes
+// Get all cards
+router.get('/card', withAuth, async (req, res) => {
+    try {
+        // find all posts with User names via userId foreign key--returns only the username
+        const cardData = await Card.findAll({
+            where: {user_id: req.session.user_id}
+        });
+        // translate data to plain
+        const card = cardData.map((card) => card.get({ plain: true}));
+        // render all-posts page with posts data and logged_in bool from session 
+        res.render('view-all', { 
+            card,
+            logged_in: req.session.logged_in
+        });
+        } catch (err) {
+        res.status(500).json(err);
+        }
+})
+
+// Get all music 
+router.get('/music', withAuth, async (req, res) => {
+    try {
+        // find all posts with User names via userId foreign key--returns only the username
+        const musicData = await Music.findAll({
+            where: {user_id: req.session.user_id}
+        });
+        // translate data to plain
+        const music = musicData.map((music) => music.get({ plain: true}));
+        // render all-posts page with posts data and logged_in bool from session 
+        res.render('view-all', { 
+            music,
+            logged_in: req.session.logged_in
+        });
+        } catch (err) {
+        res.status(500).json(err);
+        }
+})
+
+
 router.get('/:id', withAuth, async (req, res) => {
     try {
         const collectionData = await Collection.findByPk(req.params.id, {

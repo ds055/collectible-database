@@ -1,9 +1,35 @@
 <content class = "flex flex-col">
 
   <div class = 'flex justify-center'>
-    <h2 class = 'font-bold text-4xl md:text-6xl lg:text-8xl m-6 bg-gradient-to-tr from-violet-700 via-fuchsia-300 to-teal-400 bg-clip-text text-transparent'>Your Collections</h2>
+    <h2 class = 'pb-5 font-bold text-4xl md:text-6xl lg:text-8xl m-6 bg-gradient-to-tr from-violet-700 via-fuchsia-300 to-teal-400 bg-clip-text text-transparent'>Your 
+      {{#if figure}}
+        Figures
+      {{/if}}
+      {{#if coin}}
+        Coins
+      {{/if}}
+      {{#if card}}
+        Cards
+      {{/if}}
+      {{#if music}}
+        Music
+      {{/if}}
+    </h2>
   </div>
-
+  <div class="flex felx-row justify-center">
+        <button class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" id="addCollectionBtn">Add Collection</button>
+        <button class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" id="addCoolectibleBtn">Add Coolectible</button>
+  </div>
+  <form id="view-all-form" class="flex justify-center items-center mt-5">
+    <label class="font-bold text-lg" for="view-all">View All Your:</label>
+        <select class="ms-3 me-4" id="view-all-choice" name="type-select">
+        <option value="figure">Action Figures</option>
+        <option value="card">Cards</option>
+        <option value="coin">Coins</option>
+        <option value="music">Music</option>
+        </select> 
+    <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
+  </form>
       {{!-- Modal Container --}}
     <div class="flex flex-row justify-center sticky inset-x-1/4 inset-y-1/4 z-50">
         <!-- Trigger/Open The Modal -->
@@ -16,28 +42,6 @@
   <section class="text-white body-font my-4">
       <div class="px-10 py-16 mx-auto bg-white bg-opacity-70 rounded-lg">
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-          {{#if collection}}
-            {{#each collection as |collection|}}
-
-            <div>
-              <div class="px-2 bg-gradient-to-br from-blue-500 to-purple-500 transition duration-[500] hover:scale-110 hover:drop-shadow-2xl hover:shadow-violet-600/50 2xl:w-96 lg:w-72 shadow-xl rounded-md rounded-tr-2xl rounded-bl-2xl">
-                <a href="/dashboard/collection/{{id}}">
-                <figure class="px-10 pt-10">
-                  <img src="{{ image }}" alt="" class="rounded-md"/>
-                </figure>
-                <div class="items-center text-center">
-                  <h2 class="m-2 pb-2 border-b-2 font-bold text-xl">{{ name }}</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis excepturi dolorum officiis nihil, odio quidem quo natus exercitationem fuga, minus ullam ratione suscipit inventore et deserunt porro quas. Beatae, quae.</p>
-                    <button class="m-4 px-6 py-2 transition duration-400 hover:bg-green-400 rounded-full bg-blue-400">Open Collection</button>
-                </div>
-              </div>
-              </a>
-            </div>
-
-            {{/each}}
-          {{/if}}
-
-          
           {{#if coin}}
 
             {{>coin}}
@@ -64,4 +68,5 @@
 
 </content>
 
-<script src="/js/edit-item.js"></script>
+<script src="/js/view-all.js"></script>
+<script src="/js/edit-item-all-modal.js"></script>
