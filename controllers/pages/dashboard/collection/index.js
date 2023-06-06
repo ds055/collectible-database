@@ -11,7 +11,15 @@ router.get('/', withAuth, async (req, res) => {
 
         const collection = collectionData.map((collection) => collection.get({ plain: true }))
 
-    res.render('collections', { collection, logged_in: req.session.logged_in });
+        console.log(collection)
+
+        if(collection.length === 0){
+            const noCollections = true;
+            res.render('bigEmpty', {noCollections})
+        }else {
+            res.render('collections', { collection, logged_in: req.session.logged_in });
+        }
+
     } catch (err) {
     res.status(500).json(err);
     }
@@ -62,28 +70,39 @@ router.get('/:id', withAuth, async (req, res) => {
         })
         
         const parsedData = collectionData.get({ plain: true })
-        const id = parsedData.id
 
-        console.log(parsedData)
+        const collectionId = parsedData.id
 
         if(parsedData.music.length > 0) {
             const music = parsedData.music;
-            res.render('collections', { music, logged_in: req.session.logged_in  });
+            res.render('collections', { music, collectionId, logged_in: req.session.logged_in  });
         }
         else if(parsedData.action_figures.length > 0) {
             const figure = parsedData.action_figures;
-            res.render('collections', { figure, id, logged_in: req.session.logged_in });
+            res.render('collections', { figure, collectionId, logged_in: req.session.logged_in });
         }
         else if(parsedData.coins.length > 0) {
             const coin = parsedData.coins;
-            res.render('collections', { coin, logged_in: req.session.logged_in });
+            res.render('collections', { coin, collectionId, logged_in: req.session.logged_in });
         }
         else if(parsedData.cards.length > 0) {
             const card = parsedData.cards;
-            res.render('collections', { card, logged_in: req.session.logged_in });    
+            res.render('collections', { card, collectionId, logged_in: req.session.logged_in });    
         }
         else {
-            res.render('collections', {logged_in: req.session.logged_in})
+            switch(parsedData.type) {
+                case 'Action Figure': 
+                    res.render('bigEmpty', { figure, collectionId, logged_in: req.session.logged_in})
+                    break;
+                case 'Coin':
+                    res.render('bigEmpty', { coin, collectionId, logged_in: req.session.logged_in})
+                    break;
+                case 'Music':
+                    res.render('bigEmpty', { music, collectionId, logged_in: req.session.logged_in})
+                    break;
+                case 'Card':
+                    res.render('bigEmpty', { card, collectionId, logged_in: req.session.logged_in})
+            }
         }
     
     } catch (err) {
