@@ -6,21 +6,22 @@ const collectionBtn = document.getElementById("addCollectionBtn");
 const coolectibleBtn = document.getElementById("addCoolectibleBtn");
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 }
 
+
 // Modal initializers
-collectionBtn.onclick = function() {
+collectionBtn.onclick = function () {
   modal.innerHTML = collectionHtml;
   cancelBtnFunction();
   modal.style.display = "block";
   document.querySelector('#new-collection-form').addEventListener("submit", newCollectionSubmit)
 }
 
-coolectibleBtn.onclick = function() {
+coolectibleBtn.onclick = function () {
   modal.innerHTML = collectibleTypeHtml;
   cancelBtnFunction();
   modal.style.display = "block";
@@ -45,14 +46,14 @@ coolectibleBtn.onclick = function() {
 // Calls dom query to find close button on modal
 const cancelBtnFunction = () => {
   const cancelBtn = document.getElementById("close");
-  cancelBtn.onclick = function() { modal.style.display = "none"};
+  cancelBtn.onclick = function () { modal.style.display = "none" };
 }
 
 // Generates modal for new coolectible based on drop down answer from select above
 const newFigureForm = (event) => {
-    modal.innerHTML = newFigureHtml;
-    cancelBtnFunction();
-    document.querySelector('#new-figure-form').addEventListener("submit", addNewActionFigure)
+  modal.innerHTML = newFigureHtml;
+  cancelBtnFunction();
+  document.querySelector('#new-figure-form').addEventListener("submit", addNewActionFigure)
 }
 
 const newMusicForm = (event) => {
@@ -74,15 +75,15 @@ const newCardForm = (event) => {
 }
 
 // Adds new collection via api call
-const newCollectionSubmit = async function(event) {
+const newCollectionSubmit = async function (event) {
   event.preventDefault();
 
   // grab dom els
   const name = document.querySelector('#name').value.trim() || null;
   const collection_type = document.querySelector('#collection_type').value.trim() || null;
-  const image = document.querySelector('#image').value.trim() || null;
+  const image = document.querySelector('#url').value.trim() || null;
 
-  if(name === null){
+  if (name === null) {
     generatedFail('Name cannot be empty');
     return;
   }
@@ -99,7 +100,7 @@ const newCollectionSubmit = async function(event) {
   });
 
   // error handling and confirmation message
-  if(response.ok){
+  if (response.ok) {
     addSuccess();
   } else {
     addFailed();
@@ -107,7 +108,7 @@ const newCollectionSubmit = async function(event) {
 };
 
 // Adds new figure via api call
-const addNewActionFigure = async function(event) {
+const addNewActionFigure = async function (event) {
   event.preventDefault();
 
   // grab dom els
@@ -119,15 +120,15 @@ const addNewActionFigure = async function(event) {
   const barcode = document.querySelector('#barcode').value.trim() || null;
   const condition = document.querySelector('#condition').value.trim() || null;
   const price = document.querySelector('#price').value.trim() || null;
-  const image = document.querySelector('#image').value.trim() || null;
+  const image = document.querySelector('#url').value.trim() || null;
 
-  if(name === null){
+  if (name === null) {
     generatedFail('Name cannot be empty');
     return;
   }
 
   // api call to create new figure
- let response = await fetch(`/api/actionfigure`, {
+  let response = await fetch(`/api/actionfigure`, {
     method: 'POST',
     body: JSON.stringify({
       name,
@@ -143,16 +144,16 @@ const addNewActionFigure = async function(event) {
     headers: { 'Content-Type': 'application/json' },
   });
 
-    // error handling and confirmation message
-    if(response.ok){
-      addSuccess();
-    } else {
-      addFailed();
-    }
+  // error handling and confirmation message
+  if (response.ok) {
+    addSuccess();
+  } else {
+    addFailed();
+  }
 };
 
 // Adds new music entry via api call
-const addNewMusic = async function(event) {
+const addNewMusic = async function (event) {
   event.preventDefault();
 
   // grab dom els
@@ -166,16 +167,16 @@ const addNewMusic = async function(event) {
   const barcode = document.querySelector('#barcode').value.trim() || null;
   const condition = document.querySelector('#condition').value.trim() || null;
   const price = document.querySelector('#price').value.trim() || null;
-  const image = document.querySelector('#image').value.trim() || null;
+  const image = document.querySelector('#url').value.trim() || null;
 
   // Handling required fields
-  if(album_name === null){
+  if (album_name === null) {
     generatedFail('Album Name cannot be empty');
     return;
-  } else if(artist === null){
+  } else if (artist === null) {
     generatedFail('Artist name cannot be empty');
     return;
-  } else if(format === null){
+  } else if (format === null) {
     generatedFail('Format cannot be empty');
     return;
   }
@@ -200,7 +201,7 @@ const addNewMusic = async function(event) {
   });
 
   // error handling and confirmation message
-  if(response.ok){
+  if (response.ok) {
     addSuccess();
   } else {
     addFailed();
@@ -209,7 +210,7 @@ const addNewMusic = async function(event) {
 
 
 // Adds new coin entry via api call
-const addNewCoin = async function(event) {
+const addNewCoin = async function (event) {
   event.preventDefault();
 
   // grab dom els
@@ -222,16 +223,16 @@ const addNewCoin = async function(event) {
   const artist = document.querySelector('#artist').value.trim() || null;
   const condition = document.querySelector('#condition').value.trim() || null;
   const price = document.querySelector('#price').value.trim() || null;
-  const image = document.querySelector('#image').value.trim() || null;
+  const image = document.querySelector('#url').value.trim() || null;
 
   // Handling required fields
-  if(denomination === null){
+  if (denomination === null) {
     generatedFail('Denomination cannot be empty');
     return;
-  } else if(country === null){
+  } else if (country === null) {
     generatedFail('Country name cannot be empty');
     return;
-  } else if(time_period === null){
+  } else if (time_period === null) {
     generatedFail('Time period cannot be empty');
     return;
   }
@@ -255,7 +256,7 @@ const addNewCoin = async function(event) {
   });
 
   // error handling and confirmation message
-  if(response.ok){
+  if (response.ok) {
     addSuccess();
   } else {
     addFailed();
@@ -264,7 +265,7 @@ const addNewCoin = async function(event) {
 
 
 // Adds new card entry via api call
-const addNewCard = async function(event) {
+const addNewCard = async function (event) {
   event.preventDefault();
 
   // grab dom els
@@ -277,10 +278,10 @@ const addNewCard = async function(event) {
   const manufacturer = document.querySelector('#manufacturer').value.trim() || null;
   const condition = document.querySelector('#condition').value.trim() || null;
   const price = document.querySelector('#price').value.trim() || null;
-  const image = document.querySelector('#image').value.trim() || null;
+  const image = document.querySelector('#url').value.trim() || null;
 
   // Handling required fields
-  if(name === null){
+  if (name === null) {
     generatedFail('Name cannot be empty');
     return;
   }
@@ -304,7 +305,7 @@ const addNewCard = async function(event) {
   });
 
   // error handling and confirmation message
-  if(response.ok){
+  if (response.ok) {
     addSuccess();
   } else {
     addFailed();
@@ -314,19 +315,19 @@ const addNewCard = async function(event) {
 const addSuccess = () => {
   modal.innerHTML = successHtml;
   const cancelBtn = document.getElementById("close");
-  cancelBtn.onclick = function() { modal.style.display = "none"};
+  cancelBtn.onclick = function () { modal.style.display = "none" };
 }
 
 const addFailed = () => {
   modal.innerHTML = failedHtml;
   const cancelBtn = document.getElementById("close");
-  cancelBtn.onclick = function() { modal.style.display = "none"};
+  cancelBtn.onclick = function () { modal.style.display = "none" };
 }
 
 const generatedFail = (msg) => {
   modal.innerHTML = generatedFailText(msg);
   const cancelBtn = document.getElementById("close");
-  cancelBtn.onclick = function() { modal.style.display = "none"};
+  cancelBtn.onclick = function () { modal.style.display = "none" };
 }
 
 const generatedFailText = (text) => {
@@ -365,8 +366,8 @@ const collectionHtml = `
           <input class="m-2" id="name" type="required" placeholder="Enter name here"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 pt-1 font-bold text-lg" for="image">Image URL:</label>
-          <input class="m-2" id="image" type="text" placeholder="URL for Image"> 
+          <label class="ps-2 pt-1 font-bold text-lg" for="url">Image URL:</label>
+          <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
       </div>
       <div class="flex w-full justify-center mt-7">
           <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
@@ -438,8 +439,8 @@ const newFigureHtml = `
         <input class="m-2" id="price" type="text" placeholder="Price"> 
     </div>
     <div class="flex flex-row w-full justify-between">
-        <label class="ps-2 font-bold text-lg" for="image">Image URL:</label>
-        <input class="m-2" id="image" type="text" placeholder="URL for Image"> 
+        <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
+        <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
     </div>
     <div class="flex w-full justify-center mt-7">
         <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
@@ -496,8 +497,8 @@ const newMusicHtml = `
           <input class="m-2" id="price" type="text" placeholder="Price"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="image">Image URL:</label>
-          <input class="m-2" id="image" type="text" placeholder="URL for Image"> 
+          <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
+          <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
       </div>
       <div class="flex w-full justify-center mt-7">
           <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
@@ -550,8 +551,8 @@ const newCoinHtml = `
           <input class="m-2" id="price" type="text" placeholder="Price"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="image">Image URL:</label>
-          <input class="m-2" id="image" type="text" placeholder="URL for Image"> 
+          <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
+          <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
       </div>
       <div class="flex w-full justify-center mt-7">
           <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
@@ -609,8 +610,8 @@ const newCardHtml = `
           <input class="m-2" id="price" type="text" placeholder="Price"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="image">Image URL:</label>
-          <input class="m-2" id="image" type="text" placeholder="URL for Image"> 
+          <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
+          <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
       </div>
       <div class="flex w-full justify-center mt-7">
           <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">

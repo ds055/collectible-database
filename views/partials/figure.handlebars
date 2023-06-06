@@ -1,9 +1,11 @@
+{{#if figure}}
 {{#each figure as |figure|}}
 <div class="p-4">
     <div class="h-full border-2 border-black border-opacity-60 bg-indigo-400 rounded-lg overflow-hidden drop-shadow-2xl">
         <div>
             <button class="edit-btn z-50" type="button" data-type="figure" data-id="{{id}}"><i style="font-size:24px" class="fa text-white object-right-top fixed top-2 right-2 z-40 bg-indigo-800 text-lg hover:bg-white hover:text-indigo-800 rounded-lg p-1">&#xf040;</i></button>
-            <img class="lg:h-[28rem] h-[20rem] w-full flex content-center z-30" src="{{ image }}" alt="blog">
+            <button class="add-coll-btn z-50" type="button" data-type="figure" data-id="{{id}}"><i style="font-size:24px fa-solid fa-house-medical" class="fa text-white object-right-top fixed top-2 right-2 z-40 bg-indigo-800 text-lg hover:bg-white hover:text-indigo-800 rounded-lg p-1">&#xf040;</i></button>
+            {{#if image}}<img class="w-full lg:h-[28rem] h-[20rem] flex content-center z-30" src="{{ image }}" alt="blog">{{else}}<img class="w-full lg:h-[28rem] h-[20rem] flex content-center z-30" src="https://i.ebayimg.com/images/g/lz4AAOSwTWZjQDfL/s-l1600.jpg" alt="blog">{{/if}}
         </div>
         <div class="p-6">
             <h1 class="text-center title-font text-lg font-bold text-gray-900 bg-white mb-3">{{ name }}</h1>
@@ -20,3 +22,4 @@
     </div>
 </div>
 {{/each}}
+{{/if}}
