@@ -65,12 +65,12 @@ router.delete('/:id', withAuth, async (req, res) => {
 });
 
 // Get collection-figure id
-router.get('/fig/:figid/:throughid', async (req, res) => {
+router.get('/fig/:figid/:collid', async (req, res) => {
   try {
     const CollectionFigureData = await CollectionActionFigure.findOne({
       where: {
         action_figure_id: req.params.figid,
-        collection_id: req.params.throughid
+        collection_id: req.params.collid
       }
     });
     res.status(200).json(CollectionFigureData);
@@ -106,15 +106,15 @@ router.delete('/fig/:id', withAuth, async (req, res) => {
 });
 
 // Get collection-card id
-router.get('/card', async (req, res) => {
+router.get('/card/:cardid/:collid', async (req, res) => {
   try {
-    const cardData = await CollectionCard.findOne({
+    const collectionCardData = await CollectionCard.findOne({
       where: {
-        card_id: req.body.card_id,
-        collection_id: req.body.collection_id
+        card_id: req.params.cardid,
+        collection_id: req.params.collid
       }
     });
-    res.status(200).json(cardData);
+    res.status(200).json(collectionCardData);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -146,16 +146,16 @@ router.delete('/card/:id', withAuth, async (req, res) => {
   }
 });
 
-// Get collection-coin id
-router.get('/coin', async (req, res) => {
+// Get collection-card id
+router.get('/coin/:coinid/:coinid', async (req, res) => {
   try {
-    const coinData = await CollectionCoin.findOne({
+    const collectionCoinData = await CollectionCoin.findOne({
       where: {
-        coin_id: req.body.coin_id,
-        collection_id: req.body.collection_id
+        coin_id: req.params.coinid,
+        collection_id: req.params.collid
       }
     });
-    res.status(200).json(coinData);
+    res.status(200).json(collectionCoinData);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -188,16 +188,16 @@ router.delete('/coin/:id', withAuth, async (req, res) => {
   }
 });
 
-// Get music-collection id
-router.get('/music', async (req, res) => {
+// Get collection-card id
+router.get('/music/:musicid/:collid', async (req, res) => {
   try {
-    const musicData = await CollectionMusic.findOne({
+    const collectionMusicData = await CollectionMusic.findOne({
       where: {
-        music_id: req.body.music_id,
-        collection_id: req.body.collection_id
+        music_id: req.params.musicid,
+        collection_id: req.params.collid
       }
     });
-    res.status(200).json(musicData);
+    res.status(200).json(collectionMusicData);
   } catch (err) {
     res.status(400).json(err);
   }
