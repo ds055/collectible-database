@@ -1,7 +1,7 @@
 const editBtns = document.getElementsByClassName("edit-btn")
 var modal = document.getElementById("myModal");
 
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
@@ -10,8 +10,8 @@ window.onclick = function(event) {
 // Calls dom query to find close button on modal
 const cancelBtnFunction = () => {
     const cancelBtn = document.getElementById("close");
-    cancelBtn.onclick = function() { modal.style.display = "none"};
-  }
+    cancelBtn.onclick = function () { modal.style.display = "none" };
+}
 
 
 const selectEditRoute = (number) => {
@@ -19,13 +19,13 @@ const selectEditRoute = (number) => {
     const itemType = itemToEdit.dataset.type
     const itemID = itemToEdit.dataset.id;
 
-    if( itemType === "figure"){
+    if (itemType === "figure") {
         figureEdit(number)
-    }else if( itemToEdit === "coin"){
+    } else if (itemToEdit === "coin") {
 
-    }else if( itemToEdit === "card"){
+    } else if (itemToEdit === "card") {
 
-    }else if( itemToEdit === "music"){
+    } else if (itemToEdit === "music") {
 
     }
 }
@@ -34,14 +34,14 @@ const selectEditRoute = (number) => {
 const getModalButtons = (delUrl) => {
     const updateBtn = document.getElementById("update-btn");
     const deleteBtn = document.getElementById("delete-btn");
-    deleteBtn.onclick = function() { deletePath(delUrl) };
+    deleteBtn.onclick = function () { deletePath(delUrl) };
     return updateBtn;
-  }
+}
 
 /// Figure Options///
 // Populate figure data and listen
 const figureEdit = async (id) => {
-    try{
+    try {
         let rawData = await fetch(`/api/actionfigure/${id}`)
         let data = await rawData.json()
 
@@ -59,22 +59,23 @@ const figureEdit = async (id) => {
         document.querySelector('#url').value = data.image
         const url = `/api/actionfigure/${id}`
         const updateBtn = getModalButtons(url)
-        updateBtn.onclick = function () { 
-        const updObj = {
-            name: document.querySelector('#name').value,
-            line: document.querySelector('#line').value,
-            series: document.querySelector('#series').value,
-            manufacturer: document.querySelector('#manufacturer').value,
-            release_year: document.querySelector('#release_year').value,
-            barcode: document.querySelector('#barcode').value,
-            condition: document.querySelector('#condition').value,
-            price: document.querySelector('#price').value,
-            image: document.querySelector('#url').value
-        }
-            updatePath(updObj, url)};
-        
+        updateBtn.onclick = function () {
+            const updObj = {
+                name: document.querySelector('#name').value,
+                line: document.querySelector('#line').value,
+                series: document.querySelector('#series').value,
+                manufacturer: document.querySelector('#manufacturer').value,
+                release_year: document.querySelector('#release_year').value,
+                barcode: document.querySelector('#barcode').value,
+                condition: document.querySelector('#condition').value,
+                price: document.querySelector('#price').value,
+                image: document.querySelector('#url').value
+            }
+            updatePath(updObj, url)
+        };
 
-    } catch(error) {
+
+    } catch (error) {
 
     }
 }
@@ -89,49 +90,50 @@ const deletePath = async (url) => {
 }
 
 const updatePath = async (obj, url) => {
-    try{ 
+    try {
         // Updated data
         await fetch(`${url}`, {
             method: 'PUT',
             body: JSON.stringify(obj),
             headers: {
-            'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             }
         });
         // reload page
-        document.location.reload(); 
-    } catch(err) {
+        document.location.reload();
+    } catch (err) {
         console.log(err)
     }
 }
 
 // dynamically renders edit buttons
 let init = () => {
-for (var i = 0; i < editBtns.length; i++) {
-    editBtns[i].addEventListener("click", (event) => {
-        selectEditRoute(event.currentTarget.dataset.id);
-    })
-}}
+    for (var i = 0; i < editBtns.length; i++) {
+        editBtns[i].addEventListener("click", (event) => {
+            selectEditRoute(event.currentTarget.dataset.id);
+        })
+    }
+}
 
 const addSuccess = () => {
     modal.innerHTML = successHtml;
     const cancelBtn = document.getElementById("close");
-    cancelBtn.onclick = function() { modal.style.display = "none"};
-  }
-  
-  const addFailed = () => {
+    cancelBtn.onclick = function () { modal.style.display = "none" };
+}
+
+const addFailed = () => {
     modal.innerHTML = failedHtml;
     const cancelBtn = document.getElementById("close");
-    cancelBtn.onclick = function() { modal.style.display = "none"};
-  }
-  
-  const generatedFail = (msg) => {
+    cancelBtn.onclick = function () { modal.style.display = "none" };
+}
+
+const generatedFail = (msg) => {
     modal.innerHTML = generatedFailText(msg);
     const cancelBtn = document.getElementById("close");
-    cancelBtn.onclick = function() { modal.style.display = "none"};
-  }
-  
-  const generatedFailText = (text) => {
+    cancelBtn.onclick = function () { modal.style.display = "none" };
+}
+
+const generatedFailText = (text) => {
     return `
     <div class="bg-indigo-400 m-5">
     <p class="px-3 pt-3 text-center text-white text-2xl font-extrabold">
@@ -144,7 +146,7 @@ const addSuccess = () => {
     </div>
   </div>
     `
-  }
+}
 
 // wait until everything dynamically loaded before trying to grab dom
 document.addEventListener("load", init())

@@ -6,7 +6,7 @@ const collectionBtn = document.getElementById("addCollectionBtn");
 const coolectibleBtn = document.getElementById("addCoolectibleBtn");
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
@@ -14,14 +14,14 @@ window.onclick = function(event) {
 
 
 // Modal initializers
-collectionBtn.onclick = function() {
+collectionBtn.onclick = function () {
   modal.innerHTML = collectionHtml;
   cancelBtnFunction();
   modal.style.display = "block";
   document.querySelector('#new-collection-form').addEventListener("submit", newCollectionSubmit)
 }
 
-coolectibleBtn.onclick = function() {
+coolectibleBtn.onclick = function () {
   modal.innerHTML = collectibleTypeHtml;
   cancelBtnFunction();
   modal.style.display = "block";
@@ -46,14 +46,14 @@ coolectibleBtn.onclick = function() {
 // Calls dom query to find close button on modal
 const cancelBtnFunction = () => {
   const cancelBtn = document.getElementById("close");
-  cancelBtn.onclick = function() { modal.style.display = "none"};
+  cancelBtn.onclick = function () { modal.style.display = "none" };
 }
 
 // Generates modal for new coolectible based on drop down answer from select above
 const newFigureForm = (event) => {
-    modal.innerHTML = newFigureHtml;
-    cancelBtnFunction();
-    document.querySelector('#new-figure-form').addEventListener("submit", addNewActionFigure)
+  modal.innerHTML = newFigureHtml;
+  cancelBtnFunction();
+  document.querySelector('#new-figure-form').addEventListener("submit", addNewActionFigure)
 }
 
 const newMusicForm = (event) => {
@@ -75,7 +75,7 @@ const newCardForm = (event) => {
 }
 
 // Adds new collection via api call
-const newCollectionSubmit = async function(event) {
+const newCollectionSubmit = async function (event) {
   event.preventDefault();
 
   // grab dom els
@@ -83,7 +83,7 @@ const newCollectionSubmit = async function(event) {
   const collection_type = document.querySelector('#collection_type').value.trim() || null;
   const image = document.querySelector('#url').value.trim() || null;
 
-  if(name === null){
+  if (name === null) {
     generatedFail('Name cannot be empty');
     return;
   }
@@ -100,7 +100,7 @@ const newCollectionSubmit = async function(event) {
   });
 
   // error handling and confirmation message
-  if(response.ok){
+  if (response.ok) {
     addSuccess();
   } else {
     addFailed();
@@ -108,7 +108,7 @@ const newCollectionSubmit = async function(event) {
 };
 
 // Adds new figure via api call
-const addNewActionFigure = async function(event) {
+const addNewActionFigure = async function (event) {
   event.preventDefault();
 
   // grab dom els
@@ -122,13 +122,13 @@ const addNewActionFigure = async function(event) {
   const price = document.querySelector('#price').value.trim() || null;
   const image = document.querySelector('#url').value.trim() || null;
 
-  if(name === null){
+  if (name === null) {
     generatedFail('Name cannot be empty');
     return;
   }
 
   // api call to create new figure
- let response = await fetch(`/api/actionfigure`, {
+  let response = await fetch(`/api/actionfigure`, {
     method: 'POST',
     body: JSON.stringify({
       name,
@@ -144,16 +144,16 @@ const addNewActionFigure = async function(event) {
     headers: { 'Content-Type': 'application/json' },
   });
 
-    // error handling and confirmation message
-    if(response.ok){
-      addSuccess();
-    } else {
-      addFailed();
-    }
+  // error handling and confirmation message
+  if (response.ok) {
+    addSuccess();
+  } else {
+    addFailed();
+  }
 };
 
 // Adds new music entry via api call
-const addNewMusic = async function(event) {
+const addNewMusic = async function (event) {
   event.preventDefault();
 
   // grab dom els
@@ -170,13 +170,13 @@ const addNewMusic = async function(event) {
   const image = document.querySelector('#url').value.trim() || null;
 
   // Handling required fields
-  if(album_name === null){
+  if (album_name === null) {
     generatedFail('Album Name cannot be empty');
     return;
-  } else if(artist === null){
+  } else if (artist === null) {
     generatedFail('Artist name cannot be empty');
     return;
-  } else if(format === null){
+  } else if (format === null) {
     generatedFail('Format cannot be empty');
     return;
   }
@@ -201,7 +201,7 @@ const addNewMusic = async function(event) {
   });
 
   // error handling and confirmation message
-  if(response.ok){
+  if (response.ok) {
     addSuccess();
   } else {
     addFailed();
@@ -210,7 +210,7 @@ const addNewMusic = async function(event) {
 
 
 // Adds new coin entry via api call
-const addNewCoin = async function(event) {
+const addNewCoin = async function (event) {
   event.preventDefault();
 
   // grab dom els
@@ -226,13 +226,13 @@ const addNewCoin = async function(event) {
   const image = document.querySelector('#url').value.trim() || null;
 
   // Handling required fields
-  if(denomination === null){
+  if (denomination === null) {
     generatedFail('Denomination cannot be empty');
     return;
-  } else if(country === null){
+  } else if (country === null) {
     generatedFail('Country name cannot be empty');
     return;
-  } else if(time_period === null){
+  } else if (time_period === null) {
     generatedFail('Time period cannot be empty');
     return;
   }
@@ -256,7 +256,7 @@ const addNewCoin = async function(event) {
   });
 
   // error handling and confirmation message
-  if(response.ok){
+  if (response.ok) {
     addSuccess();
   } else {
     addFailed();
@@ -265,7 +265,7 @@ const addNewCoin = async function(event) {
 
 
 // Adds new card entry via api call
-const addNewCard = async function(event) {
+const addNewCard = async function (event) {
   event.preventDefault();
 
   // grab dom els
@@ -281,7 +281,7 @@ const addNewCard = async function(event) {
   const image = document.querySelector('#url').value.trim() || null;
 
   // Handling required fields
-  if(name === null){
+  if (name === null) {
     generatedFail('Name cannot be empty');
     return;
   }
@@ -305,7 +305,7 @@ const addNewCard = async function(event) {
   });
 
   // error handling and confirmation message
-  if(response.ok){
+  if (response.ok) {
     addSuccess();
   } else {
     addFailed();
@@ -315,19 +315,19 @@ const addNewCard = async function(event) {
 const addSuccess = () => {
   modal.innerHTML = successHtml;
   const cancelBtn = document.getElementById("close");
-  cancelBtn.onclick = function() { modal.style.display = "none"};
+  cancelBtn.onclick = function () { modal.style.display = "none" };
 }
 
 const addFailed = () => {
   modal.innerHTML = failedHtml;
   const cancelBtn = document.getElementById("close");
-  cancelBtn.onclick = function() { modal.style.display = "none"};
+  cancelBtn.onclick = function () { modal.style.display = "none" };
 }
 
 const generatedFail = (msg) => {
   modal.innerHTML = generatedFailText(msg);
   const cancelBtn = document.getElementById("close");
-  cancelBtn.onclick = function() { modal.style.display = "none"};
+  cancelBtn.onclick = function () { modal.style.display = "none" };
 }
 
 const generatedFailText = (text) => {
@@ -352,9 +352,9 @@ const collectionHtml = `
   </div>
   <form id="new-collection-form" class="flex flex-col items-start p-4">
           
-          <div class="flex flex-row w-full justify-start items-center">
+          <div class="flex flex-row w-full justify-between items-center">
             <label class="ps-2 pt-2 pb-2 me-2 font-bold text-lg" for="collection_type">Collection Type:</label>
-          <select class="ms-2" id="collection_type" name="type-select">
+          <select class="w-52 ms-2 p-1.5 rounded-lg" id="collection_type" name="type-select">
               <option value="Action Figure">Action Figure</option>
               <option value="Card">Card</option>
               <option value="Coin">Coin</option>
@@ -363,18 +363,18 @@ const collectionHtml = `
           </div>
       <div class="flex flex-row w-full justify-between">
           <label class="ps-2 pt-1 font-bold text-lg" for="name">Collection Name:</label>
-          <input class="m-2" id="name" type="required" placeholder="Enter name here"> 
+          <input class="w-52 m-2 p-1.5 rounded-lg" id="name" type="required" placeholder="Enter name here"> 
       </div>
       <div class="flex flex-row w-full justify-between">
           <label class="ps-2 pt-1 font-bold text-lg" for="url">Image URL:</label>
-          <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
+          <input class="w-52 m-2 p-1.5 rounded-lg" id="url" type="text" placeholder="URL for Image"> 
       </div>
       <div class="flex w-full justify-center mt-7">
-          <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
-          <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Cancel</button>
+          <input class="cursor-pointer border-2 bg-indigo-500 hover:bg-indigo-600 rounded text-lg transition duration-400 hover:scale-110 text-white p-1 px-2 me-3" type="submit">
+          <button id="close" type="button" class="border-2 bg-indigo-500 hover:bg-indigo-600 rounded text-lg transition duration-400 hover:scale-110 text-white p-1 ms3">Cancel</button>
       </div>
   </form>
-</div> 
+</div>
 `
 
 const collectibleTypeHtml = `
@@ -393,8 +393,8 @@ const collectibleTypeHtml = `
           </select>
       </div>
       <div class="flex w-full justify-center mt-7">
-        <button id="next-btn" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3">Next</button>
-        <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms-3">Cancel</button>
+        <button id="next-btn" type="button" class="border-2 bg-indigo-500 hover:bg-indigo-600 rounded text-lg transition duration-400 hover:scale-110 text-white p-1 mx-3">Next</button>
+        <button id="close" type="button" class="border-2 bg-indigo-500 hover:bg-indigo-600 rounded text-lg transition duration-400 hover:scale-110 text-white p-1 mx-3">Cancel</button>
       </div>
   </form>
   </div>
@@ -408,7 +408,7 @@ const newFigureHtml = `
 <form id="new-figure-form" class="flex flex-col items-start p-4">
     <div class="flex flex-row w-full justify-between">
         <label class="ps-2 font-bold text-lg" for="name">Name:</label>
-        <input class="m-2" id="name" type="text" placeholder="Figure Name"> 
+        <input class="w-52 m-2 p-1.5 rounded-lg" id="name" type="text" placeholder="Figure Name"> 
     </div>
     <div class="flex flex-row w-full justify-between">
         <label class="ps-2 font-bold text-lg" for="line">Line:</label>

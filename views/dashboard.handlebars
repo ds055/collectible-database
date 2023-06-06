@@ -1,20 +1,5 @@
 <section class="text-gray-600 body-font">
-        
-    {{!-- Modal Container --}}
-    <div class="flex justify-center">
-        <!-- Trigger/Open The Modal -->
-        <button class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" id="addCollectionBtn">Add Collection</button>
-        <button class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" id="addCoolectibleBtn">Add Coolectible</button>
-        <!-- The Modal -->
-        <div id="myModal" class="modal fixed hidden w-auto h-auto bg-indigo-200 border-4 border-indigo-600 rounded-md drop-shadow-2xl">
-        <!-- Modal content Generated Here Dynamically from script-->
-        </div>
-    </div>
-
-
-
-
-    <div class="container px-5 py-24 mx-auto">
+        {{!-- <div class="container px-5 py-24 mx-auto">
         <div class="flex flex-col text-center w-full mb-20">
         <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">I am Dashboard</h1>
         <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
@@ -58,7 +43,74 @@
         </div>
         </div>
         <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg transition duration-400 hover:scale-110">Button</button>
+    </div> --}}
+
+<div class = 'mb-8 p-16 bg-white bg-opacity-70 rounded-lg flex items-center text-center'>
+    <form>
+    <div class="space-y-6">
+        <div class="border-b border-gray-900/10 pb-12">
+        <h2 class="text-base font-semibold leading-7 text-gray-900">Profile</h2>
+        <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
+
+        <div class="mt-10">
+            <div class="">
+            <label for="username" class="block text-sm font-medium leading-6 text-gray-900">Username</label>
+            <div class="mt-2">
+                <div class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                <span class="flex select-none items-center pl-3 text-gray-500 sm:text-sm">workcation.com/</span>
+                <input type="text" name="username" id="username" autocomplete="username" class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="janesmith">
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="border-b border-gray-900/10 pb-12">
+        <h2 class="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
+
+        <div class="mt-10 grid  gap-x-6 gap-y-8 ">
+            <div class="sm:col-span-2">
+            <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
+            <div class="mt-2">
+                <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            </div>
+            </div>
+
+            <div class="sm:col-span-2">
+            <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Last name</label>
+            <div class="mt-2">
+                <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            </div>
+            </div>
+
+            <div class="sm:col-span-4">
+            <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+            <div class="mt-2">
+                <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            </div>
+            </div>
+        </div>
+        </div>
     </div>
+
+    <div class="mt-6 flex items-stretch justify-center gap-x-6">
+        <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
+        <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
+    </div>
+    </form>
+</div>
+
+    {{!-- Modal Container --}}
+    <div class="flex justify-center">
+        <!-- Trigger/Open The Modal -->
+        <button class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" id="addCollectionBtn">Add Collection</button>
+        <button class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" id="addCoolectibleBtn">Add Coolectible</button>
+        <!-- The Modal -->
+        <div id="myModal" class="modal fixed hidden w-auto h-auto bg-indigo-200 border-4 border-indigo-600 rounded-md drop-shadow-2xl">
+        <!-- Modal content Generated Here Dynamically from script-->
+        </div>
+    </div>
+
 </section>
 
 {{!-- Script to generate and handel modal interaction --}}
