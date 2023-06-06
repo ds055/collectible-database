@@ -246,30 +246,36 @@ const musicEdit = async (id) => {
 
 const deletePath = async (type, id) => {
     let throughId;
+    let response;
 
     try{    
         switch(type) {
             case 'fig': 
-                let throughId = getCollFigId(id)
- 
+                throughId = await getCollFigId(id)
+                response = await fetch(`/api/collection/fig/${throughId}`, { method: 'DELETE' });
+                if (response.ok){ updateSuccess() } 
+                    else { updateFailed() }
                 break;
             case 'coin':
-                res.render('bigEmpty', { coin, collectionName, collectionId, logged_in: req.session.logged_in})
+                throughId = await getCollCoinId(id)
+                response = await fetch(`/api/collection/coin/${throughId}`, { method: 'DELETE' });
+                if (response.ok){ updateSuccess() } 
+                    else { updateFailed() }
                 break;
             case 'music':
-                res.render('bigEmpty', { music, collectionName, collectionId, logged_in: req.session.logged_in})
+                throughId = await getCollMusicId(id)
+                response = await fetch(`/api/collection/music/${throughId}`, { method: 'DELETE' });
+                if (response.ok){ updateSuccess() } 
+                    else { updateFailed() }
                 break;
             case 'card':
-
-                res.render('bigEmpty', { card, collectionName, collectionId, logged_in: req.session.logged_in})
+                throughId = await getCollCardId(id)
+                response = await fetch(`/api/collection/card/${throughId}`, { method: 'DELETE' });
+                if (response.ok){ updateSuccess() } 
+                    else { updateFailed() }
+                break;
         }
 
-
-        if (response.ok){
-            updateSuccess();
-        } else {
-            updateFailed();
-        }
     } catch(err){
         console.log(err)
         updateFailed();
@@ -281,9 +287,68 @@ const getCollFigId = async (figId) => {
 
         const collectionId = document.querySelector('#collection-id').value
 
-        const response = await fetch(`/api/collection/fig/${figId}/${collectionId}`)
+        const rawData = await fetch(`/api/collection/fig/${figId}/${collectionId}`)
 
-        console.log(response)
+        const data = await rawData.json();
+
+        const throughId = data.id;
+
+        return throughId;
+
+    }catch (err){
+        console.log(err)
+    }
+}
+
+const getCollCoinId = async (coinId) => {
+    try{
+
+        const collectionId = document.querySelector('#collection-id').value
+
+        const rawData = await fetch(`/api/collection/coin/${coinId}/${collectionId}`)
+
+        const data = await rawData.json();
+
+        const throughId = data.id;
+
+        return throughId;
+
+    }catch (err){
+        console.log(err)
+    }
+}
+
+const getCollMusicId = async (musicId) => {
+    try{
+
+        const collectionId = document.querySelector('#collection-id').value
+
+        const rawData = await fetch(`/api/collection/music/${musicId}/${collectionId}`)
+
+        const data = await rawData.json();
+
+        const throughId = data.id;
+
+        return throughId;
+
+    }catch (err){
+        console.log(err)
+    }
+}
+
+
+const getCollCardId = async (cardId) => {
+    try{
+
+        const collectionId = document.querySelector('#collection-id').value
+
+        const rawData = await fetch(`/api/collection/card/${cardId}/${collectionId}`)
+
+        const data = await rawData.json();
+
+        const throughId = data.id;
+
+        return throughId;
 
     }catch (err){
         console.log(err)
@@ -310,16 +375,11 @@ const updatePath = async (obj, url) => {
     }
 }
 
-const getCollRelId = () => {
-
-}
-
 // dynamically renders edit buttons
 let init = () => {
 for (var i = 0; i < editBtns.length; i++) {
     
     editBtns[i].addEventListener("click", (event) => {
-        console.log(event.currentTarget.dataset.id)
         selectEditRoute(event.currentTarget, event.currentTarget.dataset.id);
     })
 }}
@@ -405,7 +465,7 @@ const updateFigureHtml = `
     <div class="flex w-full justify-around mt-7">
         <button id="update-btn" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Update</button>
         <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Cancel</button>
-        <button id="delete-btn" type="button" class="border-2 border-black bg-rose-500 rounded-lg text-white text-lg px-0.5 ms3">Delete</button>
+        <button id="delete-btn" type="button" class="border-2 border-black bg-rose-500 rounded-lg text-white text-lg px-0.5 ms3">Boot From Collection</button>
     </div>
 </form>
 </div>        
@@ -461,11 +521,11 @@ const updateMusicHtml = `
           <label class="ps-2 font-bold text-lg" for="image">Image URL:</label>
           <input class="m-2" id="image" type="text" placeholder="URL for Image"> 
       </div>
-      <div class="flex w-full justify-center mt-7">
+      <div class="flex w-full justify-around mt-7">
         <button id="update-btn" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Update</button>
         <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Cancel</button>
-        <button id="delete-btn" type="button" class="border-2 border-black bg-rose-500 rounded-lg text-white text-lg px-0.5 ms3">Delete</button>
-      </div>
+        <button id="delete-btn" type="button" class="border-2 border-black bg-rose-500 rounded-lg text-white text-lg px-0.5 ms3">Boot From Collection</button>
+    </div>
   </form>
 </div>  
 `
@@ -516,11 +576,11 @@ const updateCoinHtml = `
           <label class="ps-2 font-bold text-lg" for="image">Image URL:</label>
           <input class="m-2" id="image" type="text" placeholder="URL for Image"> 
       </div>
-      <div class="flex w-full justify-center mt-7">
+      <div class="flex w-full justify-around mt-7">
         <button id="update-btn" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Update</button>
         <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Cancel</button>
-        <button id="delete-btn" type="button" class="border-2 border-black bg-rose-500 rounded-lg text-white text-lg px-0.5 ms3">Delete</button>
-      </div>
+        <button id="delete-btn" type="button" class="border-2 border-black bg-rose-500 rounded-lg text-white text-lg px-0.5 ms3">Boot From Collection</button>
+    </div>
   </form>
 </div>  
 `
@@ -576,11 +636,11 @@ const updateCardHtml = `
           <label class="ps-2 font-bold text-lg" for="image">Image URL:</label>
           <input class="m-2" id="image" type="text" placeholder="URL for Image"> 
       </div>
-      <div class="flex w-full justify-center mt-7">
+      <div class="flex w-full justify-around mt-7">
         <button id="update-btn" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Update</button>
         <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Cancel</button>
-        <button id="delete-btn" type="button" class="border-2 border-black bg-rose-500 rounded-lg text-white text-lg px-0.5 ms3">Delete</button>
-      </div>
+        <button id="delete-btn" type="button" class="border-2 border-black bg-rose-500 rounded-lg text-white text-lg px-0.5 ms3">Boot From Collection</button>
+    </div>
   </form>
 </div>  
 `
