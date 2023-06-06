@@ -1,12 +1,13 @@
+<content class = "flex flex-col">
+<div class = 'flex justify-center'>
+    <h2 class = 'font-bold text-4xl md:text-6xl lg:text-8xl m-6 bg-gradient-to-tr from-violet-700 via-fuchsia-300 to-teal-400 bg-clip-text text-transparent'>{{ collectionName }}</h2>
+</div>
+
 <section class="text-white body-font my-4">
     <div class="px-10 py-16 mx-auto bg-white bg-opacity-70 rounded-lg">
-
         <div>
             <div class="px-2 bg-gradient-to-br from-blue-500 to-purple-500 transition duration-[500] hover:scale-110 hover:drop-shadow-2xl hover:shadow-violet-600/50 2xl:w-96 lg:w-72 shadow-xl rounded-md rounded-tr-2xl rounded-bl-2xl">
-                <a href="/dashboard/collection/{{id}}">
-                    <figure class="">
-                        <img src="{{ image }}" alt="" class="rounded-md" />
-                    </figure>
+                <a href="/dashboard/collection/{{collectionId}}">
                     <div class="items-center text-center">
                         <h2 class="m-2 py-20 font-bold text-xl">Create Your First Collection/Coolectible Here!</h2>
                     </div>
@@ -16,3 +17,4 @@
     </div>
 
 </section>
+</content>

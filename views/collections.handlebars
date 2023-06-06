@@ -1,8 +1,19 @@
 <content class = "flex flex-col">
 
+{{#if collection}}
   <div class = 'flex justify-center'>
     <h2 class = 'font-bold text-4xl md:text-6xl lg:text-8xl m-6 bg-gradient-to-tr from-violet-700 via-fuchsia-300 to-teal-400 bg-clip-text text-transparent'>Your Collections</h2>
   </div>
+  <div class="flex felx-row justify-center">
+        <button class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" id="addCollectionBtn">Add Collection</button>
+        <button class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" id="addCoolectibleBtn">Add Coolectible</button>
+  </div>
+  {{/if}}
+  {{#unless collection}}
+  <div class = 'flex justify-center'>
+    <h2 class = 'p-5 font-bold text-4xl md:text-6xl lg:text-8xl m-6 bg-gradient-to-tr from-violet-700 via-fuchsia-300 to-teal-400 bg-clip-text text-transparent'>{{ collectionName }}</h2>
+  </div>
+  {{/unless}}
 
       {{!-- Modal Container --}}
     <div class="flex flex-row justify-center sticky inset-x-1/4 inset-y-1/4 z-50">
@@ -37,6 +48,10 @@
             {{/each}}
           {{/if}}
 
+          {{#unless collection}}
+              <input id="collection-id" type="hidden" value="collectionId">
+          {{/unless}}
+
           
           {{#if coin}}
 
@@ -63,5 +78,7 @@
   </section>
 
 </content>
-
-<script src="/js/edit-item-modal.js"></script>
+{{#if collection}}
+<script src="/js/add-item-modal.js"></script>
+{{/if}}
+<script src="/js/edit-item-collection-modal.js"></script>
