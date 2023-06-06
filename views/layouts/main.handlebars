@@ -14,7 +14,7 @@
       <header class='py-6 px-8 font-bold bg-indigo-500 text-white items-center flex max-lg:flex-col justify-between drop-shadow-lg'>
         <h1>
           {{#if logged_in}}
-            <a href='/home' class = 'md:text-5xl text-3xl'>COOLECTIBLE$</a>
+            <a href='/dashboard' class = 'md:text-5xl text-3xl'>COOLECTIBLE$</a>
           {{else}}
             <a href='/' class = 'md:text-5xl text-3xl'>COOLECTIBLE$</a>
           {{/if}}
@@ -22,8 +22,6 @@
         <nav class = 'xl:text-4xl md:text-3xl max-lg:mt-3'>
           <!-- Conditionally render login or logout links -->
           {{#if logged_in}}
-            <a href='/home' class = 'mx-2' >Home</a>
-
             <a href='/dashboard' class = 'mx-2' >Dashboard</a>
 
             <a href='/dashboard/collection' class = 'mx-2' >Collections</a>
