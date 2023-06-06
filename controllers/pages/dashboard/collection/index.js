@@ -62,6 +62,9 @@ router.get('/:id', withAuth, async (req, res) => {
         })
         
         const parsedData = collectionData.get({ plain: true })
+        const id = parsedData.id
+
+        console.log(parsedData)
 
         if(parsedData.music.length > 0) {
             const music = parsedData.music;
@@ -69,7 +72,7 @@ router.get('/:id', withAuth, async (req, res) => {
         }
         else if(parsedData.action_figures.length > 0) {
             const figure = parsedData.action_figures;
-            res.render('collections', { figure, logged_in: req.session.logged_in });
+            res.render('collections', { figure, id, logged_in: req.session.logged_in });
         }
         else if(parsedData.coins.length > 0) {
             const coin = parsedData.coins;

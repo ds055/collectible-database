@@ -81,7 +81,7 @@ const newCollectionSubmit = async function(event) {
   // grab dom els
   const name = document.querySelector('#name').value.trim() || null;
   const collection_type = document.querySelector('#collection_type').value.trim() || null;
-  const image = document.querySelector('#url').value.trim() || null;
+  const image = document.querySelector('#image').value.trim() || null;
 
   if(name === null){
     generatedFail('Name cannot be empty');
@@ -120,7 +120,7 @@ const addNewActionFigure = async function(event) {
   const barcode = document.querySelector('#barcode').value.trim() || null;
   const condition = document.querySelector('#condition').value.trim() || null;
   const price = document.querySelector('#price').value.trim() || null;
-  const image = document.querySelector('#url').value.trim() || null;
+  const image = document.querySelector('#image').value.trim() || null;
 
   if(name === null){
     generatedFail('Name cannot be empty');
@@ -167,7 +167,7 @@ const addNewMusic = async function(event) {
   const barcode = document.querySelector('#barcode').value.trim() || null;
   const condition = document.querySelector('#condition').value.trim() || null;
   const price = document.querySelector('#price').value.trim() || null;
-  const image = document.querySelector('#url').value.trim() || null;
+  const image = document.querySelector('#image').value.trim() || null;
 
   // Handling required fields
   if(album_name === null){
@@ -223,7 +223,7 @@ const addNewCoin = async function(event) {
   const artist = document.querySelector('#artist').value.trim() || null;
   const condition = document.querySelector('#condition').value.trim() || null;
   const price = document.querySelector('#price').value.trim() || null;
-  const image = document.querySelector('#url').value.trim() || null;
+  const image = document.querySelector('#image').value.trim() || null;
 
   // Handling required fields
   if(denomination === null){
@@ -278,7 +278,7 @@ const addNewCard = async function(event) {
   const manufacturer = document.querySelector('#manufacturer').value.trim() || null;
   const condition = document.querySelector('#condition').value.trim() || null;
   const price = document.querySelector('#price').value.trim() || null;
-  const image = document.querySelector('#url').value.trim() || null;
+  const image = document.querySelector('#image').value.trim() || null;
 
   // Handling required fields
   if(name === null){
@@ -366,8 +366,8 @@ const collectionHtml = `
           <input class="m-2" id="name" type="required" placeholder="Enter name here"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 pt-1 font-bold text-lg" for="url">Image URL:</label>
-          <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
+          <label class="ps-2 pt-1 font-bold text-lg" for="image">Image URL:</label>
+          <input class="m-2" id="image" type="text" placeholder="URL for Image"> 
       </div>
       <div class="flex w-full justify-center mt-7">
           <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
@@ -439,8 +439,8 @@ const newFigureHtml = `
         <input class="m-2" id="price" type="text" placeholder="Price"> 
     </div>
     <div class="flex flex-row w-full justify-between">
-        <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
-        <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
+        <label class="ps-2 font-bold text-lg" for="image">Image URL:</label>
+        <input class="m-2" id="image" type="text" placeholder="URL for Image"> 
     </div>
     <div class="flex w-full justify-center mt-7">
         <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
@@ -497,8 +497,8 @@ const newMusicHtml = `
           <input class="m-2" id="price" type="text" placeholder="Price"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
-          <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
+          <label class="ps-2 font-bold text-lg" for="image">Image URL:</label>
+          <input class="m-2" id="image" type="text" placeholder="URL for Image"> 
       </div>
       <div class="flex w-full justify-center mt-7">
           <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
@@ -551,8 +551,8 @@ const newCoinHtml = `
           <input class="m-2" id="price" type="text" placeholder="Price"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
-          <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
+          <label class="ps-2 font-bold text-lg" for="image">Image URL:</label>
+          <input class="m-2" id="image" type="text" placeholder="URL for Image"> 
       </div>
       <div class="flex w-full justify-center mt-7">
           <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
@@ -610,8 +610,8 @@ const newCardHtml = `
           <input class="m-2" id="price" type="text" placeholder="Price"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
-          <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
+          <label class="ps-2 font-bold text-lg" for="image">Image URL:</label>
+          <input class="m-2" id="image" type="text" placeholder="URL for Image"> 
       </div>
       <div class="flex w-full justify-center mt-7">
           <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
