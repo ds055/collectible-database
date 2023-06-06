@@ -70,40 +70,41 @@ router.get('/:id', withAuth, async (req, res) => {
         const parsedData = collectionData.get({ plain: true })
 
         const collectionId = parsedData.id
+        const collectionName = parsedData.name
 
         if(parsedData.music.length > 0) {
             const music = parsedData.music;
-            res.render('collections', { music, collectionId, logged_in: req.session.logged_in  });
+            res.render('collections', { music, collectionName, collectionId, logged_in: req.session.logged_in  });
         }
         else if(parsedData.action_figures.length > 0) {
             const figure = parsedData.action_figures;
-            res.render('collections', { figure, collectionId, logged_in: req.session.logged_in });
+            res.render('collections', { figure, collectionName, collectionId, logged_in: req.session.logged_in });
         }
         else if(parsedData.coins.length > 0) {
             const coin = parsedData.coins;
-            res.render('collections', { coin, collectionId, logged_in: req.session.logged_in });
+            res.render('collections', { coin, collectionName, collectionId, logged_in: req.session.logged_in });
         }
         else if(parsedData.cards.length > 0) {
             const card = parsedData.cards;
-            res.render('collections', { card, collectionId, logged_in: req.session.logged_in });    
+            res.render('collections', { card, collectionName, collectionId, logged_in: req.session.logged_in });    
         }
         else {
             switch(parsedData.collection_type) {
                 case 'Action Figure': 
                     const figure = true;
-                    res.render('bigEmpty', { figure, collectionId, logged_in: req.session.logged_in})
+                    res.render('bigEmpty', { figure, collectionName, collectionId, logged_in: req.session.logged_in})
                     break;
                 case 'Coin':
                     const coin = true;
-                    res.render('bigEmpty', { coin, collectionId, logged_in: req.session.logged_in})
+                    res.render('bigEmpty', { coin, collectionName, collectionId, logged_in: req.session.logged_in})
                     break;
                 case 'Music':
                     const music = true;
-                    res.render('bigEmpty', { music, collectionId, logged_in: req.session.logged_in})
+                    res.render('bigEmpty', { music, collectionName, collectionId, logged_in: req.session.logged_in})
                     break;
                 case 'Card':
                     const card = true;
-                    res.render('bigEmpty', { card, collectionId, logged_in: req.session.logged_in})
+                    res.render('bigEmpty', { card, collectionName, collectionId, logged_in: req.session.logged_in})
             }
         }
     
