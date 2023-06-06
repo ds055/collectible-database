@@ -1,26 +1,25 @@
 {{#each card as |card|}}
 <div class="p-4">
-    <div class="h-full border-2 border-black border-opacity-60 bg-indigo-400 rounded-lg overflow-hidden drop-shadow-2xl">
-        <img class="lg:h-96 md:h-48 w-full object-scale-down object-center" src="{{ image }}" alt="blog">
+    <div class="h-full rounded-b-lg border-[0.4rem] border-indigo-500 bg-gradient-to-tr from-cyan-200 to-blue-500 rounded-lg overflow-hidden drop-shadow-2xl">
         <div>
-            <button class="edit-btn z-50" type="button" data-type="figure" data-id="{{id}}"><i style="font-size:24px" class="fa text-white object-right-top fixed top-2 right-2 z-40 bg-indigo-800 text-lg hover:bg-white hover:text-indigo-800 rounded-lg p-1">&#xf040;</i></button>
-            <img class="lg:h-[28rem] h-[20rem] w-full flex content-center z-30" src="{{ image }}" alt="blog">
+            <button class="edit-btn z-50" type="button" data-type="card" data-id="{{id}}"><i style="font-size:24px" class="fa text-white object-right-top fixed top-2 right-2 z-40 bg-indigo-800 text-lg hover:bg-white hover:text-indigo-800 rounded-lg p-2 border-2 border-white hover:border-indigo-800">&#xf040;</i></button>
+            <button class="delete-btn z-50" type="button" data-type="card" data-id="{{id}}"><i style="font-size:24px" class="fa fa-trash text-white object-left-top fixed top-2 left-2 z-40 bg-red-500 text-lg hover:bg-white hover:text-red-500 rounded-lg p-2 border-2 border-white hover:border-red-500"></i></button>
+            {{#if image}}<img class="w-full lg:h-[28rem] h-[20rem] rounded-b-lg border-b-[0.4rem] border-indigo-500 flex content-center z-30" src="{{ image }}" alt="blog">{{else}}<img class="w-full lg:h-[28rem] h-[20rem] rounded-b-lg border-b-[0.4rem] border-indigo-500 flex content-center z-30" src="https://i.imgflip.com/5j2oz0.png" alt="blog">{{/if}}
         </div>
-        <div class="p-6">
-            <h1 class="text-center title-font text-lg font-bold text-gray-900 mb-3">{{ name }}</h1>
+        <div class="p-6 drop-shadow-2xl">
+            <h1 class="text-center title-font text-lg font-bold rounded-lg border-x-[0.4rem] border-indigo-500 text-gray-900 rounded-t-lg bg-white mb-3">{{ name }}</h1>
             <input type="hidden" name="card_id" value={{id}}>
-            <ul class="leading-relaxed text-black mb-3">
-                <li><span class="underline">Series:</span> {{ series }}</li>
-                <li><span class="underline">Released:</span> {{ release_year }} </li>
-                <li><span class="underline">Set:</span> {{ set }} </li>
-                <li><span class="underline">Subtype:</span> {{ subtype }} </li>
-                <li><span class="underline">Holographic:</span> {{ holographic }} </li>
-                <li><span class="underline">Manufacturer:</span> {{ manufacturer }} </li>
-                <li><span class="underline">Condition:</span> {{ condition }} </li>
-                <li><span class="underline">Price:</span> {{ price }} </li>
+            <ul class="flex content-center flex-col text-black rounded-lg border-[0.4rem] border-indigo-500 bg-white mb-3">
+                {{#if series }}<li class = "p-2 border-b-2"><span class="font-semibold rounded-full bg-green-400 py-1 px-2 border-2 border-green-700">Series:</span> {{ series }}</li>{{/if}}
+                {{#if release_year }}<li class = "p-2 border-b-2"><span class="font-semibold rounded-full bg-green-400 py-1 px-2 border-2 border-green-700">Released:</span> {{ release_year }} </li>{{/if}}
+                {{#if set }}<li class = "p-2 border-b-2"><span class="font-semibold rounded-full bg-green-400 py-1 px-2 border-2 border-green-700">Set:</span> {{ set }} </li>{{/if}}
+                {{#if subtype }}<li class = "p-2 border-b-2"><span class="font-semibold rounded-full bg-green-400 py-1 px-2 border-2 border-green-700">Subtype:</span> {{ subtype }} </li>{{/if}}
+                {{#if holographic }}<li class = "p-2 border-b-2"><span class="font-semibold rounded-full bg-green-400 py-1 px-2 border-2 border-green-700">Holographic:</span> {{ holographic }} </li>{{/if}}
+                {{#if manufacturer }}<li class = "p-2 border-b-2"><span class="font-semibold rounded-full bg-green-400 py-1 px-2 border-2 border-green-700">Manufacturer:</span> {{ manufacturer }} </li>{{/if}}
+                {{#if condition }}<li class = "p-2 border-b-2"><span class="font-semibold rounded-full bg-green-400 py-1 px-2 border-2 border-green-700">Condition:</span> {{ condition }} </li>{{/if}}
+                {{#if price }}<li class = "p-2 border-b-2"><span class="font-semibold rounded-full bg-green-400 py-1 px-2 border-2 border-green-700">Price:</span> {{ price }} </li>{{/if}}
             </ul>
         </div>
     </div>
 </div>
 {{/each}}
-
