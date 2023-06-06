@@ -352,9 +352,9 @@ const collectionHtml = `
   </div>
   <form id="new-collection-form" class="flex flex-col items-start p-4">
           
-          <div class="flex flex-row w-full justify-start items-center">
+          <div class="flex flex-row w-full justify-between items-center">
             <label class="ps-2 pt-2 pb-2 me-2 font-bold text-lg" for="collection_type">Collection Type:</label>
-          <select class="ms-2" id="collection_type" name="type-select">
+          <select class="w-52 ms-2 p-1.5 rounded-lg" id="collection_type" name="type-select">
               <option value="Action Figure">Action Figure</option>
               <option value="Card">Card</option>
               <option value="Coin">Coin</option>
@@ -363,41 +363,41 @@ const collectionHtml = `
           </div>
       <div class="flex flex-row w-full justify-between">
           <label class="ps-2 pt-1 font-bold text-lg" for="name">Collection Name:</label>
-          <input class="m-2" id="name" type="required" placeholder="Enter name here"> 
+          <input class="w-52 m-2 p-1.5 rounded-lg" id="name" type="required" placeholder="Enter name here"> 
       </div>
       <div class="flex flex-row w-full justify-between">
           <label class="ps-2 pt-1 font-bold text-lg" for="url">Image URL:</label>
-          <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
+          <input class="w-52 m-2 p-1.5 rounded-lg" id="url" type="text" placeholder="URL for Image"> 
       </div>
       <div class="flex w-full justify-center mt-7">
-          <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
-          <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Cancel</button>
+          <input class="cursor-pointer border-2 bg-indigo-500 hover:bg-indigo-600 rounded text-lg transition duration-400 hover:scale-110 text-white p-1 px-2 me-3" type="submit">
+          <button id="close" type="button" class="border-2 bg-indigo-500 hover:bg-indigo-600 rounded text-lg transition duration-400 hover:scale-110 text-white p-1 ms3">Cancel</button>
       </div>
   </form>
-</div> 
+</div>
 `
 
 const collectibleTypeHtml = `
 <div class="modal-content">
   <div class="bg-indigo-600">
-      <h2 class="py-3 text-center text-white text-2xl font-extrabold">New Coolectible</h2>
+    <h2 class="py-3 text-center text-white text-2xl font-extrabold">New Coolectible</h2>
   </div>
   <form id="coll-type-form" class="flex flex-col items-start p-4">
-      <div class="pt-3 mt-2">
-          <label class="ps-2 pe-2  font-bold text-lg" for="type-box">Coolectible Type:</label>
-          <select class="me-3" id="coll-types" name="type-select">
-              <option value="Action Figure">Action Figure</option>
-              <option value="Card">Card</option>
-              <option value="Coin">Coin</option>
-              <option value="Music">Music</option>
-          </select>
-      </div>
-      <div class="flex w-full justify-center mt-7">
-        <button id="next-btn" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3">Next</button>
-        <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms-3">Cancel</button>
-      </div>
+    <div class="pt-3 mt-2">
+      <label class="ps-2 pe-2 font-bold text-lg" for="type-box">Coolectible Type:</label>
+      <select class="me-3 p-1.5 rounded-lg" id="coll-types" name="type-select">
+        <option value="Action Figure">Action Figure</option>
+        <option value="Card">Card</option>
+        <option value="Coin">Coin</option>
+        <option value="Music">Music</option>
+      </select>
+    </div>
+    <div class="flex w-full justify-center mt-7">
+      <button id="next-btn" type="button" class="border-2 bg-indigo-500 hover:bg-indigo-600 rounded text-lg transition duration-400 hover:scale-110 text-white px-4 py-1.5 me-3">Next</button>
+      <button id="close" type="button" class="border-2 bg-indigo-500 hover:bg-indigo-600 rounded text-lg transition duration-400 hover:scale-110 text-white px-4 py-1.5 ms-3">Cancel</button>
+    </div>
   </form>
-  </div>
+</div>
 `
 
 const newFigureHtml = `

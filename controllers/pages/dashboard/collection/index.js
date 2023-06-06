@@ -90,19 +90,19 @@ router.get('/:id', withAuth, async (req, res) => {
         else {
             switch (parsedData.collection_type) {
                 case 'Action Figure':
-                    const figure = true;
+                    const figure = parsedData.action_figures;
                     res.render('bigEmpty', { figure, collectionId, logged_in: req.session.logged_in })
                     break;
                 case 'Coin':
-                    const coin = true;
+                    const coin = parsedData.coin;
                     res.render('bigEmpty', { coin, collectionId, logged_in: req.session.logged_in })
                     break;
                 case 'Music':
-                    const music = true;
+                    const music = parsedData.music;
                     res.render('bigEmpty', { music, collectionId, logged_in: req.session.logged_in })
                     break;
                 case 'Card':
-                    const card = true;
+                    const card = parsedData.cards;
                     res.render('bigEmpty', { card, collectionId, logged_in: req.session.logged_in })
             }
         }

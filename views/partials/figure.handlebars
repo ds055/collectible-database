@@ -1,21 +1,21 @@
 {{#if figure}}
 {{#each figure as |figure|}}
 <div class="p-4">
-    <div class="h-full border-2 border-black border-opacity-60 bg-indigo-400 rounded-lg overflow-hidden drop-shadow-2xl">
+    <div class="h-full border-2 border-black border-opacity-60 bg-gradient-to-tl from-yellow-200 via-purple-500 to-rose-500 rounded-lg overflow-hidden drop-shadow-2xl">
         <div>
             <button class="edit-btn z-50" type="button" data-type="figure" data-id="{{id}}"><i style="font-size:24px" class="fa text-white object-right-top fixed top-2 right-2 z-40 bg-indigo-800 text-lg hover:bg-white hover:text-indigo-800 rounded-lg p-1">&#xf040;</i></button>
             {{#if image}}<img class="w-full lg:h-[28rem] h-[20rem] flex content-center z-30" src="{{ image }}" alt="blog">{{else}}<img class="w-full lg:h-[28rem] h-[20rem] flex content-center z-30" src="https://i.ebayimg.com/images/g/lz4AAOSwTWZjQDfL/s-l1600.jpg" alt="blog">{{/if}}
         </div>
         <div class="p-6">
-            <h1 class="text-center title-font text-lg font-bold text-gray-900 bg-white mb-3">{{ name }}</h1>
-            <ul class="leading-relaxed text-black bg-white mb-3 divide-y divide-dotted">
-                <li class = 'my-1.5'><span class="rounded-full bg-green-400 py-1 px-2">Line:</span> {{ line }}</li>
-                <li class = 'my-1.5'><span class="rounded-full bg-green-400 py-1 px-2">Series:</span> {{ series }} </li>
-                <li class = 'my-1.5'><span class="rounded-full bg-green-400 py-1 px-2">Manufacturer:</span> {{ manufacturer }} </li>
-                <li class = 'my-1.5'><span class="rounded-full bg-green-400 py-1 px-2">Released:</span> {{ release_year }} </li>
-                <li class = 'my-1.5'><span class="rounded-full bg-green-400 py-1 px-2">Barcode:</span> {{ barcode }} </li>
-                <li class = 'my-1.5'><span class="rounded-full bg-green-400 py-1 px-2">Condition:</span> {{ condition }} </li>
-                <li class = 'my-1.5'><span class="rounded-full bg-green-400 py-1 px-2">Price:</span> {{ price }} </li>
+            <h1 class="text-center title-font text-lg font-bold text-gray-900 rounded-t-lg bg-white mb-3">{{ name }}</h1>
+            <ul class="flex content-center flex-col text-black rounded-b-lg border-[0.4rem] border-blue-400 bg-white mb-3">
+                {{#if line}}<li class = 'p-2 border-b-2'><span class="font-semibold rounded-full bg-green-400 py-1 px-2 border-2 border-green-700">Line:</span> {{ line }}</li>{{/if}}
+                {{#if series}}<li class = 'p-2 border-b-2'><span class="font-semibold rounded-full bg-green-400 py-1 px-2 border-2 border-green-700">Series:</span> {{ series }} </li>{{/if}}
+                {{#if manufacturer}}<li class = 'p-2 border-b-2'><span class="font-semibold rounded-full bg-green-400 py-1 px-2 border-2 border-green-700">Manufacturer:</span> {{ manufacturer }} </li>{{/if}}
+                {{#if release_year}}<li class = 'p-2 border-b-2'><span class="font-semibold rounded-full bg-green-400 py-1 px-2 border-2 border-green-700">Released:</span> {{ release_year }} </li>{{/if}}
+                {{#if barcode}}<li class = 'p-2 border-b-2'><span class="font-semibold rounded-full bg-green-400 py-1 px-2 border-2 border-green-700">Barcode:</span> {{ barcode }} </li>{{/if}}
+                {{#if condition}}<li class = 'p-2 border-b-2'><span class="font-semibold rounded-full bg-green-400 py-1 px-2 border-2 border-green-700">Condition:</span> {{ condition }} </li>{{/if}}
+                {{#if price}}<li class = 'p-2 border-b-2'><span class="font-semibold rounded-full bg-green-400 py-1 px-2 border-2 border-green-700">Price:</span> {{ price }} </li>{{/if}}
             </ul>
         </div>
     </div>
