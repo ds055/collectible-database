@@ -1,7 +1,7 @@
 const editBtns = document.getElementsByClassName("edit-btn")
 var modal = document.getElementById("myModal");
 
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
@@ -10,20 +10,20 @@ window.onclick = function(event) {
 // Calls dom query to find close button on modal
 const cancelBtnFunction = () => {
     const cancelBtn = document.getElementById("close");
-    cancelBtn.onclick = function() { modal.style.display = "none"};
+    cancelBtn.onclick = function () { modal.style.display = "none" };
 }
 
 const selectEditRoute = (currentTarget, id) => {
     const itemToEdit = currentTarget
     const itemType = itemToEdit.dataset.type
 
-    if( itemType === "figure"){
+    if (itemType === "figure") {
         figureEdit(id);
-    }else if( itemType === "coin"){
+    } else if (itemType === "coin") {
         coinEdit(id);
-    }else if( itemType === "card"){
+    } else if (itemType === "card") {
         cardEdit(id);
-    }else if( itemType === "music"){
+    } else if (itemType === "music") {
         musicEdit(id);
     }
 }
@@ -32,14 +32,14 @@ const selectEditRoute = (currentTarget, id) => {
 const getModalButtons = (type, id) => {
     const updateBtn = document.getElementById("update-btn");
     const deleteBtn = document.getElementById("delete-btn");
-    deleteBtn.onclick = function() { deletePath(type, id) };
+    deleteBtn.onclick = function () { deletePath(type, id) };
     return updateBtn;
 }
 
 /// Edit Options based on Item Type///
 // Populate figure data and listen for update or edit
 const figureEdit = async (id) => {
-    try{
+    try {
         let rawData = await fetch(`/api/actionfigure/${id}`)
         let data = await rawData.json()
 
@@ -57,9 +57,9 @@ const figureEdit = async (id) => {
         document.querySelector('#image').value = data.image
         const url = `/api/actionfigure/${id}`
         const updateBtn = getModalButtons("fig", id)
-        updateBtn.onclick = function () { 
+        updateBtn.onclick = function () {
 
-            if(document.querySelector('#name').value.trim() === ""){
+            if (document.querySelector('#name').value.trim() === "") {
                 generatedUpdateFail('Name cannot be empty');
                 return;
             }
@@ -78,7 +78,7 @@ const figureEdit = async (id) => {
 
             updatePath(updObj, url)
         }
-    } catch(error) {
+    } catch (error) {
         console.log(err)
         updateFailed();
     }
@@ -86,7 +86,7 @@ const figureEdit = async (id) => {
 
 // Edit Coin //
 const coinEdit = async (id) => {
-    try{
+    try {
         let rawData = await fetch(`/api/coin/${id}`)
         let data = await rawData.json()
 
@@ -105,36 +105,36 @@ const coinEdit = async (id) => {
         document.querySelector('#image').value = data.image
         const url = `/api/coin/${id}`
         const updateBtn = getModalButtons("coin", id)
-        updateBtn.onclick = function () { 
+        updateBtn.onclick = function () {
 
-            if(document.querySelector('#denomination').value.trim() === ""){
+            if (document.querySelector('#denomination').value.trim() === "") {
                 generatedUpdateFail('Denomination cannot be empty');
                 return;
-            }else if(document.querySelector('#country').value.trim() === ""){
+            } else if (document.querySelector('#country').value.trim() === "") {
                 generatedUpdateFail('Country cannot be empty');
                 return;
-            }else if(document.querySelector('#time_period').value.trim() === ""){
+            } else if (document.querySelector('#time_period').value.trim() === "") {
                 generatedUpdateFail('Time Period cannot be empty');
                 return;
             }
 
-        const updObj = {
-            denomination: document.querySelector('#denomination').value.trim() || null,
-            country: document.querySelector('#country').value.trim() || null,
-            time_period: document.querySelector('#time_period').value.trim() || null,
-            coin_finish: document.querySelector('#coin_finish').value.trim() || null,
-            mint_mark: document.querySelector('#mint_mark').value.trim() || null,
-            design_theme: document.querySelector('#design_theme').value.trim() || null,
-            artist: document.querySelector('#artist').value.trim() || null,
-            condition: document.querySelector('#condition').value.trim() || null,
-            price: document.querySelector('#price').value.trim() || null,
-            image: document.querySelector('#image').value.trim() || null
-        }
+            const updObj = {
+                denomination: document.querySelector('#denomination').value.trim() || null,
+                country: document.querySelector('#country').value.trim() || null,
+                time_period: document.querySelector('#time_period').value.trim() || null,
+                coin_finish: document.querySelector('#coin_finish').value.trim() || null,
+                mint_mark: document.querySelector('#mint_mark').value.trim() || null,
+                design_theme: document.querySelector('#design_theme').value.trim() || null,
+                artist: document.querySelector('#artist').value.trim() || null,
+                condition: document.querySelector('#condition').value.trim() || null,
+                price: document.querySelector('#price').value.trim() || null,
+                image: document.querySelector('#image').value.trim() || null
+            }
 
             updatePath(updObj, url)
         }
-        
-    } catch(error) {
+
+    } catch (error) {
         console.log(err)
         updateFailed();
     }
@@ -142,7 +142,7 @@ const coinEdit = async (id) => {
 
 // Edit Card //
 const cardEdit = async (id) => {
-    try{
+    try {
         let rawData = await fetch(`/api/card/${id}`)
         let data = await rawData.json()
 
@@ -161,9 +161,9 @@ const cardEdit = async (id) => {
         document.querySelector('#image').value = data.image
         const url = `/api/card/${id}`
         const updateBtn = getModalButtons("card", id)
-        updateBtn.onclick = function () { 
+        updateBtn.onclick = function () {
 
-            if(document.querySelector('#name').value.trim() === ""){
+            if (document.querySelector('#name').value.trim() === "") {
                 generatedUpdateFail('Name cannot be empty');
                 return;
             }
@@ -181,8 +181,9 @@ const cardEdit = async (id) => {
                 image: document.querySelector('#image').value.trim() || null
             }
 
-            updatePath(updObj, url)};
-    } catch(error) {
+            updatePath(updObj, url)
+        };
+    } catch (error) {
         console.log(err)
         updateFailed();
     }
@@ -190,7 +191,7 @@ const cardEdit = async (id) => {
 
 // Edit Music //
 const musicEdit = async (id) => {
-    try{
+    try {
         let rawData = await fetch(`/api/music/${id}`)
         let data = await rawData.json()
 
@@ -210,18 +211,18 @@ const musicEdit = async (id) => {
         document.querySelector('#image').value = data.image
         const url = `/api/music/${id}`
         const updateBtn = getModalButtons("music", id)
-        updateBtn.onclick = function () { 
-            
-            if(document.querySelector('#album_name').value.trim() === ""){
+        updateBtn.onclick = function () {
+
+            if (document.querySelector('#album_name').value.trim() === "") {
                 generatedUpdateFail('Album name cannot be empty');
                 return;
-            }else if(document.querySelector('#artist').value.trim() === ""){
+            } else if (document.querySelector('#artist').value.trim() === "") {
                 generatedUpdateFail('Artist cannot be empty');
                 return;
-            }else if(document.querySelector('#format').value.trim() === ""){
+            } else if (document.querySelector('#format').value.trim() === "") {
                 generatedUpdateFail('Format cannot be empty');
                 return;
-            } 
+            }
 
             const updObj = {
                 album_name: document.querySelector('#album_name').value.trim() || null,
@@ -237,8 +238,9 @@ const musicEdit = async (id) => {
                 image: document.querySelector('#image').value.trim() || null
             }
 
-            updatePath(updObj, url)};
-    } catch(error) {
+            updatePath(updObj, url)
+        };
+    } catch (error) {
         console.log(err)
         updateFailed();
     }
@@ -248,42 +250,42 @@ const deletePath = async (type, id) => {
     let throughId;
     let response;
 
-    try{    
-        switch(type) {
-            case 'fig': 
+    try {
+        switch (type) {
+            case 'fig':
                 throughId = await getCollFigId(id)
                 response = await fetch(`/api/collection/fig/${throughId}`, { method: 'DELETE' });
-                if (response.ok){ updateSuccess() } 
-                    else { updateFailed() }
+                if (response.ok) { updateSuccess() }
+                else { updateFailed() }
                 break;
             case 'coin':
                 throughId = await getCollCoinId(id)
                 response = await fetch(`/api/collection/coin/${throughId}`, { method: 'DELETE' });
-                if (response.ok){ updateSuccess() } 
-                    else { updateFailed() }
+                if (response.ok) { updateSuccess() }
+                else { updateFailed() }
                 break;
             case 'music':
                 throughId = await getCollMusicId(id)
                 response = await fetch(`/api/collection/music/${throughId}`, { method: 'DELETE' });
-                if (response.ok){ updateSuccess() } 
-                    else { updateFailed() }
+                if (response.ok) { updateSuccess() }
+                else { updateFailed() }
                 break;
             case 'card':
                 throughId = await getCollCardId(id)
                 response = await fetch(`/api/collection/card/${throughId}`, { method: 'DELETE' });
-                if (response.ok){ updateSuccess() } 
-                    else { updateFailed() }
+                if (response.ok) { updateSuccess() }
+                else { updateFailed() }
                 break;
         }
 
-    } catch(err){
+    } catch (err) {
         console.log(err)
         updateFailed();
     }
 }
 
 const getCollFigId = async (figId) => {
-    try{
+    try {
 
         const collectionId = document.querySelector('#collection-id').value
 
@@ -295,13 +297,13 @@ const getCollFigId = async (figId) => {
 
         return throughId;
 
-    }catch (err){
+    } catch (err) {
         console.log(err)
     }
 }
 
 const getCollCoinId = async (coinId) => {
-    try{
+    try {
 
         const collectionId = document.querySelector('#collection-id').value
 
@@ -313,13 +315,13 @@ const getCollCoinId = async (coinId) => {
 
         return throughId;
 
-    }catch (err){
+    } catch (err) {
         console.log(err)
     }
 }
 
 const getCollMusicId = async (musicId) => {
-    try{
+    try {
 
         const collectionId = document.querySelector('#collection-id').value
 
@@ -331,14 +333,14 @@ const getCollMusicId = async (musicId) => {
 
         return throughId;
 
-    }catch (err){
+    } catch (err) {
         console.log(err)
     }
 }
 
 
 const getCollCardId = async (cardId) => {
-    try{
+    try {
 
         const collectionId = document.querySelector('#collection-id').value
 
@@ -350,56 +352,57 @@ const getCollCardId = async (cardId) => {
 
         return throughId;
 
-    }catch (err){
+    } catch (err) {
         console.log(err)
     }
 }
 
 const updatePath = async (obj, url) => {
-    try{ 
+    try {
         const response = await fetch(`${url}`, {
             method: 'PUT',
             body: JSON.stringify(obj),
             headers: {
-            'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             }
         });
 
-        if (response.ok){
+        if (response.ok) {
             updateSuccess();
         } else {
             updateFailed();
         }
-    } catch(err) {
+    } catch (err) {
         console.log(err)
     }
 }
 
 // dynamically renders edit buttons
 let init = () => {
-for (var i = 0; i < editBtns.length; i++) {
-    
-    editBtns[i].addEventListener("click", (event) => {
-        selectEditRoute(event.currentTarget, event.currentTarget.dataset.id);
-    })
-}}
+    for (var i = 0; i < editBtns.length; i++) {
+
+        editBtns[i].addEventListener("click", (event) => {
+            selectEditRoute(event.currentTarget, event.currentTarget.dataset.id);
+        })
+    }
+}
 
 const updateSuccess = () => {
     modal.innerHTML = updateSuccessHtml;
     const cancelBtn = document.getElementById("close");
-    cancelBtn.onclick = function() { document.location.reload() };
+    cancelBtn.onclick = function () { document.location.reload() };
 }
 
 const updateFailed = () => {
     modal.innerHTML = generalUpdateFailedHtml;
     const cancelBtn = document.getElementById("close");
-    cancelBtn.onclick = function() { document.location.reload() };
+    cancelBtn.onclick = function () { document.location.reload() };
 }
 
 const generatedUpdateFail = (msg) => {
     modal.innerHTML = generatedUpdateFailText(msg);
     const cancelBtn = document.getElementById("close");
-    cancelBtn.onclick = function() { document.location.reload()};
+    cancelBtn.onclick = function () { document.location.reload() };
 }
 
 const generatedUpdateFailText = (text) => {
