@@ -3,13 +3,10 @@ const path = require('path');
 const withAuth = require('../../middleware/auth');
 
 const dashboard = require('./dashboard');
-const home = require('./home');
 const login = require('./login');
 const signUp = require('./sign-up');
 
 router.use('/dashboard', withAuth, dashboard);
-
-router.use('/home', withAuth, home);
 
 router.use('/login', login);
 

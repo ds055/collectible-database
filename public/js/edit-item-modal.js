@@ -11,22 +11,20 @@ window.onclick = function(event) {
 const cancelBtnFunction = () => {
     const cancelBtn = document.getElementById("close");
     cancelBtn.onclick = function() { modal.style.display = "none"};
-  }
+}
 
-
-const selectEditRoute = (number) => {
-    const itemToEdit = editBtns[(number - 1)]
+const selectEditRoute = (currentTarget, id) => {
+    const itemToEdit = currentTarget
     const itemType = itemToEdit.dataset.type
-    const itemID = itemToEdit.dataset.id;
 
     if( itemType === "figure"){
-        figureEdit(number)
-    }else if( itemToEdit === "coin"){
-
-    }else if( itemToEdit === "card"){
-
-    }else if( itemToEdit === "music"){
-
+        figureEdit(id);
+    }else if( itemType === "coin"){
+        coinEdit(id);
+    }else if( itemType === "card"){
+        cardEdit(id);
+    }else if( itemType === "music"){
+        musicEdit(id);
     }
 }
 
@@ -36,10 +34,10 @@ const getModalButtons = (delUrl) => {
     const deleteBtn = document.getElementById("delete-btn");
     deleteBtn.onclick = function() { deletePath(delUrl) };
     return updateBtn;
-  }
+}
 
-/// Figure Options///
-// Populate figure data and listen
+/// Edit Options based on Item Type///
+// Populate figure data and listen for update or edit
 const figureEdit = async (id) => {
     try{
         let rawData = await fetch(`/api/actionfigure/${id}`)
@@ -56,50 +54,227 @@ const figureEdit = async (id) => {
         document.querySelector('#barcode').value = data.barcode
         document.querySelector('#condition').value = data.condition
         document.querySelector('#price').value = data.price
-        document.querySelector('#url').value = data.image
+        document.querySelector('#image').value = data.image
         const url = `/api/actionfigure/${id}`
         const updateBtn = getModalButtons(url)
         updateBtn.onclick = function () { 
-        const updObj = {
-            name: document.querySelector('#name').value,
-            line: document.querySelector('#line').value,
-            series: document.querySelector('#series').value,
-            manufacturer: document.querySelector('#manufacturer').value,
-            release_year: document.querySelector('#release_year').value,
-            barcode: document.querySelector('#barcode').value,
-            condition: document.querySelector('#condition').value,
-            price: document.querySelector('#price').value,
-            image: document.querySelector('#url').value
+
+            if(document.querySelector('#name').value.trim() === ""){
+                generatedUpdateFail('Name cannot be empty');
+                return;
+            }
+
+            const updObj = {
+                name: document.querySelector('#name').value.trim() || null,
+                line: document.querySelector('#line').value.trim() || null,
+                series: document.querySelector('#series').value.trim() || null,
+                manufacturer: document.querySelector('#manufacturer').value.trim() || null,
+                release_year: document.querySelector('#release_year').value.trim() || null,
+                barcode: document.querySelector('#barcode').value.trim() || null,
+                condition: document.querySelector('#condition').value.trim() || null,
+                price: document.querySelector('#price').value.trim() || null,
+                image: document.querySelector('#image').value.trim() || null
+            }
+
+            updatePath(updObj, url)
         }
-            updatePath(updObj, url)};
-        
-
     } catch(error) {
+        console.log(err)
+        updateFailed();
+    }
+}
 
+// Edit Coin //
+const coinEdit = async (id) => {
+    try{
+        let rawData = await fetch(`/api/coin/${id}`)
+        let data = await rawData.json()
+
+        modal.innerHTML = updateCoinHtml
+        modal.style.display = "block"
+        cancelBtnFunction()
+        document.querySelector('#denomination').value = data.denomination
+        document.querySelector('#country').value = data.country
+        document.querySelector('#time_period').value = data.time_period
+        document.querySelector('#coin_finish').value = data.coin_finish
+        document.querySelector('#mint_mark').value = data.mint_mark
+        document.querySelector('#design_theme').value = data.design_theme
+        document.querySelector('#artist').value = data.artist
+        document.querySelector('#condition').value = data.condition
+        document.querySelector('#price').value = data.price
+        document.querySelector('#image').value = data.image
+        const url = `/api/coin/${id}`
+        const updateBtn = getModalButtons(url)
+        updateBtn.onclick = function () { 
+
+            if(document.querySelector('#denomination').value.trim() === ""){
+                generatedUpdateFail('Denomination cannot be empty');
+                return;
+            }else if(document.querySelector('#country').value.trim() === ""){
+                generatedUpdateFail('Country cannot be empty');
+                return;
+            }else if(document.querySelector('#time_period').value.trim() === ""){
+                generatedUpdateFail('Time Period cannot be empty');
+                return;
+            }
+
+        const updObj = {
+            denomination: document.querySelector('#denomination').value.trim() || null,
+            country: document.querySelector('#country').value.trim() || null,
+            time_period: document.querySelector('#time_period').value.trim() || null,
+            coin_finish: document.querySelector('#coin_finish').value.trim() || null,
+            mint_mark: document.querySelector('#mint_mark').value.trim() || null,
+            design_theme: document.querySelector('#design_theme').value.trim() || null,
+            artist: document.querySelector('#artist').value.trim() || null,
+            condition: document.querySelector('#condition').value.trim() || null,
+            price: document.querySelector('#price').value.trim() || null,
+            image: document.querySelector('#image').value.trim() || null
+        }
+
+            updatePath(updObj, url)
+        }
+        
+    } catch(error) {
+        console.log(err)
+        updateFailed();
+    }
+}
+
+// Edit Card //
+const cardEdit = async (id) => {
+    try{
+        let rawData = await fetch(`/api/card/${id}`)
+        let data = await rawData.json()
+
+        modal.innerHTML = updateCardHtml
+        modal.style.display = "block"
+        cancelBtnFunction()
+        document.querySelector('#name').value = data.name
+        document.querySelector('#release_year').value = data.release_year
+        document.querySelector('#series').value = data.series
+        document.querySelector('#set').value = data.set
+        document.querySelector('#subtype').value = data.subtype
+        document.querySelector('#holographic').value = data.holographic
+        document.querySelector('#manufacturer').value = data.manufacturer
+        document.querySelector('#condition').value = data.condition
+        document.querySelector('#price').value = data.price
+        document.querySelector('#image').value = data.image
+        const url = `/api/card/${id}`
+        const updateBtn = getModalButtons(url)
+        updateBtn.onclick = function () { 
+
+            if(document.querySelector('#name').value.trim() === ""){
+                generatedUpdateFail('Name cannot be empty');
+                return;
+            }
+
+            const updObj = {
+                name: document.querySelector('#name').value.trim() || null,
+                release_year: document.querySelector('#release_year').value.trim() || null,
+                series: document.querySelector('#series').value.trim() || null,
+                set: document.querySelector('#set').value.trim() || null,
+                subtype: document.querySelector('#subtype').value.trim() || null,
+                holographic: document.querySelector('#holographic').value.trim() || null,
+                manufacturer: document.querySelector('#manufacturer').value.trim() || null,
+                condition: document.querySelector('#condition').value.trim() || null,
+                price: document.querySelector('#price').value.trim() || null,
+                image: document.querySelector('#image').value.trim() || null
+            }
+
+            updatePath(updObj, url)};
+    } catch(error) {
+        console.log(err)
+        updateFailed();
+    }
+}
+
+// Edit Music //
+const musicEdit = async (id) => {
+    try{
+        let rawData = await fetch(`/api/music/${id}`)
+        let data = await rawData.json()
+
+        modal.innerHTML = updateMusicHtml
+        modal.style.display = "block"
+        cancelBtnFunction()
+        document.querySelector('#album_name').value = data.album_name
+        document.querySelector('#artist').value = data.artist
+        document.querySelector('#genre').value = data.genre
+        document.querySelector('#style').value = data.style
+        document.querySelector('#release_year').value = data.release_year
+        document.querySelector('#format').value = data.format
+        document.querySelector('#pressing_info').value = data.pressing_info
+        document.querySelector('#barcode').value = data.barcode
+        document.querySelector('#condition').value = data.condition
+        document.querySelector('#price').value = data.price
+        document.querySelector('#image').value = data.image
+        const url = `/api/music/${id}`
+        const updateBtn = getModalButtons(url)
+        updateBtn.onclick = function () { 
+            
+            if(document.querySelector('#album_name').value.trim() === ""){
+                generatedUpdateFail('Album name cannot be empty');
+                return;
+            }else if(document.querySelector('#artist').value.trim() === ""){
+                generatedUpdateFail('Artist cannot be empty');
+                return;
+            }else if(document.querySelector('#format').value.trim() === ""){
+                generatedUpdateFail('Format cannot be empty');
+                return;
+            } 
+
+            const updObj = {
+                album_name: document.querySelector('#album_name').value.trim() || null,
+                artist: document.querySelector('#artist').value.trim() || null,
+                genre: document.querySelector('#genre').value.trim() || null,
+                style: document.querySelector('#style').value.trim() || null,
+                release_year: document.querySelector('#release_year').value.trim() || null,
+                format: document.querySelector('#format').value.trim() || null,
+                pressing_info: document.querySelector('#pressing_info').value.trim() || null,
+                barcode: document.querySelector('#barcode').value.trim() || null,
+                condition: document.querySelector('#condition').value.trim() || null,
+                price: document.querySelector('#price').value.trim() || null,
+                image: document.querySelector('#image').value.trim() || null
+            }
+
+            updatePath(updObj, url)};
+    } catch(error) {
+        console.log(err)
+        updateFailed();
     }
 }
 
 const deletePath = async (url) => {
-    await fetch(`${url}`, {
-        method: 'DELETE'
-    });
+    try{
+        const response = await fetch(`${url}`, { method: 'DELETE' });
 
-    // send user back to dashboard after deletion
-    document.location.reload();
+        if (response.ok){
+            updateSuccess();
+        } else {
+            updateFailed();
+        }
+    } catch(err){
+        console.log(err)
+        updateFailed();
+    }
 }
 
 const updatePath = async (obj, url) => {
     try{ 
         // Updated data
-        await fetch(`${url}`, {
-            method: 'PUT',
-            body: JSON.stringify(obj),
-            headers: {
-            'Content-Type': 'application/json'
-            }
+        const response = await fetch(`${url}`, {
+                            method: 'PUT',
+                            body: JSON.stringify(obj),
+                            headers: {
+                            'Content-Type': 'application/json'
+                            }
         });
-        // reload page
-        document.location.reload(); 
+
+        if (response.ok){
+            updateSuccess();
+        } else {
+            updateFailed();
+        }
     } catch(err) {
         console.log(err)
     }
@@ -108,30 +283,32 @@ const updatePath = async (obj, url) => {
 // dynamically renders edit buttons
 let init = () => {
 for (var i = 0; i < editBtns.length; i++) {
+    
     editBtns[i].addEventListener("click", (event) => {
-        selectEditRoute(event.currentTarget.dataset.id);
+        console.log(event.currentTarget.dataset.id)
+        selectEditRoute(event.currentTarget, event.currentTarget.dataset.id);
     })
 }}
 
-const addSuccess = () => {
-    modal.innerHTML = successHtml;
+const updateSuccess = () => {
+    modal.innerHTML = updateSuccessHtml;
     const cancelBtn = document.getElementById("close");
-    cancelBtn.onclick = function() { modal.style.display = "none"};
-  }
-  
-  const addFailed = () => {
-    modal.innerHTML = failedHtml;
+    cancelBtn.onclick = function() { document.location.reload() };
+}
+
+const updateFailed = () => {
+    modal.innerHTML = generalUpdateFailedHtml;
     const cancelBtn = document.getElementById("close");
-    cancelBtn.onclick = function() { modal.style.display = "none"};
-  }
-  
-  const generatedFail = (msg) => {
-    modal.innerHTML = generatedFailText(msg);
+    cancelBtn.onclick = function() { document.location.reload() };
+}
+
+const generatedUpdateFail = (msg) => {
+    modal.innerHTML = generatedUpdateFailText(msg);
     const cancelBtn = document.getElementById("close");
-    cancelBtn.onclick = function() { modal.style.display = "none"};
-  }
-  
-  const generatedFailText = (text) => {
+    cancelBtn.onclick = function() { document.location.reload()};
+}
+
+const generatedUpdateFailText = (text) => {
     return `
     <div class="bg-indigo-400 m-5">
     <p class="px-3 pt-3 text-center text-white text-2xl font-extrabold">
@@ -140,11 +317,11 @@ const addSuccess = () => {
         ${text} 
     </p>
     <div class="flex justify-center">
-        <button id="close" type="button" class="m-4 border-2 border-black bg-indigo-500 rounded-lg text-white text-xl px-1 ms3">Cool!</button>
+        <button id="close" type="button" class="m-4 border-2 border-black bg-indigo-500 rounded-lg text-white text-xl px-1 ms3">Sadness!</button>
     </div>
   </div>
     `
-  }
+}
 
 // wait until everything dynamically loaded before trying to grab dom
 document.addEventListener("load", init())
@@ -152,9 +329,9 @@ document.addEventListener("load", init())
 const updateFigureHtml = `
 <div class="modal-content">
 <div class="bg-indigo-600">
-    <h2 class="py-3 text-center text-white text-2xl font-extrabold">New Action Figure</h2>
+    <h2 class="py-3 text-center text-white text-2xl font-extrabold">Update Action Figure</h2>
 </div>
-<form id="new-figure-form" class="flex flex-col items-start p-4">
+<form id="update-figure-form" class="flex flex-col items-start p-4">
     <div class="flex flex-row w-full justify-between">
         <label class="ps-2 font-bold text-lg" for="name">Name:</label>
         <input class="m-2" id="name" type="text" placeholder="Figure Name"> 
@@ -188,8 +365,8 @@ const updateFigureHtml = `
         <input class="m-2" id="price" type="text" placeholder="Price"> 
     </div>
     <div class="flex flex-row w-full justify-between">
-        <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
-        <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
+        <label class="ps-2 font-bold text-lg" for="image">Image URL:</label>
+        <input class="m-2" id="image" type="text" placeholder="URL for Image"> 
     </div>
     <div class="flex w-full justify-around mt-7">
         <button id="update-btn" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Update</button>
@@ -200,12 +377,12 @@ const updateFigureHtml = `
 </div>        
 `
 
-const newMusicHtml = `
+const updateMusicHtml = `
 <div class="modal-content">
   <div class="bg-indigo-600">
-      <h2 class="py-3 text-center text-white text-2xl font-extrabold">New Music Entry</h2>
+      <h2 class="py-3 text-center text-white text-2xl font-extrabold">Update Music Entry</h2>
   </div>
-  <form id="new-music-form" class="flex flex-col items-start p-4">
+  <form id="update-music-form" class="flex flex-col items-start p-4">
       <div class="flex flex-row w-full justify-between">
           <label class="ps-2 font-bold text-lg" for="album_name">Album Name:</label>
           <input class="m-2" id="album_name" type="text" placeholder="Album Name"> 
@@ -247,23 +424,24 @@ const newMusicHtml = `
           <input class="m-2" id="price" type="text" placeholder="Price"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
-          <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
+          <label class="ps-2 font-bold text-lg" for="image">Image URL:</label>
+          <input class="m-2" id="image" type="text" placeholder="URL for Image"> 
       </div>
       <div class="flex w-full justify-center mt-7">
-          <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
-          <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Cancel</button>
+        <button id="update-btn" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Update</button>
+        <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Cancel</button>
+        <button id="delete-btn" type="button" class="border-2 border-black bg-rose-500 rounded-lg text-white text-lg px-0.5 ms3">Delete</button>
       </div>
   </form>
 </div>  
 `
 
-const newCoinHtml = `
+const updateCoinHtml = `
 <div class="modal-content">
   <div class="bg-indigo-600">
-      <h2 class="py-3 text-center text-white text-2xl font-extrabold">New Coin Entry</h2>
+      <h2 class="py-3 text-center text-white text-2xl font-extrabold">Update Coin Entry</h2>
   </div>
-  <form id="new-coin-form" class="flex flex-col items-start p-4">
+  <form id="update-coin-form" class="flex flex-col items-start p-4">
       <div class="flex flex-row w-full justify-between">
           <label class="ps-2 font-bold text-lg" for="denomination">Denomination:</label>
           <input class="m-2" id="denomination" type="text" placeholder="Eg: Penny, $5"> 
@@ -301,23 +479,24 @@ const newCoinHtml = `
           <input class="m-2" id="price" type="text" placeholder="Price"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
-          <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
+          <label class="ps-2 font-bold text-lg" for="image">Image URL:</label>
+          <input class="m-2" id="image" type="text" placeholder="URL for Image"> 
       </div>
       <div class="flex w-full justify-center mt-7">
-          <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
-          <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Cancel</button>
+        <button id="update-btn" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Update</button>
+        <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Cancel</button>
+        <button id="delete-btn" type="button" class="border-2 border-black bg-rose-500 rounded-lg text-white text-lg px-0.5 ms3">Delete</button>
       </div>
   </form>
 </div>  
 `
 
-const newCardHtml = `
+const updateCardHtml = `
 <div class="modal-content">
   <div class="bg-indigo-600">
-      <h2 class="py-3 text-center text-white text-2xl font-extrabold">New Card Entry</h2>
+      <h2 class="py-3 text-center text-white text-2xl font-extrabold">Update Card Entry</h2>
   </div>
-  <form id="new-card-form" class="flex flex-col items-start p-4">
+  <form id="update-card-form" class="flex flex-col items-start p-4">
       <div class="flex flex-row w-full justify-between">
           <label class="ps-2 font-bold text-lg" for="name">Name:</label>
           <input class="m-2" id="name" type="text" placeholder="Eg: Black Lotus, Charizard"> 
@@ -360,22 +539,23 @@ const newCardHtml = `
           <input class="m-2" id="price" type="text" placeholder="Price"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
-          <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
+          <label class="ps-2 font-bold text-lg" for="image">Image URL:</label>
+          <input class="m-2" id="image" type="text" placeholder="URL for Image"> 
       </div>
       <div class="flex w-full justify-center mt-7">
-          <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
-          <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Cancel</button>
+        <button id="update-btn" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Update</button>
+        <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Cancel</button>
+        <button id="delete-btn" type="button" class="border-2 border-black bg-rose-500 rounded-lg text-white text-lg px-0.5 ms3">Delete</button>
       </div>
   </form>
 </div>  
 `
-const successHtml = `
+const updateSuccessHtml = `
 <div class="bg-indigo-400 m-5">
   <p class="px-3 pt-3 text-center text-white text-2xl font-extrabold">
       <span class="text-emerald-300">Tubular!</span>
       <br>
-      Creation Success
+      Update Success
   </p>
   <div class="flex justify-center">
       <button id="close" type="button" class="m-4 border-2 border-black bg-indigo-500 rounded-lg text-white text-xl px-1 ms3">Cool!</button>
@@ -383,7 +563,7 @@ const successHtml = `
 </div>
 `
 
-const generalFailedHtml = `
+const generalUpdateFailedHtml = `
 <div class="bg-indigo-400 m-5">
   <p class="px-3 pt-3 text-center text-white text-2xl font-extrabold">
       <span class="text-emerald-300">Bummer!</span>
