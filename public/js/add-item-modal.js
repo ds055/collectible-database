@@ -724,7 +724,7 @@ const newCardHtml = `
       <div class="flex flex-row w-full justify-between items-center">
           <label class="ps-2 pb-2 font-bold text-lg" for="holographic">Holographic:</label>
           <div class="flex ms-3 me-8 flex-row w-full justify-start items-center">
-            <select class="ms-2" id="holographic" name="type-select">
+            <select class="w-52 m-2 p-1.5 rounded-lg" id="holographic" name="type-select">
               <option value="true">True</option>
               <option value="false">False</option>
             </select> 
