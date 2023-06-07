@@ -34,10 +34,16 @@ try {
     // translate data to plain
     const coin = coinData.map((coin) => coin.get({ plain: true}));
     // render all-posts page with posts data and logged_in bool from session 
-    res.render('view-all', { 
-        coin,
-        logged_in: req.session.logged_in
-    });
+
+    if (coin.length > 0) {
+        res.render('view-all', { 
+            coin,
+            logged_in: req.session.logged_in
+        });
+    } else {
+        res.render('bigEmpty', {logged_in: req.session.logged_in})
+    }
+ 
     } catch (err) {
         res.status(500).json(err);
     }
@@ -53,10 +59,14 @@ router.get('/figure', withAuth, async (req, res) => {
         // translate data to plain
         const figure = figureData.map((figure) => figure.get({ plain: true }));
         // render all-posts page with posts data and logged_in bool from session 
-        res.render('view-all', { 
-            figure,
-            logged_in: req.session.logged_in
-        });
+        if (figure.length > 0) {
+            res.render('view-all', { 
+                figure,
+                logged_in: req.session.logged_in
+            });
+        } else {
+            res.render('bigEmpty', {logged_in: req.session.logged_in})
+        }
     } catch (err) {
         res.status(500).json(err);
     }
@@ -72,13 +82,17 @@ router.get('/card', withAuth, async (req, res) => {
         // translate data to plain
         const card = cardData.map((card) => card.get({ plain: true}));
         // render all-posts page with posts data and logged_in bool from session 
-        res.render('view-all', { 
-            card,
-            logged_in: req.session.logged_in
-        });
-        } catch (err) {
-        res.status(500).json(err);
+        if (card.length > 0) {
+            res.render('view-all', { 
+                card,
+                logged_in: req.session.logged_in
+            });
+        } else {
+            res.render('bigEmpty', {logged_in: req.session.logged_in})
         }
+    } catch (err) {
+    res.status(500).json(err);
+    }
 })
 
 // Get all music 
@@ -91,10 +105,14 @@ router.get('/music', withAuth, async (req, res) => {
         // translate data to plain
         const music = musicData.map((music) => music.get({ plain: true}));
         // render all-posts page with posts data and logged_in bool from session 
-        res.render('view-all', { 
-            music,
-            logged_in: req.session.logged_in
-        });
+        if (music.length > 0) {
+            res.render('view-all', { 
+                music,
+                logged_in: req.session.logged_in
+            });
+        } else {
+            res.render('bigEmpty', {logged_in: req.session.logged_in})
+        }
         } catch (err) {
         res.status(500).json(err);
         }

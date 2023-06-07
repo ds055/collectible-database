@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Collection, CollectionActionFigure, CollectionCard, CollectionCoin, CollectionMusic } = require('../../models');
+const { Collection, CollectionActionFigure, CollectionCard, CollectionCoin, CollectionMusic, ActionFigure, Coin, Card, Music } = require('../../models');
 const withAuth = require('../../middleware/auth');
 
 // get all collection
@@ -27,7 +27,6 @@ router.get('/user/:type', async (req, res) => {
   }
 }
 )
-
 
 // create a new collection
 router.post('/', withAuth,  async (req, res) => {

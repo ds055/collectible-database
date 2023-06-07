@@ -12,22 +12,31 @@ window.onclick = function (event) {
   }
 }
 
-
-// Modal initializers
+// Modal initializers to add new collection
 collectionBtn.onclick = function () {
+  // html for modal
   modal.innerHTML = collectionHtml;
+  // initiate cancel button listener
   cancelBtnFunction();
+  // display modal from hidden
   modal.style.display = "block";
+  // create listener for submit button
   document.querySelector('#new-collection-form').addEventListener("submit", newCollectionSubmit)
 }
 
+// Modal initializers to add new collectible
 coolectibleBtn.onclick = function () {
+  // html for modal
   modal.innerHTML = collectibleTypeHtml;
+  // initialize generated cancel button
   cancelBtnFunction();
+  // display modal 
   modal.style.display = "block";
+  // get select from modal
   let select = document.getElementById("coll-types");
+  // event listener for next button on modal after users selects the type of the new collectible
   document.querySelector('#next-btn').addEventListener("click", function (event) {
-
+    // Response sent to various methods based on the user select input; displays next section of form based on which item type 
     if (select.value === "Action Figure") {
       newFigureForm(event);
     }
@@ -53,6 +62,7 @@ const cancelBtnFunction = () => {
 const newFigureForm = (event) => {
   modal.innerHTML = newFigureHtml;
   cancelBtnFunction();
+  // Listener waits for submit button presson the passes data to next method
   document.querySelector('#new-figure-form').addEventListener("submit", addNewActionFigure)
 }
 
@@ -74,29 +84,29 @@ const newCardForm = (event) => {
   document.querySelector('#new-card-form').addEventListener("submit", addNewCard)
 }
 
+// Takes user images and uploads them 
+// Collection image method
 const uploadCollectionImage = async (collectionId) => {
   try {
-
+    // get photo upload element
     const file = document.querySelector("#collection-photo-input-el").files[0];
-
+    // create new form and add file option to it
+    if (!file) {
+      return;
+    }
     const formData = new FormData();
     formData.append('file', file);
-
+    // api call posts image to db
     const data = await fetch(`/api/images/collections/${collectionId}`, {
       method: 'POST',
       body: formData
     });
-
-    console.log('before');
-
-    console.log(data);
-
   } catch (err) {
     console.log(err);
   }
-
 }
 
+// Image upload for figure 
 const uploadFigureImg = async (figureId) => {
   try {
 

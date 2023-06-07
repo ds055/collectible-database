@@ -263,11 +263,11 @@ const updatePath = async (obj, url) => {
     try{ 
         // Updated data
         const response = await fetch(`${url}`, {
-                            method: 'PUT',
-                            body: JSON.stringify(obj),
-                            headers: {
-                            'Content-Type': 'application/json'
-                            }
+            method: 'PUT',
+            body: JSON.stringify(obj),
+            headers: {
+            'Content-Type': 'application/json'
+            }
         });
 
         if (response.ok){
@@ -285,7 +285,6 @@ let init = () => {
 for (var i = 0; i < editBtns.length; i++) {
     
     editBtns[i].addEventListener("click", (event) => {
-        console.log(event.currentTarget.dataset.id)
         selectEditRoute(event.currentTarget, event.currentTarget.dataset.id);
     })
 }}
