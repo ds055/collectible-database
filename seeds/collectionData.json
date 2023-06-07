@@ -4,6 +4,7 @@
 		"name": "My Cards",
 		"collection_type": "Card",
 		"user_id": 3,
+		"description": "My collection of cards. Includes superheroes, Pokemon, and Magic the Gathering.",
 		"image": "https://cdn.vox-cdn.com/thumbor/ZjaRbbQozWLE9fq4IH7IruyXQv8=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/21955633/charizard_cropped.jpg"
 	},
 	{
@@ -11,6 +12,7 @@
 		"name": "My Coins",
 		"collection_type": "Coin",
 		"user_id": 1,
+		"description": "I have a bunch of different coins. Feed the birds--tuppence a bag.",
 		"image": "https://www.govmint.com/media/catalog/product/cache/daa9fcb3626fb352519f90131abc98d6/3/7/376156_1.jpg"
 	},
 	{
@@ -18,13 +20,15 @@
 		"name": "My Music",
 		"collection_type": "Music",
 		"user_id": 2,
+		"description": "This is a collection of a variety of my albums.",
 		"image": "https://d1e9ycqe323hkh.cloudfront.net/items/224212799186.jpg"
 	},
 	{
 		"id": 4,
-		"name": "My Figures",
+		"name": "My Favorite Figures",
 		"collection_type": "Action Figure",
 		"user_id": 4,
+		"description": "This is where I keep all my absolute favorite action figures.",
 		"image": "https://i.ebayimg.com/images/g/ngkAAOSwGHBjRso9/s-l1600.jpg"
 	},
 	{
@@ -32,6 +36,7 @@
 		"name": "Soundtrack Stuff",
 		"collection_type": "Music",
 		"user_id": 2,
+		"description": "This is a list of albums relating to movie, tv, and video game soundtracks.",
 		"image": "https://f4.bcbits.com/img/0022159050_71.jpg"
 	},
 	{
@@ -39,6 +44,7 @@
 		"name": "Rando Trackos",
 		"collection_type": "Music",
 		"user_id": 2,
+		"description": "A list of random albums just for funsies.",
 		"image": "https://i.discogs.com/INkHg3aokd35OyhfZdeGKhH2CdKxx0THUrSyIQ_1iSc/rs:fit/g:sm/q:90/h:596/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE0Nzg0/MTg0LTE1ODE3Mjk5/OTctMTYzNC5qcGVn.jpeg"
 	},
 	{
@@ -46,6 +52,7 @@
 		"name": "My Jam",
 		"collection_type": "Music",
 		"user_id": 2,
+		"description": "When I wake up, the stuff I want to start my day with!",
 		"image": "https://i.discogs.com/xBk50BmiY-S7gamw0EVjV7xpHV0byPmVbMeMaMA1XzM/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE4MDgy/MzctMTQ5Nzc4MDUz/MC01Njc5LmpwZWc.jpeg"
 	},
 	{
@@ -53,6 +60,7 @@
 		"name": "Snoozefest",
 		"collection_type": "Music",
 		"user_id": 2,
+		"description": "Sleepy time...this stuff will help you get there.",
 		"image": "https://i.discogs.com/xBk50BmiY-S7gamw0EVjV7xpHV0byPmVbMeMaMA1XzM/rs:fit/g:sm/q:40/h:300/w:300/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTE4MDgy/MzctMTQ5Nzc4MDUz/MC01Njc5LmpwZWc.jpeg"
 	},
 	{
@@ -60,6 +68,7 @@
 		"name": "Chilling with my broskis",
 		"collection_type": "Music",
 		"user_id": 2,
+		"description": "When hanging out with friends, some good vibes.",
 		"image": "https://m.media-amazon.com/images/I/4194mAevubL._UF1000,1000_QL80_.jpg"
 	},
 	{
@@ -67,6 +76,7 @@
 		"name": "Date Night",
 		"collection_type": "Music",
 		"user_id": 2,
+		"description": "For those romantic evening meals.",
 		"image": "https://cdn.shopify.com/s/files/1/1226/8710/products/MM-1_2-Black-Front-Render_grande.jpg?v=1639501512"
 	},
 	{
@@ -74,6 +84,7 @@
 		"name": "Good Old Days",
 		"collection_type": "Music",
 		"user_id": 2,
+		"description": "Music I grew up with back in high school.",
 		"image": "https://preview.redd.it/a6yn3k4w18o11.jpg?auto=webp&s=1d102677b21c8ce8543f343c1e783ecb4356792e"
 	},
 	{
@@ -81,6 +92,7 @@
 		"name": "Rage Against the Machine",
 		"collection_type": "Music",
 		"user_id": 2,
+		"description": "The exercise machine, that is. Stuff to get the adrenaline pumping!",
 		"image": "https://i.discogs.com/mzDcBlXub4bdnjUDec3mPKTq2V15gV0cLvnbcwMVK50/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEzMTg0/NzE3LTE1NDk1NTI4/NzgtNjU2OC5qcGVn.jpeg"
 	}
 ]

@@ -13,11 +13,11 @@ const updateCollOptions = async (eTarget, id) => {
         // sets the html of the modal
         modal.innerHTML = updateCollectionHtml;
         // initiate cancel button from edit-item-all-modal
-        cancelBtnFunction();
+        addItemCancelBtnFunction();
 
         // get inputs from modal
         const nameInput = document.getElementById("up-name");
-        const photo = document.getElementById("up-collection-photo-input-el");
+        const descripInput = document.getElementById("description");
 
 
         // gets type data preset to button on partial
@@ -28,6 +28,8 @@ const updateCollOptions = async (eTarget, id) => {
         let data = await rawData.json()
 
         nameInput.value = data.name;
+        descripInput.value = data.description;
+
 
         // display the modal
         modal.style.display = "block";
@@ -59,9 +61,11 @@ const updateCollection = async (event, collectionId) => {
     try{ 
         event.preventDefault();
         const nameVal = document.getElementById("up-name").value.trim();
+        const colldescr = document.getElementById("description").value.trim();
 
         const object = {
-            name: nameVal
+            name: nameVal,
+            description: colldescr
         }
 
         // Updated data
@@ -88,12 +92,16 @@ document.addEventListener("load", updateCollinit())
 const updateCollectionHtml = `
 <div class="modal-content">
   <div class="bg-indigo-600">
-      <h2 class="py-3 text-center text-white text-2xl font-extrabold">New Collection Entry</h2>
+      <h2 class="py-3 text-center text-white text-2xl font-extrabold">Update Collection Entry</h2>
   </div>
   <form id="update-collection-form" class="flex flex-col items-start p-4">
       <div class="flex flex-row w-full justify-between">
           <label class="ps-2 pt-1 font-bold text-lg" for="up-name">Collection Name:</label>
           <input class="w-52 m-2 p-1.5 rounded-lg" id="up-name" type="required" placeholder="Enter name here"> 
+      </div>
+      <div class="flex flex-row w-full justify-between">
+        <label class="ps-2 pt-1 font-bold text-lg" for="description">Description:</label>
+        <textarea class="w-52 m-2 p-1.5 rounded-lg" id="description" placeholder="Enter name here"> </textarea>
       </div>
       <div class="flex flex-row w-full justify-between">
           <label class="ps-2 pt-1 font-bold text-lg" for="up-collection-photo-input-el">Select Image</label>
