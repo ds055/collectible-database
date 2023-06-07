@@ -8,7 +8,7 @@ window.onclick = function (event) {
 }
 
 // Calls dom query to find close button on modal
-const cancelBtnFunction = () => {
+const editCancelBtnFunction = () => {
     const cancelBtn = document.getElementById("close");
     cancelBtn.onclick = function () { modal.style.display = "none" };
 }
@@ -45,7 +45,7 @@ const figureEdit = async (id) => {
 
         modal.innerHTML = updateFigureHtml
         modal.style.display = "block"
-        cancelBtnFunction()
+        editCancelBtnFunction()
         document.querySelector('#name').value = data.name
         document.querySelector('#line').value = data.line
         document.querySelector('#series').value = data.series
@@ -92,7 +92,7 @@ const coinEdit = async (id) => {
 
         modal.innerHTML = updateCoinHtml
         modal.style.display = "block"
-        cancelBtnFunction()
+        editCancelBtnFunction()
         document.querySelector('#denomination').value = data.denomination
         document.querySelector('#country').value = data.country
         document.querySelector('#time_period').value = data.time_period
@@ -148,7 +148,7 @@ const cardEdit = async (id) => {
 
         modal.innerHTML = updateCardHtml
         modal.style.display = "block"
-        cancelBtnFunction()
+        editCancelBtnFunction()
         document.querySelector('#name').value = data.name
         document.querySelector('#release_year').value = data.release_year
         document.querySelector('#series').value = data.series
@@ -197,7 +197,7 @@ const musicEdit = async (id) => {
 
         modal.innerHTML = updateMusicHtml
         modal.style.display = "block"
-        cancelBtnFunction()
+        editCancelBtnFunction()
         document.querySelector('#album_name').value = data.album_name
         document.querySelector('#artist').value = data.artist
         document.querySelector('#genre').value = data.genre
