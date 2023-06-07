@@ -18,13 +18,13 @@ const selectEditRoute = (currentTarget, id) => {
     const itemType = itemToEdit.dataset.type
 
     if (itemType === "figure") {
-        figureEdit(id);
+        figureEdit(id, itemType);
     } else if (itemType === "coin") {
-        coinEdit(id);
+        coinEdit(id, itemType);
     } else if (itemType === "card") {
-        cardEdit(id);
+        cardEdit(id, itemType);
     } else if (itemType === "music") {
-        musicEdit(id);
+        musicEdit(id, itemType);
     }
 }
 
@@ -38,7 +38,7 @@ const getModalButtons = (type, id) => {
 
 /// Edit Options based on Item Type///
 // Populate figure data and listen for update or edit
-const figureEdit = async (id) => {
+const figureEdit = async (id, itemType) => {
     try {
         let rawData = await fetch(`/api/actionfigure/${id}`)
         let data = await rawData.json()
@@ -54,7 +54,6 @@ const figureEdit = async (id) => {
         document.querySelector('#barcode').value = data.barcode
         document.querySelector('#condition').value = data.condition
         document.querySelector('#price').value = data.price
-        document.querySelector('#image').value = data.image
         const url = `/api/actionfigure/${id}`
         const updateBtn = getModalButtons("fig", id)
         updateBtn.onclick = function () {
@@ -73,10 +72,9 @@ const figureEdit = async (id) => {
                 barcode: document.querySelector('#barcode').value.trim() || null,
                 condition: document.querySelector('#condition').value.trim() || null,
                 price: document.querySelector('#price').value.trim() || null,
-                image: document.querySelector('#image').value.trim() || null
             }
 
-            updatePath(updObj, url)
+            updatePath(updObj, url, id, itemType)
         }
     } catch (error) {
         console.log(err)
@@ -85,7 +83,7 @@ const figureEdit = async (id) => {
 }
 
 // Edit Coin //
-const coinEdit = async (id) => {
+const coinEdit = async (id, itemType) => {
     try {
         let rawData = await fetch(`/api/coin/${id}`)
         let data = await rawData.json()
@@ -102,7 +100,6 @@ const coinEdit = async (id) => {
         document.querySelector('#artist').value = data.artist
         document.querySelector('#condition').value = data.condition
         document.querySelector('#price').value = data.price
-        document.querySelector('#image').value = data.image
         const url = `/api/coin/${id}`
         const updateBtn = getModalButtons("coin", id)
         updateBtn.onclick = function () {
@@ -128,10 +125,9 @@ const coinEdit = async (id) => {
                 artist: document.querySelector('#artist').value.trim() || null,
                 condition: document.querySelector('#condition').value.trim() || null,
                 price: document.querySelector('#price').value.trim() || null,
-                image: document.querySelector('#image').value.trim() || null
             }
 
-            updatePath(updObj, url)
+            updatePath(updObj, url, id, itemType)
         }
 
     } catch (error) {
@@ -141,7 +137,7 @@ const coinEdit = async (id) => {
 }
 
 // Edit Card //
-const cardEdit = async (id) => {
+const cardEdit = async (id, itemType) => {
     try {
         let rawData = await fetch(`/api/card/${id}`)
         let data = await rawData.json()
@@ -158,7 +154,6 @@ const cardEdit = async (id) => {
         document.querySelector('#manufacturer').value = data.manufacturer
         document.querySelector('#condition').value = data.condition
         document.querySelector('#price').value = data.price
-        document.querySelector('#image').value = data.image
         const url = `/api/card/${id}`
         const updateBtn = getModalButtons("card", id)
         updateBtn.onclick = function () {
@@ -178,10 +173,9 @@ const cardEdit = async (id) => {
                 manufacturer: document.querySelector('#manufacturer').value.trim() || null,
                 condition: document.querySelector('#condition').value.trim() || null,
                 price: document.querySelector('#price').value.trim() || null,
-                image: document.querySelector('#image').value.trim() || null
             }
 
-            updatePath(updObj, url)
+            updatePath(updObj, url, id, itemType)
         };
     } catch (error) {
         console.log(err)
@@ -190,7 +184,7 @@ const cardEdit = async (id) => {
 }
 
 // Edit Music //
-const musicEdit = async (id) => {
+const musicEdit = async (id, itemType) => {
     try {
         let rawData = await fetch(`/api/music/${id}`)
         let data = await rawData.json()
@@ -208,7 +202,6 @@ const musicEdit = async (id) => {
         document.querySelector('#barcode').value = data.barcode
         document.querySelector('#condition').value = data.condition
         document.querySelector('#price').value = data.price
-        document.querySelector('#image').value = data.image
         const url = `/api/music/${id}`
         const updateBtn = getModalButtons("music", id)
         updateBtn.onclick = function () {
@@ -235,10 +228,9 @@ const musicEdit = async (id) => {
                 barcode: document.querySelector('#barcode').value.trim() || null,
                 condition: document.querySelector('#condition').value.trim() || null,
                 price: document.querySelector('#price').value.trim() || null,
-                image: document.querySelector('#image').value.trim() || null
             }
 
-            updatePath(updObj, url)
+            updatePath(updObj, url, id, itemType)
         };
     } catch (error) {
         console.log(err)
@@ -357,7 +349,7 @@ const getCollCardId = async (cardId) => {
     }
 }
 
-const updatePath = async (obj, url) => {
+const updatePath = async (obj, url, id, itemType) => {
     try {
         const response = await fetch(`${url}`, {
             method: 'PUT',
@@ -368,7 +360,24 @@ const updatePath = async (obj, url) => {
         });
 
         if (response.ok) {
-            updateSuccess();
+            switch (itemType) {
+                case 'figure':
+                    await uploadFigureImg(id);
+                    updateSuccess();
+                    break;
+                case 'coin':
+                    await uploadCoinImg(id);
+                    updateSuccess();
+                    break;
+                case 'music':
+                    await uploadMusicImg(id);
+                    updateSuccess();
+                    break;
+                case 'card':
+                    await uploadCardImg(id);
+                    updateSuccess();
+                    break;
+            }
         } else {
             updateFailed();
         }
@@ -382,12 +391,12 @@ let init = () => {
 
     const testEl = document.getElementById("personal-collection-page") || null;
 
-        for (var i = 0; i < editBtns.length; i++) {
+    for (var i = 0; i < editBtns.length; i++) {
 
-            editBtns[i].addEventListener("click", (event) => {
-                selectEditRoute(event.currentTarget, event.currentTarget.dataset.id);
-            })
-        }
+        editBtns[i].addEventListener("click", (event) => {
+            selectEditRoute(event.currentTarget, event.currentTarget.dataset.id);
+        })
+    }
 }
 
 const updateSuccess = () => {
@@ -465,8 +474,8 @@ const updateFigureHtml = `
         <input class="m-1.5 p-1.5 rounded-lg" id="price" type="text" placeholder="Price"> 
     </div>
     <div class="flex flex-row w-full justify-between">
-        <label class="m-1.5 ps-2 font-bold text-lg" for="image">Image URL:</label>
-        <input class="m-1.5 p-1.5 rounded-lg" id="image" type="text" placeholder="URL for Image"> 
+        <label class="ps-2 font-bold text-lg" for="actionfigure-photo-input-el">Upload Image:</label>
+        <input class="w-52 m-2 p-1.5 rounded-lg" id="actionfigure-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
     </div>
     <div class="flex w-full justify-around mt-7">
         <button id="update-btn" type="button" class="border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110">Update</button>
@@ -524,8 +533,8 @@ const updateMusicHtml = `
           <input class="m-1.5 p-1.5 rounded-lg" id="price" type="text" placeholder="Price"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="m-1.5 ps-2 font-bold text-lg" for="image">Image URL:</label>
-          <input class="m-1.5 p-1.5 rounded-lg" id="image" type="text" placeholder="URL for Image"> 
+        <label class="ps-2 font-bold text-lg" for="music-photo-input-el">Upload Image:</label>
+        <input class="w-52 m-2 p-1.5 rounded-lg" id="music-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
       </div>
       <div class="flex w-full justify-around mt-7">
         <button id="update-btn" type="button" class="border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110">Update</button>
@@ -579,8 +588,8 @@ const updateCoinHtml = `
           <input class="m-1.5 p-1.5 rounded-lg" id="price" type="text" placeholder="Price"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="m-1.5 ps-2 font-bold text-lg" for="image">Image URL:</label>
-          <input class="m-1.5 p-1.5 rounded-lg" id="image" type="text" placeholder="URL for Image"> 
+        <label class="ps-2 font-bold text-lg" for="coin-photo-input-el">Upload Image:</label>
+        <input class="w-52 m-2 p-1.5 rounded-lg" id="coin-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
       </div>
       <div class="flex w-full justify-around mt-7">
         <button id="update-btn" type="button" class="border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110">Update</button>
@@ -639,8 +648,8 @@ const updateCardHtml = `
           <input class="m-1.5 p-1.5 rounded-lg" id="price" type="text" placeholder="Price"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="m-1.5 ps-2 font-bold text-lg" for="image">Image URL:</label>
-          <input class="m-1.5 p-1.5 rounded-lg" id="image" type="text" placeholder="URL for Image"> 
+        <label class="ps-2 font-bold text-lg" for="card-photo-input-el">Upload Image:</label>
+        <input class="w-52 m-2 p-1.5 rounded-lg" id="card-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg">
       </div>
       <div class="flex w-full justify-around mt-7">
         <button id="update-btn" type="button" class="border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110">Update</button>

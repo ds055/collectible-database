@@ -2,7 +2,7 @@
 
 {{#if collection}}
   <div class = 'flex justify-center'>
-    <h2 class = 'font-bold text-4xl md:text-6xl lg:text-8xl m-6 bg-gradient-to-tr from-violet-700 via-fuchsia-300 to-teal-400 bg-clip-text text-transparent'>Your Collections</h2>
+    <h2 class = 'pb-4 font-bold text-4xl md:text-6xl lg:text-8xl m-6 bg-gradient-to-tr from-violet-700 via-fuchsia-300 to-teal-400 bg-clip-text text-transparent'>{{first_name}}'s Collections</h2>
   </div>
   <div class="flex felx-row justify-center">
         <button class="border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110" id="addCollectionBtn">Add Collection</button>
@@ -23,6 +23,20 @@
   <div class = 'flex justify-center' id="personal-collection-page">
     <h2 class = 'p-5 font-bold text-4xl md:text-6xl lg:text-8xl m-6 bg-gradient-to-tr from-violet-700 via-fuchsia-300 to-teal-400 bg-clip-text text-transparent'>{{ collectionName }}</h2>
   </div>
+  <div class="flex felx-row justify-center">
+        <button class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" id="addCollectionBtn">Add Collection</button>
+        <button class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" id="addCoolectibleBtn">Add Coolectible</button>
+  </div>
+  <form id="view-all-form" class="flex justify-center items-center mt-5">
+    <label class="font-bold text-lg" for="view-all">View All Your:</label>
+        <select class="ms-3 me-4" id="view-all-choice" name="type-select">
+        <option value="figure">Action Figures</option>
+        <option value="card">Cards</option>
+        <option value="coin">Coins</option>
+        <option value="music">Music</option>
+        </select> 
+    <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
+  </form>
   {{/unless}}
 
       {{!-- Modal Container --}}
@@ -48,7 +62,7 @@
                   {{#if image}}<img class="w-full lg:h-[28rem] h-[20rem] rounded-b-lg border-b-[0.4rem] border-indigo-500 flex content-center z-30" src="{{ image }}" alt="blog">{{else}}<img class="w-full lg:h-[28rem] h-[20rem] rounded-b-lg border-b-[0.4rem] border-indigo-500 flex content-center object-cover z-30" src="https://cdn.pixabay.com/photo/2014/12/21/23/40/bookcase-575818_1280.png" alt="blog">{{/if}}
                     <div class="items-center text-center">
                       <h2 class="m-2 pb-2 border-b-2 font-bold text-xl">{{ name }}</h2>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis excepturi dolorum officiis nihil, odio quidem quo natus exercitationem fuga, minus ullam ratione suscipit inventore et deserunt porro quas. Beatae, quae.</p>
+                      <p id="coll-description">{{ description }}</p>
                         <button class="m-4 px-6 py-2 transition duration-400 hover:bg-green-400 rounded-full bg-blue-400">Open Collection</button>
                     </div>
                 </a>
@@ -88,12 +102,16 @@
   </section>
 
 </content>
-<script src="/js/edit-item-collection-modal.js"></script>
 {{#if collection}}
 <script src="/js/add-item-modal.js"></script>
 <script src="/js/view-all.js"></script>
 <script src="/js/delete-update-coll.js"></script>
 {{/if}}
+{{#unless collection}}
+<script src="/js/edit-item-collection-modal.js"></script>
+<script src="/js/add-item-modal.js"></script>
+<script src="/js/view-all.js"></script>
+{{/unless}}
 
 
 

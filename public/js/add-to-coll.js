@@ -84,6 +84,8 @@ const figureAddtoColl = async (collectionId, itemId) => {
             if (data.errors[0].type === "unique violation") {
                 generatedAddFail("This item is already in your collection!")
             }
+        } else {
+            updateSuccess();
         }
     } catch (err) {
         console.log(err)
@@ -109,6 +111,8 @@ const cardAddtoColl = async (collectionId, itemId) => {
             if (data.errors[0].type === "unique violation") {
                 generatedAddFail("This item is already in your collection!")
             }
+        } else {
+            updateSuccess();
         }
     } catch (err) {
         console.log(err)
@@ -134,6 +138,8 @@ const coinAddtoColl = async (collectionId, itemId) => {
             if (data.errors[0].type === "unique violation") {
                 generatedAddFail("This item is already in your collection!")
             }
+        } else {
+            updateSuccess();
         }
     } catch (err) {
         console.log(err)
@@ -159,6 +165,8 @@ const musicAddtoColl = async (collectionId, itemId) => {
             if (data.errors[0].type === "unique violation") {
                 generatedAddFail("This item is already in your collection!")
             }
+        } else {
+            updateSuccess();
         }
     } catch (err) {
         console.log(err)
@@ -170,7 +178,6 @@ document.addEventListener("load", addCollinit())
 const generatedAddFail = (msg) => {
     modal.innerHTML = generatedAddFailText(msg);
     modal.style.display = "block";
-    console.log(document.getElementById("close"));
     document.getElementById("close").addEventListener("click", function () { modal.style.display = "none" })
 }
 
@@ -198,13 +205,13 @@ const addToCollectionHtml = `
   </p>
   <form id="add-to-coll-form">
     <div class="flex mt-3 flex-row w-full justify-center">
-            <select class="w-52 ms-2 p-1.5 rounded-lg" id="coll-select" name="type-select">
+            <select id="coll-select" name="type-select">
 
             </select> 
         </div>
-    <div class="flex justify-center m-6">
-      <input id="close" type="submit" class="cursor-pointer border-2 bg-indigo-500 hover:bg-indigo-600 rounded text-lg transition duration-400 hover:scale-110 text-white p-1 px-2 me-3">
-      <button id="close" type="button" class="button border-2 bg-indigo-500 hover:bg-indigo-600 rounded text-lg transition duration-400 hover:scale-110 text-white p-1 ms3">Cancel</button>
+    <div class="flex justify-center items-center">
+      <input id="submit" type="submit" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-xl px-1 hover:bg-indigo-300 hover:text-black my-3">
+      <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms-3">Cancel</button>
   </form>
   </div>
 </div>

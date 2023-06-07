@@ -15,6 +15,8 @@ router.get('/', async (req, res) => {
       ...userData,
       logged_in: req.session.logged_in
     });
+
+    console.log(userData)
   } catch (err) {
     res.status(500).json(err);
   }
