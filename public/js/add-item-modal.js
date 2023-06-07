@@ -91,7 +91,7 @@ const uploadCollectionImage = async (collectionId) => {
 
     console.log(data);
 
-  } catch(err) {
+  } catch (err) {
     console.log(err);
   }
 
@@ -110,7 +110,7 @@ const uploadFigureImg = async (figureId) => {
       body: formData
     });
 
-  } catch(err) {
+  } catch (err) {
     console.log(err);
   }
 
@@ -129,7 +129,7 @@ const uploadCardImg = async (cardId) => {
       body: formData
     });
 
-  } catch(err) {
+  } catch (err) {
     console.log(err);
   }
 
@@ -147,7 +147,7 @@ const uploadCoinImg = async (coinId) => {
       method: 'POST',
       body: formData
     });
-  } catch(err) {
+  } catch (err) {
     console.log(err);
   }
 }
@@ -164,7 +164,7 @@ const uploadMusicImg = async (musicId) => {
       method: 'POST',
       body: formData
     });
-  } catch(err) {
+  } catch (err) {
     console.log(err);
   }
 }
@@ -423,11 +423,11 @@ const addNewCard = async function (event) {
 const addSuccess = () => {
   modal.innerHTML = successHtml;
   const cancelBtn = document.getElementById("close");
-  cancelBtn.onclick = function () {  document.location.reload() };
+  cancelBtn.onclick = function () { document.location.reload() };
 }
 
 const addFailed = () => {
-  modal.innerHTML = failedHtml;
+  modal.innerHTML = generalFailedHtml;
   const cancelBtn = document.getElementById("close");
   cancelBtn.onclick = function () { modal.style.display = "none" };
 }
