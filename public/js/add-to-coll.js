@@ -14,7 +14,7 @@ const addtoCollOptions = async (item_type, id) => {
         // sets the html of the modal
         modal.innerHTML = addToCollectionHtml;
         // initiate cancel button from edit-item-all-modal
-        cancelBtnFunction();
+        addItemCancelBtnFunction();
 
         // get select from modal
         const select = document.getElementById("coll-select")
