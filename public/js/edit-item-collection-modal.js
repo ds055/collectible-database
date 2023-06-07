@@ -379,12 +379,15 @@ const updatePath = async (obj, url) => {
 
 // dynamically renders edit buttons
 let init = () => {
-    for (var i = 0; i < editBtns.length; i++) {
 
-        editBtns[i].addEventListener("click", (event) => {
-            selectEditRoute(event.currentTarget, event.currentTarget.dataset.id);
-        })
-    }
+    const testEl = document.getElementById("personal-collection-page") || null;
+
+        for (var i = 0; i < editBtns.length; i++) {
+
+            editBtns[i].addEventListener("click", (event) => {
+                selectEditRoute(event.currentTarget, event.currentTarget.dataset.id);
+            })
+        }
 }
 
 const updateSuccess = () => {
