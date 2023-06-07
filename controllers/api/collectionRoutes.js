@@ -12,6 +12,22 @@ router.get('/', async (req, res) => {
   }
 });
 
+// get user's collections by give type
+router.get('/user/:type', async (req, res) => {
+  try{
+    const collections = await Collection.findAll({
+      where: {
+        user_id: req.session.user_id,
+        collection_type: req.params.type
+      }
+    })
+    res.status(200).json(collections)
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}
+)
+
 
 // create a new collection
 router.post('/', withAuth,  async (req, res) => {
