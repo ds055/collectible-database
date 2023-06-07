@@ -135,6 +135,40 @@ const uploadCardImg = async (cardId) => {
 
 }
 
+const uploadCoinImg = async (coinId) => {
+  try {
+
+    const file = document.querySelector("#coin-photo-input-el").files[0];
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const data = await fetch(`/api/images/coin/${coinId}`, {
+      method: 'POST',
+      body: formData
+    });
+  } catch(err) {
+    console.log(err);
+  }
+}
+
+const uploadMusicImg = async (musicId) => {
+  try {
+
+    const file = document.querySelector("#music-photo-input-el").files[0];
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const data = await fetch(`/api/images/music/${musicId}`, {
+      method: 'POST',
+      body: formData
+    });
+  } catch(err) {
+    console.log(err);
+  }
+}
+
 // Adds new collection via api call
 const newCollectionSubmit = async function (event) {
   event.preventDefault();
@@ -270,9 +304,8 @@ const addNewMusic = async function (event) {
   // error handling and confirmation message
   if (response.ok) {
     const data = await response.json();
-    console.log(data);
-    await uploadMusicImg(data.id);
-    console.log('after');
+    let test = await uploadMusicImg(data.id);
+    console.log(test)
     addSuccess();
   } else {
     addFailed();
@@ -573,7 +606,7 @@ const newMusicHtml = `
       </div>
       <div class="flex flex-row w-full justify-between">
           <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
-          <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
+          <input class="w-52 m-2 p-1.5 rounded-lg" id="music-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
       </div>
       <div class="flex w-full justify-center mt-7">
           <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
@@ -627,7 +660,7 @@ const newCoinHtml = `
       </div>
       <div class="flex flex-row w-full justify-between">
           <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
-          <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
+          <input class="w-52 m-2 p-1.5 rounded-lg" id="coin-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
       </div>
       <div class="flex w-full justify-center mt-7">
           <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
