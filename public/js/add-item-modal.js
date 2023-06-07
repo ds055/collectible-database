@@ -74,6 +74,101 @@ const newCardForm = (event) => {
   document.querySelector('#new-card-form').addEventListener("submit", addNewCard)
 }
 
+const uploadCollectionImage = async (collectionId) => {
+  try {
+
+    const file = document.querySelector("#collection-photo-input-el").files[0];
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const data = await fetch(`/api/images/collections/${collectionId}`, {
+      method: 'POST',
+      body: formData
+    });
+
+    console.log('before');
+
+    console.log(data);
+
+  } catch(err) {
+    console.log(err);
+  }
+
+}
+
+const uploadFigureImg = async (figureId) => {
+  try {
+
+    const file = document.querySelector("#actionfigure-photo-input-el").files[0];
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const data = await fetch(`/api/images/actionfigure/${figureId}`, {
+      method: 'POST',
+      body: formData
+    });
+
+  } catch(err) {
+    console.log(err);
+  }
+
+}
+
+const uploadCardImg = async (cardId) => {
+  try {
+
+    const file = document.querySelector("#card-photo-input-el").files[0];
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const data = await fetch(`/api/images/card/${cardId}`, {
+      method: 'POST',
+      body: formData
+    });
+
+  } catch(err) {
+    console.log(err);
+  }
+
+}
+
+const uploadCoinImg = async (coinId) => {
+  try {
+
+    const file = document.querySelector("#coin-photo-input-el").files[0];
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const data = await fetch(`/api/images/coin/${coinId}`, {
+      method: 'POST',
+      body: formData
+    });
+  } catch(err) {
+    console.log(err);
+  }
+}
+
+const uploadMusicImg = async (musicId) => {
+  try {
+
+    const file = document.querySelector("#music-photo-input-el").files[0];
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const data = await fetch(`/api/images/music/${musicId}`, {
+      method: 'POST',
+      body: formData
+    });
+  } catch(err) {
+    console.log(err);
+  }
+}
+
 // Adds new collection via api call
 const newCollectionSubmit = async function (event) {
   event.preventDefault();
@@ -81,12 +176,12 @@ const newCollectionSubmit = async function (event) {
   // grab dom els
   const name = document.querySelector('#name').value.trim() || null;
   const collection_type = document.querySelector('#collection_type').value.trim() || null;
-  const image = document.querySelector('#url').value.trim() || null;
 
   if (name === null) {
     generatedFail('Name cannot be empty');
     return;
   }
+
 
   // api call to create new figure
   let response = await fetch(`/api/collection`, {
@@ -94,18 +189,22 @@ const newCollectionSubmit = async function (event) {
     body: JSON.stringify({
       name,
       collection_type,
-      image
     }),
     headers: { 'Content-Type': 'application/json' },
   });
 
   // error handling and confirmation message
   if (response.ok) {
+    const data = await response.json();
+    console.log(data);
+    await uploadCollectionImage(data.id);
+    console.log('after');
     addSuccess();
   } else {
     addFailed();
   }
 };
+
 
 // Adds new figure via api call
 const addNewActionFigure = async function (event) {
@@ -120,7 +219,7 @@ const addNewActionFigure = async function (event) {
   const barcode = document.querySelector('#barcode').value.trim() || null;
   const condition = document.querySelector('#condition').value.trim() || null;
   const price = document.querySelector('#price').value.trim() || null;
-  const image = document.querySelector('#url').value.trim() || null;
+
 
   if (name === null) {
     generatedFail('Name cannot be empty');
@@ -139,14 +238,18 @@ const addNewActionFigure = async function (event) {
       barcode,
       condition,
       price,
-      image,
     }),
     headers: { 'Content-Type': 'application/json' },
   });
 
   // error handling and confirmation message
   if (response.ok) {
+    const data = await response.json();
+    console.log(data);
+    await uploadFigureImg(data.id);
+    console.log('after');
     addSuccess();
+
   } else {
     addFailed();
   }
@@ -167,7 +270,6 @@ const addNewMusic = async function (event) {
   const barcode = document.querySelector('#barcode').value.trim() || null;
   const condition = document.querySelector('#condition').value.trim() || null;
   const price = document.querySelector('#price').value.trim() || null;
-  const image = document.querySelector('#url').value.trim() || null;
 
   // Handling required fields
   if (album_name === null) {
@@ -195,13 +297,15 @@ const addNewMusic = async function (event) {
       barcode,
       condition,
       price,
-      image,
     }),
     headers: { 'Content-Type': 'application/json' },
   });
 
   // error handling and confirmation message
   if (response.ok) {
+    const data = await response.json();
+    let test = await uploadMusicImg(data.id);
+    console.log(test)
     addSuccess();
   } else {
     addFailed();
@@ -223,7 +327,6 @@ const addNewCoin = async function (event) {
   const artist = document.querySelector('#artist').value.trim() || null;
   const condition = document.querySelector('#condition').value.trim() || null;
   const price = document.querySelector('#price').value.trim() || null;
-  const image = document.querySelector('#url').value.trim() || null;
 
   // Handling required fields
   if (denomination === null) {
@@ -250,13 +353,16 @@ const addNewCoin = async function (event) {
       artist,
       condition,
       price,
-      image,
     }),
     headers: { 'Content-Type': 'application/json' },
   });
 
   // error handling and confirmation message
   if (response.ok) {
+    const data = await response.json();
+    console.log(data);
+    await uploadCoinImg(data.id);
+    console.log('after');
     addSuccess();
   } else {
     addFailed();
@@ -278,7 +384,6 @@ const addNewCard = async function (event) {
   const manufacturer = document.querySelector('#manufacturer').value.trim() || null;
   const condition = document.querySelector('#condition').value.trim() || null;
   const price = document.querySelector('#price').value.trim() || null;
-  const image = document.querySelector('#url').value.trim() || null;
 
   // Handling required fields
   if (name === null) {
@@ -299,13 +404,16 @@ const addNewCard = async function (event) {
       manufacturer,
       condition,
       price,
-      image,
     }),
     headers: { 'Content-Type': 'application/json' },
   });
 
   // error handling and confirmation message
   if (response.ok) {
+    const data = await response.json();
+    console.log(data);
+    await uploadCardImg(data.id);
+    console.log('after');
     addSuccess();
   } else {
     addFailed();
@@ -366,8 +474,8 @@ const collectionHtml = `
           <input class="w-52 m-2 p-1.5 rounded-lg" id="name" type="required" placeholder="Enter name here"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 pt-1 font-bold text-lg" for="url">Image URL:</label>
-          <input class="w-52 m-2 p-1.5 rounded-lg" id="url" type="text" placeholder="URL for Image"> 
+          <label class="ps-2 pt-1 font-bold text-lg" for="url">Select Image</label>
+          <input class="w-52 m-2 p-1.5 rounded-lg" id="collection-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
       </div>
       <div class="flex w-full justify-center mt-7">
           <input class="cursor-pointer border-2 bg-indigo-500 hover:bg-indigo-600 rounded text-lg transition duration-400 hover:scale-110 text-white p-1 px-2 me-3" type="submit">
@@ -440,7 +548,7 @@ const newFigureHtml = `
     </div>
     <div class="flex flex-row w-full justify-between">
         <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
-        <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
+        <input class="w-52 m-2 p-1.5 rounded-lg" id="actionfigure-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
     </div>
     <div class="flex w-full justify-center mt-7">
         <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
@@ -498,7 +606,7 @@ const newMusicHtml = `
       </div>
       <div class="flex flex-row w-full justify-between">
           <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
-          <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
+          <input class="w-52 m-2 p-1.5 rounded-lg" id="music-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
       </div>
       <div class="flex w-full justify-center mt-7">
           <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
@@ -552,7 +660,7 @@ const newCoinHtml = `
       </div>
       <div class="flex flex-row w-full justify-between">
           <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
-          <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
+          <input class="w-52 m-2 p-1.5 rounded-lg" id="coin-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
       </div>
       <div class="flex w-full justify-center mt-7">
           <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
@@ -611,7 +719,7 @@ const newCardHtml = `
       </div>
       <div class="flex flex-row w-full justify-between">
           <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
-          <input class="m-2" id="url" type="text" placeholder="URL for Image"> 
+          <input class="w-52 m-2 p-1.5 rounded-lg" id="card-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
       </div>
       <div class="flex w-full justify-center mt-7">
           <input class="cursor-pointer border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 me-3" type="submit">
