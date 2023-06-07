@@ -13,9 +13,9 @@ router.get('/', withAuth, async (req, res) => {
 
         if (collection.length === 0) {
             const noCollections = true;
-            res.render('bigEmpty', { noCollections, logged_in: req.session.logged_in })
+            res.render('bigEmpty', { noCollections, first_name: req.session.first_name, logged_in: req.session.logged_in })
         } else {
-            res.render('collections', { collection, logged_in: req.session.logged_in });
+            res.render('collections', { collection, first_name: req.session.first_name, logged_in: req.session.logged_in });
         }
 
     } catch (err) {
@@ -38,10 +38,11 @@ try {
     if (coin.length > 0) {
         res.render('view-all', { 
             coin,
-            logged_in: req.session.logged_in
+            logged_in: req.session.logged_in,
+            first_name: req.session.first_name
         });
     } else {
-        res.render('bigEmpty', {logged_in: req.session.logged_in})
+        res.render('bigEmpty', {first_name: req.session.first_name, logged_in: req.session.logged_in})
     }
  
     } catch (err) {
@@ -62,10 +63,11 @@ router.get('/figure', withAuth, async (req, res) => {
         if (figure.length > 0) {
             res.render('view-all', { 
                 figure,
-                logged_in: req.session.logged_in
+                logged_in: req.session.logged_in,
+                first_name: req.session.first_name
             });
         } else {
-            res.render('bigEmpty', {logged_in: req.session.logged_in})
+            res.render('bigEmpty', {first_name: req.session.first_name, logged_in: req.session.logged_in})
         }
     } catch (err) {
         res.status(500).json(err);
@@ -85,10 +87,11 @@ router.get('/card', withAuth, async (req, res) => {
         if (card.length > 0) {
             res.render('view-all', { 
                 card,
-                logged_in: req.session.logged_in
+                logged_in: req.session.logged_in,
+                first_name: req.session.first_name
             });
         } else {
-            res.render('bigEmpty', {logged_in: req.session.logged_in})
+            res.render('bigEmpty', {first_name:req.session.first_name, logged_in: req.session.logged_in})
         }
     } catch (err) {
     res.status(500).json(err);
@@ -108,10 +111,11 @@ router.get('/music', withAuth, async (req, res) => {
         if (music.length > 0) {
             res.render('view-all', { 
                 music,
-                logged_in: req.session.logged_in
+                logged_in: req.session.logged_in,
+                first_name: req.session.first_name
             });
         } else {
-            res.render('bigEmpty', {logged_in: req.session.logged_in})
+            res.render('bigEmpty', {first_name: req.session.first_name, logged_in: req.session.logged_in})
         }
         } catch (err) {
         res.status(500).json(err);

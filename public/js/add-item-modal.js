@@ -17,7 +17,7 @@ collectionBtn.onclick = function () {
   // html for modal
   modal.innerHTML = collectionHtml;
   // initiate cancel button listener
-  cancelBtnFunction();
+  addItemCancelBtnFunction();
   // display modal from hidden
   modal.style.display = "block";
   // create listener for submit button
@@ -29,7 +29,7 @@ coolectibleBtn.onclick = function () {
   // html for modal
   modal.innerHTML = collectibleTypeHtml;
   // initialize generated cancel button
-  cancelBtnFunction();
+  addItemCancelBtnFunction();
   // display modal 
   modal.style.display = "block";
   // get select from modal
@@ -53,7 +53,7 @@ coolectibleBtn.onclick = function () {
 }
 
 // Calls dom query to find close button on modal
-const cancelBtnFunction = () => {
+const addItemCancelBtnFunction = () => {
   const cancelBtn = document.getElementById("close");
   cancelBtn.onclick = function () { modal.style.display = "none" };
 }
@@ -61,26 +61,26 @@ const cancelBtnFunction = () => {
 // Generates modal for new coolectible based on drop down answer from select above
 const newFigureForm = (event) => {
   modal.innerHTML = newFigureHtml;
-  cancelBtnFunction();
+  addItemCancelBtnFunction();
   // Listener waits for submit button presson the passes data to next method
   document.querySelector('#new-figure-form').addEventListener("submit", addNewActionFigure)
 }
 
 const newMusicForm = (event) => {
   modal.innerHTML = newMusicHtml;
-  cancelBtnFunction();
+  addItemCancelBtnFunction();
   document.querySelector('#new-music-form').addEventListener("submit", addNewMusic)
 }
 
 const newCoinForm = (event) => {
   modal.innerHTML = newCoinHtml;
-  cancelBtnFunction();
+  addItemCancelBtnFunction();
   document.querySelector('#new-coin-form').addEventListener("submit", addNewCoin)
 }
 
 const newCardForm = (event) => {
   modal.innerHTML = newCardHtml;
-  cancelBtnFunction();
+  addItemCancelBtnFunction();
   document.querySelector('#new-card-form').addEventListener("submit", addNewCard)
 }
 
@@ -111,7 +111,10 @@ const uploadFigureImg = async (figureId) => {
   try {
 
     const file = document.querySelector("#actionfigure-photo-input-el").files[0];
-
+    // create new form and add file option to it
+    if(!file) {
+      return;
+    }
     const formData = new FormData();
     formData.append('file', file);
 
@@ -130,6 +133,10 @@ const uploadCardImg = async (cardId) => {
   try {
 
     const file = document.querySelector("#card-photo-input-el").files[0];
+    // create new form and add file option to it
+    if(!file) {
+      return;
+    }
 
     const formData = new FormData();
     formData.append('file', file);
@@ -149,6 +156,10 @@ const uploadCoinImg = async (coinId) => {
   try {
 
     const file = document.querySelector("#coin-photo-input-el").files[0];
+    // create new form and add file option to it
+    if(!file) {
+      return;
+    }
 
     const formData = new FormData();
     formData.append('file', file);
@@ -166,6 +177,11 @@ const uploadMusicImg = async (musicId) => {
   try {
 
     const file = document.querySelector("#music-photo-input-el").files[0];
+
+    // create new form and add file option to it
+    if(!file) {
+      return;
+    }
 
     const formData = new FormData();
     formData.append('file', file);
@@ -186,6 +202,7 @@ const newCollectionSubmit = async function (event) {
   // grab dom els
   const name = document.querySelector('#name').value.trim() || null;
   const collection_type = document.querySelector('#collection_type').value.trim() || null;
+  const description = document.querySelector('#description').value.trim() || null;
 
   if (name === null) {
     generatedFail('Name cannot be empty');
@@ -199,6 +216,7 @@ const newCollectionSubmit = async function (event) {
     body: JSON.stringify({
       name,
       collection_type,
+      description
     }),
     headers: { 'Content-Type': 'application/json' },
   });
@@ -255,9 +273,7 @@ const addNewActionFigure = async function (event) {
   // error handling and confirmation message
   if (response.ok) {
     const data = await response.json();
-    console.log(data);
     await uploadFigureImg(data.id);
-    console.log('after');
     addSuccess();
 
   } else {
@@ -314,8 +330,7 @@ const addNewMusic = async function (event) {
   // error handling and confirmation message
   if (response.ok) {
     const data = await response.json();
-    let test = await uploadMusicImg(data.id);
-    console.log(test)
+    await uploadMusicImg(data.id);
     addSuccess();
   } else {
     addFailed();
@@ -370,9 +385,7 @@ const addNewCoin = async function (event) {
   // error handling and confirmation message
   if (response.ok) {
     const data = await response.json();
-    console.log(data);
     await uploadCoinImg(data.id);
-    console.log('after');
     addSuccess();
   } else {
     addFailed();
@@ -421,9 +434,7 @@ const addNewCard = async function (event) {
   // error handling and confirmation message
   if (response.ok) {
     const data = await response.json();
-    console.log(data);
     await uploadCardImg(data.id);
-    console.log('after');
     addSuccess();
   } else {
     addFailed();
@@ -437,7 +448,7 @@ const addSuccess = () => {
 }
 
 const addFailed = () => {
-  modal.innerHTML = failedHtml;
+  modal.innerHTML = generalFailedHtml;
   const cancelBtn = document.getElementById("close");
   cancelBtn.onclick = function () { modal.style.display = "none" };
 }
@@ -484,7 +495,11 @@ const collectionHtml = `
           <input class="w-52 m-2 p-1.5 rounded-lg" id="name" type="required" placeholder="Enter name here"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 pt-1 font-bold text-lg" for="url">Select Image</label>
+          <label class="ps-2 pt-1 font-bold text-lg" for="description">Description:</label>
+          <textarea class="w-52 m-2 p-1.5 rounded-lg" id="description" placeholder="Enter name here"> </textarea>
+      </div>
+      <div class="flex flex-row w-full justify-between">
+          <label class="ps-2 pt-1 font-bold text-lg" for="collection-photo-input-el">Upload Image</label>
           <input class="w-52 m-2 p-1.5 rounded-lg" id="collection-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
       </div>
       <div class="flex w-full justify-center mt-7">
@@ -557,7 +572,7 @@ const newFigureHtml = `
         <input class="m-2" id="price" type="text" placeholder="Price"> 
     </div>
     <div class="flex flex-row w-full justify-between">
-        <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
+        <label class="ps-2 font-bold text-lg" for="actionfigure-photo-input-el">Upload Image:</label>
         <input class="w-52 m-2 p-1.5 rounded-lg" id="actionfigure-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
     </div>
     <div class="flex w-full justify-center mt-7">
@@ -615,7 +630,7 @@ const newMusicHtml = `
           <input class="m-2" id="price" type="text" placeholder="Price"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
+          <label class="ps-2 font-bold text-lg" for="music-photo-input-el">Upload Image:</label>
           <input class="w-52 m-2 p-1.5 rounded-lg" id="music-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
       </div>
       <div class="flex w-full justify-center mt-7">
@@ -669,7 +684,7 @@ const newCoinHtml = `
           <input class="m-2" id="price" type="text" placeholder="Price"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
+          <label class="ps-2 font-bold text-lg" for="coin-photo-input-el">Upload Image:</label>
           <input class="w-52 m-2 p-1.5 rounded-lg" id="coin-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
       </div>
       <div class="flex w-full justify-center mt-7">
@@ -728,7 +743,7 @@ const newCardHtml = `
           <input class="m-2" id="price" type="text" placeholder="Price"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="url">Image URL:</label>
+          <label class="ps-2 font-bold text-lg" for="card-photo-input-el">Upload Image:</label>
           <input class="w-52 m-2 p-1.5 rounded-lg" id="card-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
       </div>
       <div class="flex w-full justify-center mt-7">
