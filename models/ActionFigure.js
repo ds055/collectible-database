@@ -74,7 +74,7 @@ ActionFigure.init(
   },
   {
     sequelize,
-    timestamps: false,
+    timestamps: true,
     freezeTableName: true,
     underscored: true,
     modelName: 'action_figure'

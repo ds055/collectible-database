@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../../models');
+const getRecentItems = require('../../../models/getRecentItems');
+
 
 // Use withAuth middleware to prevent access to route
 router.get('/', async (req, res) => {
@@ -11,8 +13,13 @@ router.get('/', async (req, res) => {
       nest: true,
     });
 
+    // Fetch recent items
+    const recentItems = await getRecentItems();
+
+
     res.render('dashboard', {
       ...userData,
+      recentItems,
       logged_in: req.session.logged_in
     });
 
