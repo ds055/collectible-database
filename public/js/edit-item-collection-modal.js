@@ -359,7 +359,7 @@ const updatePath = async (obj, url, id, itemType) => {
             }
         });
 
-        if (response.ok){
+        if (response.ok) {
             switch (itemType) {
                 case 'figure':
                     await uploadFigureImg(id);
@@ -379,9 +379,9 @@ const updatePath = async (obj, url, id, itemType) => {
                     break;
             }
         } else {
-                updateFailed();
-            }
-    } catch(err) {
+            updateFailed();
+        }
+    } catch (err) {
         console.log(err)
     }
 }
@@ -391,12 +391,12 @@ let init = () => {
 
     const testEl = document.getElementById("personal-collection-page") || null;
 
-        for (var i = 0; i < editBtns.length; i++) {
+    for (var i = 0; i < editBtns.length; i++) {
 
-            editBtns[i].addEventListener("click", (event) => {
-                selectEditRoute(event.currentTarget, event.currentTarget.dataset.id);
-            })
-        }
+        editBtns[i].addEventListener("click", (event) => {
+            selectEditRoute(event.currentTarget, event.currentTarget.dataset.id);
+        })
+    }
 }
 
 const updateSuccess = () => {
@@ -442,104 +442,104 @@ const updateFigureHtml = `
 </div>
 <form id="update-figure-form" class="flex flex-col items-start p-4">
     <div class="flex flex-row w-full justify-between">
-        <label class="ps-2 font-bold text-lg" for="name">Name:</label>
-        <input class="m-2" id="name" type="text" placeholder="Figure Name"> 
+        <label class="m-1.5 ps-2 font-bold text-lg" for="name">Name:</label>
+        <input class="m-1.5 p-1.5 rounded-lg" id="name" type="text" placeholder="Figure Name"> 
     </div>
     <div class="flex flex-row w-full justify-between">
-        <label class="ps-2 font-bold text-lg" for="line">Line:</label>
-        <input class="m-2" id="line" type="text" placeholder="Eg: G.I. Joe"> 
+        <label class="m-1.5 ps-2 font-bold text-lg" for="line">Line:</label>
+        <input class="m-1.5 p-1.5 rounded-lg" id="line" type="text" placeholder="Eg: G.I. Joe"> 
     </div>
     <div class="flex flex-row w-full justify-between">
-        <label class="ps-2 font-bold text-lg" for="series">Series:</label>
-        <input class="m-2" id="series" type="text" placeholder="Eg: Series 1"> 
+        <label class="m-1.5 ps-2 font-bold text-lg" for="series">Series:</label>
+        <input class="m-1.5 p-1.5 rounded-lg" id="series" type="text" placeholder="Eg: Series 1"> 
     </div>
     <div class="flex flex-row w-full justify-between">
-        <label class="ps-2 font-bold text-lg" for="manufacturer">Manufacturer:</label>
-        <input class="m-2" id="manufacturer" type="text" placeholder="Eg: Kenner"> 
+        <label class="m-1.5 ps-2 font-bold text-lg" for="manufacturer">Manufacturer:</label>
+        <input class="m-1.5 p-1.5 rounded-lg" id="manufacturer" type="text" placeholder="Eg: Kenner"> 
     </div>
     <div class="flex flex-row w-full justify-between">
-        <label class="ps-2 font-bold text-lg" for="release_year">Release Year:</label>
-        <input class="m-2" id="release_year" type="text" placeholder="Release Year"> 
+        <label class="m-1.5 ps-2 font-bold text-lg" for="release_year">Release Year:</label>
+        <input class="m-1.5 p-1.5 rounded-lg" id="release_year" type="text" placeholder="Release Year"> 
     </div>
     <div class="flex flex-row w-full justify-between">
-        <label class="ps-2 font-bold text-lg" for="barcode">Barcode:</label>
-        <input class="m-2" id="barcode" type="text" placeholder="Barcode"> 
+        <label class="m-1.5 ps-2 font-bold text-lg" for="barcode">Barcode:</label>
+        <input class="m-1.5 p-1.5 rounded-lg" id="barcode" type="text" placeholder="Barcode"> 
     </div>
     <div class="flex flex-row w-full justify-between">
-        <label class="ps-2 font-bold text-lg" for="condition">Condition:</label>
-        <input class="m-2" id="condition" type="text" placeholder="Eg: 9.0, Fine"> 
+        <label class="m-1.5 ps-2 font-bold text-lg" for="condition">Condition:</label>
+        <input class="m-1.5 p-1.5 rounded-lg" id="condition" type="text" placeholder="Eg: 9.0, Fine"> 
     </div>
     <div class="flex flex-row w-full justify-between">
-        <label class="ps-2 font-bold text-lg" for="price">Price:</label>
-        <input class="m-2" id="price" type="text" placeholder="Price"> 
+        <label class="m-1.5 ps-2 font-bold text-lg" for="price">Price:</label>
+        <input class="m-1.5 p-1.5 rounded-lg" id="price" type="text" placeholder="Price"> 
     </div>
     <div class="flex flex-row w-full justify-between">
         <label class="ps-2 font-bold text-lg" for="actionfigure-photo-input-el">Upload Image:</label>
         <input class="w-52 m-2 p-1.5 rounded-lg" id="actionfigure-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
     </div>
     <div class="flex w-full justify-around mt-7">
-        <button id="update-btn" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Update</button>
-        <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Cancel</button>
-        <button id="delete-btn" type="button" class="border-2 border-black bg-rose-500 rounded-lg text-white text-lg px-0.5 ms3">Boot From Collection</button>
+        <button id="update-btn" type="button" class="border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110">Update</button>
+        <button id="close" type="button" class="border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110">Cancel</button>
+        <button id="delete-btn" type="button" class="border-2 border-white bg-rose-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-rose-500 transition duration-400 hover:scale-110">Boot From Collection</button>
     </div>
 </form>
 </div>        
 `
 
 const updateMusicHtml = `
-<div class="modal-content">
+<div class="modal-content -mt-12">
   <div class="bg-indigo-600">
       <h2 class="py-3 text-center text-white text-2xl font-extrabold">Update Music Entry</h2>
   </div>
   <form id="update-music-form" class="flex flex-col items-start p-4">
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="album_name">Album Name:</label>
-          <input class="m-2" id="album_name" type="text" placeholder="Album Name"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="album_name">Album Name:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="album_name" type="text" placeholder="Album Name"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="artist">Artist:</label>
-          <input class="m-2" id="artist" type="text" placeholder="Artist/Band Name"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="artist">Artist:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="artist" type="text" placeholder="Artist/Band Name"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="genre">Genre:</label>
-          <input class="m-2" id="genre" type="text" placeholder="Eg: Rock"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="genre">Genre:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="genre" type="text" placeholder="Eg: Rock"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="style">Style:</label>
-          <input class="m-2" id="style" type="text" placeholder="Eg: Grunge, Heavy Metal"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="style">Style:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="style" type="text" placeholder="Eg: Grunge, Heavy Metal"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="release_year">Release Year:</label>
-          <input class="m-2" id="release_year" type="text" placeholder="Release Year"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="release_year">Release Year:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="release_year" type="text" placeholder="Release Year"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="format">Format:</label>
-          <input class="m-2" id="format" type="text" placeholder="Eg: Vinyl, Cassette"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="format">Format:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="format" type="text" placeholder="Eg: Vinyl, Cassette"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="pressing_info">Pressing Info:</label>
-          <input class="m-2" id="pressing_info" type="text" placeholder="Eg: 1 of 2000"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="pressing_info">Pressing Info:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="pressing_info" type="text" placeholder="Eg: 1 of 2000"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="barcode">Barcode:</label>
-          <input class="m-2" id="barcode" type="text" placeholder="Barcode"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="barcode">Barcode:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="barcode" type="text" placeholder="Barcode"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="condition">Condition:</label>
-          <input class="m-2" id="condition" type="text" placeholder="Eg: 9.0, Fine"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="condition">Condition:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="condition" type="text" placeholder="Eg: 9.0, Fine"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="price">Price:</label>
-          <input class="m-2" id="price" type="text" placeholder="Price"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="price">Price:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="price" type="text" placeholder="Price"> 
       </div>
       <div class="flex flex-row w-full justify-between">
         <label class="ps-2 font-bold text-lg" for="music-photo-input-el">Upload Image:</label>
         <input class="w-52 m-2 p-1.5 rounded-lg" id="music-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
       </div>
       <div class="flex w-full justify-around mt-7">
-        <button id="update-btn" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Update</button>
-        <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Cancel</button>
-        <button id="delete-btn" type="button" class="border-2 border-black bg-rose-500 rounded-lg text-white text-lg px-0.5 ms3">Boot From Collection</button>
+        <button id="update-btn" type="button" class="border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110">Update</button>
+        <button id="close" type="button" class="border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110">Cancel</button>
+        <button id="delete-btn" type="button" class="border-2 border-white bg-rose-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-rose-500 transition duration-400 hover:scale-110">Boot From Collection</button>
     </div>
   </form>
 </div>  
@@ -552,49 +552,49 @@ const updateCoinHtml = `
   </div>
   <form id="update-coin-form" class="flex flex-col items-start p-4">
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="denomination">Denomination:</label>
-          <input class="m-2" id="denomination" type="text" placeholder="Eg: Penny, $5"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="denomination">Denomination:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="denomination" type="text" placeholder="Eg: Penny, $5"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="country">Country:</label>
-          <input class="m-2" id="country" type="text" placeholder="Country of origin"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="country">Country:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="country" type="text" placeholder="Country of origin"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="time_period">Time Period:</label>
-          <input class="m-2" id="time_period" type="text" placeholder="Eg: 1935, Colonial"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="time_period">Time Period:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="time_period" type="text" placeholder="Eg: 1935, Colonial"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="coin_finish">Coin Finish:</label>
-          <input class="m-2" id="coin_finish" type="text" placeholder="Eg: Circulated, Proof"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="coin_finish">Coin Finish:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="coin_finish" type="text" placeholder="Eg: Circulated, Proof"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="mint_mark">Mint Mark:</label>
-          <input class="m-2" id="mint_mark" type="text" placeholder="Eg: P, A, D"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="mint_mark">Mint Mark:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="mint_mark" type="text" placeholder="Eg: P, A, D"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="design_theme">Design Theme:</label>
-          <input class="m-2" id="design_theme" type="text" placeholder="Eg: Sacagawea, Liberty"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="design_theme">Design Theme:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="design_theme" type="text" placeholder="Eg: Sacagawea, Liberty"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="artist">Artist:</label>
-          <input class="m-2" id="artist" type="text" placeholder="Artist's Name"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="artist">Artist:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="artist" type="text" placeholder="Artist's Name"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="condition">Condition:</label>
-          <input class="m-2" id="condition" type="text" placeholder="Eg: 9.0, Fine"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="condition">Condition:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="condition" type="text" placeholder="Eg: 9.0, Fine"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="price">Price:</label>
-          <input class="m-2" id="price" type="text" placeholder="Price"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="price">Price:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="price" type="text" placeholder="Price"> 
       </div>
       <div class="flex flex-row w-full justify-between">
         <label class="ps-2 font-bold text-lg" for="coin-photo-input-el">Upload Image:</label>
         <input class="w-52 m-2 p-1.5 rounded-lg" id="coin-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
       </div>
       <div class="flex w-full justify-around mt-7">
-        <button id="update-btn" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Update</button>
-        <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Cancel</button>
-        <button id="delete-btn" type="button" class="border-2 border-black bg-rose-500 rounded-lg text-white text-lg px-0.5 ms3">Boot From Collection</button>
+        <button id="update-btn" type="button" class="border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110">Update</button>
+        <button id="close" type="button" class="border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110">Cancel</button>
+        <button id="delete-btn" type="button" class="border-2 border-white bg-rose-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-rose-500 transition duration-400 hover:scale-110">Boot From Collection</button>
     </div>
   </form>
 </div>  
@@ -607,54 +607,54 @@ const updateCardHtml = `
   </div>
   <form id="update-card-form" class="flex flex-col items-start p-4">
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="name">Name:</label>
-          <input class="m-2" id="name" type="text" placeholder="Eg: Black Lotus, Charizard"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="name">Name:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="name" type="text" placeholder="Eg: Black Lotus, Charizard"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="release_year">Release Year:</label>
-          <input class="m-2" id="release_year" type="text" placeholder="Year Released"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="release_year">Release Year:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="release_year" type="text" placeholder="Year Released"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="series">Series:</label>
-          <input class="m-2" id="series" type="text" placeholder="Eg: Pokemon, MTG"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="series">Series:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="series" type="text" placeholder="Eg: Pokemon, MTG"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="set">Set:</label>
-          <input class="m-2" id="set" type="text" placeholder="Eg: First Edition, International"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="set">Set:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="set" type="text" placeholder="Eg: First Edition, International"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="subtype">Subtype:</label>
-          <input class="m-2" id="subtype" type="text" placeholder="Eg: Item, Artifact, Resource"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="subtype">Subtype:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="subtype" type="text" placeholder="Eg: Item, Artifact, Resource"> 
       </div>
       <div class="flex flex-row w-full justify-between items-center">
-          <label class="ps-2 pb-2 font-bold text-lg" for="holographic">Holographic:</label>
+          <label class="m-1.5 ps-2 font-bold text-lg" for="holographic">Holographic:</label>
           <div class="flex ms-3 me-8 flex-row w-full justify-start items-center">
-            <select class="ms-2" id="holographic" name="type-select">
+            <select class="m-1.5 p-1.5 rounded-lg" id="holographic" name="type-select">
               <option value="true">True</option>
               <option value="false">False</option>
             </select> 
           </div>
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="manufacturer">Manufacturer:</label>
-          <input class="m-2" id="manufacturer" type="text" placeholder="Eg: Wizards of the Coast"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="manufacturer">Manufacturer:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="manufacturer" type="text" placeholder="Eg: Wizards of the Coast"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="condition">Condition:</label>
-          <input class="m-2" id="condition" type="text" placeholder="Eg: 9.0, Fine"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="condition">Condition:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="condition" type="text" placeholder="Eg: 9.0, Fine"> 
       </div>
       <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 font-bold text-lg" for="price">Price:</label>
-          <input class="m-2" id="price" type="text" placeholder="Price"> 
+          <label class="m-1.5 ps-2 font-bold text-lg" for="price">Price:</label>
+          <input class="m-1.5 p-1.5 rounded-lg" id="price" type="text" placeholder="Price"> 
       </div>
       <div class="flex flex-row w-full justify-between">
         <label class="ps-2 font-bold text-lg" for="card-photo-input-el">Upload Image:</label>
         <input class="w-52 m-2 p-1.5 rounded-lg" id="card-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg">
       </div>
       <div class="flex w-full justify-around mt-7">
-        <button id="update-btn" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Update</button>
-        <button id="close" type="button" class="border-2 border-black bg-indigo-500 rounded-lg text-white text-lg px-0.5 ms3">Cancel</button>
-        <button id="delete-btn" type="button" class="border-2 border-black bg-rose-500 rounded-lg text-white text-lg px-0.5 ms3">Boot From Collection</button>
+        <button id="update-btn" type="button" class="border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110">Update</button>
+        <button id="close" type="button" class="border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110">Cancel</button>
+        <button id="delete-btn" type="button" class="border-2 border-white bg-rose-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-rose-500 transition duration-400 hover:scale-110">Boot From Collection</button>
     </div>
   </form>
 </div>  
