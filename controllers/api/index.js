@@ -6,6 +6,8 @@ const musicRoutes = require('./musicRoutes');
 const cardRoutes = require('./cardRoutes');
 const collectionRoutes = require('./collectionRoutes');
 const imageUploadRoutes = require('./image-upload');
+const recentItemsRoutes = require('./recentItemsRoutes');
+
 
 router.use('/users', userRoutes);
 router.use('/actionfigure', actionFigureRoutes);
@@ -14,5 +16,8 @@ router.use('/music', musicRoutes);
 router.use('/card', cardRoutes);
 router.use('/collection', collectionRoutes);
 router.use('/images', imageUploadRoutes);
+router.use('/recent-additions', recentItemsRoutes);
+
+
 
 module.exports = router;
