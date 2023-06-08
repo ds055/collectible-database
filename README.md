@@ -1,11 +1,9 @@
 # COOLECTIBLES - Collection Database
 
-## [GitHub Repository](https://github.com/ds055/collectible-database)
-<br>
+[GitHub Repository](https://github.com/ds055/collectible-database)
 
-## [Deployed Link Using Heroku](https://github.com/ds055/collectible-database)
+[Deployed Link Using Heroku](https://github.com/ds055/collectible-database)
 
-<br>
 
 ## Table of Contents
 
