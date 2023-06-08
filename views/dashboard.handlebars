@@ -37,6 +37,8 @@
             {{item.name}}
             {{else if (eq item.type 'coin')}}
             {{item.denomination}}
+            {{else if (eq item.type 'figure')}}
+            {{item.name}}
             {{else if (eq item.type 'music')}}
             {{item.album_name}}
             {{/if}}
