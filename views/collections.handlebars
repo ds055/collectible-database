@@ -39,65 +39,65 @@
   </form>
   {{/unless}}
 
-      {{!-- Modal Container --}}
-    <div class="flex flex-row justify-center sticky inset-x-1/4 inset-y-1/4 z-50">
-        <!-- Trigger/Open The Modal -->
-        <!-- The Modal -->
+  {{!-- Modal Container --}}
+  <div class="flex flex-row justify-center sticky inset-x-1/4 inset-y-1/4 z-50">
+    <!-- Trigger/Open The Modal -->
+    <!-- The Modal -->
         <div id="myModal" class="modal absolute hidden w-fit h-fit bg-indigo-200 border-4 border-indigo-600 rounded-md drop-shadow-2xl">
-        <!-- Modal content Generated Here Dynamically from script-->
-        </div>
+      <!-- Modal content Generated Here Dynamically from script-->
     </div>
+  </div>
 
   <section class="text-white body-font my-4">
-      <div class="px-10 py-16 mx-auto bg-white bg-opacity-70 rounded-lg">
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-          {{#if collection}}
-            {{#each collection as |collection|}}
-            <div>
+    <div class="px-10 py-16 mx-auto bg-white bg-opacity-70 rounded-lg">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+        {{#if collection}}
+        {{#each collection as |collection|}}
+        <div>
               <div class="px-2 py-2 bg-gradient-to-br from-blue-500 to-purple-500 transition duration-[500] hover:scale-110 hover:drop-shadow-2xl hover:shadow-violet-600/50 2xl:w-96 lg:w-72 shadow-xl rounded-md rounded-tr-2xl rounded-bl-2xl">
                 <div class="flex justify-end">
                   <button class="edit-coll" type="button" data-id="{{id}}"><i style="font-size:24px" class="fa object-right-top text-white z-40 bg-indigo-800 text-lg hover:bg-white hover:text-indigo-800 rounded-lg p-2 border-2 border-white hover:border-indigo-800">&#xf040;</i></button>
                 </div>
-                <a href="/dashboard/collection/{{id}}">
+            <a href="/dashboard/collection/{{id}}">
                   {{#if image}}<img class="w-full lg:h-[28rem] h-[20rem] rounded-b-lg border-b-[0.4rem] border-indigo-500 flex content-center z-30" src="{{ image }}" alt="blog">{{else}}<img class="w-full lg:h-[28rem] h-[20rem] rounded-b-lg border-b-[0.4rem] border-indigo-500 flex content-center object-cover z-30" src="https://cdn.pixabay.com/photo/2014/12/21/23/40/bookcase-575818_1280.png" alt="blog">{{/if}}
-                    <div class="items-center text-center">
-                      <h2 class="m-2 pb-2 border-b-2 font-bold text-xl">{{ name }}</h2>
+              <div class="items-center text-center">
+                <h2 class="m-2 pb-2 border-b-2 font-bold text-xl">{{ name }}</h2>
                       <p id="coll-description">{{ description }}</p>
                         <button class="m-4 px-6 py-2 transition duration-400 hover:bg-green-400 rounded-full bg-blue-400">Open Collection</button>
-                    </div>
-                </a>
-              </div>
+          </div>
+          </a>
+        </div>
             </div>
 
-            {{/each}}
-          {{/if}}
+        {{/each}}
+        {{/if}}
 
-          {{#unless collection}}
+        {{#unless collection}}
               <input id="collection-id" type="hidden" value="{{collectionId}}">
-          {{/unless}}
+        {{/unless}}
 
           
-          {{#if coin}}
+        {{#if coin}}
 
-            {{>coin}}
-          
-          {{/if}}
+        {{>coin}}
 
-          {{#if figure}}
-            {{>figure}}
-          {{/if}}
-          
-          {{#if music}}
-            {{>music}}
-          {{/if}}
+        {{/if}}
 
-          {{#if card}}
-            {{>card}}
-          {{/if}}
-          
-          </div>
+        {{#if figure}}
+        {{>figure}}
+        {{/if}}
+
+        {{#if music}}
+        {{>music}}
+        {{/if}}
+
+        {{#if card}}
+        {{>card}}
+        {{/if}}
 
       </div>
+
+    </div>
 
   </section>
 
@@ -110,6 +110,7 @@
 {{/if}}
 {{#unless collection}}
 
+<script src="/js/edit-item-all-modal.js"></script>
 <script src="/js/add-item-modal.js"></script>
 <script src="/js/view-all.js"></script>
 <script src="/js/add-to-coll.js"></script>
