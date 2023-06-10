@@ -1,29 +1,17 @@
 <content class = "flex flex-col">
-
+<input id="page-name-inp" type="hidden" value="collections">
 {{#if collection}}
   <div class = 'flex justify-center'>
     <h2 class = 'pb-4 font-bold text-4xl md:text-6xl lg:text-8xl m-6 bg-gradient-to-tr from-violet-700 via-fuchsia-300 to-teal-400 bg-clip-text text-transparent'>{{first_name}}'s Collections</h2>
   </div>
-  <div class="flex felx-row justify-center">
-        <button class="border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110" id="addCollectionBtn">Add Collection</button>
-        <button class="border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110" id="addCoolectibleBtn">Add Coolectible</button>
-  </div>
-      <form id="view-all-form" class="flex justify-center items-center mt-5">
-        <label class="font-bold text-lg" for="view-all">View All Your:</label>
-            <select class="p-2 rounded-lg ms-3 me-4" id="view-all-choice" name="type-select">
-            <option value="figure">Action Figures</option>
-            <option value="card">Cards</option>
-            <option value="coin">Coins</option>
-            <option value="music">Music</option>
-            </select> 
-        <input class="cursor-pointer border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110" type="submit">
-    </form>
   {{/if}}
   {{#unless collection}}
+  <input id="collection-id" type="hidden" value="{{collectionId}}">
   <div class = 'flex justify-center' id="personal-collection-page">
     <h2 class = 'p-5 font-bold text-4xl md:text-6xl lg:text-8xl m-6 bg-gradient-to-tr from-violet-700 via-fuchsia-300 to-teal-400 bg-clip-text text-transparent'>{{ collectionName }}</h2>
   </div>
-  <div class="flex felx-row justify-center">
+  {{/unless}}
+    <div class="flex felx-row justify-center">
         <button class="border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110" id="addCollectionBtn">Add Collection</button>
         <button class="border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110" id="addCoolectibleBtn">Add Coolectible</button>
   </div>
@@ -37,11 +25,9 @@
         </select> 
     <input class="cursor-pointer border-2 border-white bg-indigo-600 rounded-lg text-white text-lg p-1.5 me-3 hover:bg-indigo-500 transition duration-400 hover:scale-110" type="submit">
   </form>
-  {{/unless}}
 
       {{!-- Modal Container --}}
     <div class="flex flex-row justify-center sticky inset-x-1/4 inset-y-1/4 z-50">
-        <!-- Trigger/Open The Modal -->
         <!-- The Modal -->
         <div id="myModal" class="modal absolute hidden w-fit h-fit bg-indigo-200 border-4 border-indigo-600 rounded-md drop-shadow-2xl">
         <!-- Modal content Generated Here Dynamically from script-->
@@ -72,11 +58,6 @@
             {{/each}}
           {{/if}}
 
-          {{#unless collection}}
-              <input id="collection-id" type="hidden" value="{{collectionId}}">
-          {{/unless}}
-
-          
           {{#if coin}}
 
             {{>coin}}
@@ -103,17 +84,16 @@
 
 </content>
 {{#if collection}}
-<script src="/js/edit-item-collection-modal.js"></script>
 <script src="/js/add-item-modal.js"></script>
 <script src="/js/view-all.js"></script>
 <script src="/js/delete-update-coll.js"></script>
 {{/if}}
 {{#unless collection}}
-
-<script src="/js/edit-item-all-modal.js"></script>
+<script src="/js/edit-del-rmv-item.js"></script>
 <script src="/js/add-item-modal.js"></script>
 <script src="/js/view-all.js"></script>
 <script src="/js/add-to-coll.js"></script>
+<script src="/js/modal.js"></script>
 {{/unless}}
 
 
