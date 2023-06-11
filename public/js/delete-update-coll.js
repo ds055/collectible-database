@@ -8,17 +8,14 @@ let updateCollinit = () => {
 
 const updateCollOptions = async (eTarget, id) => {
     try {
-        // grabs modal dom element from view-all.handlebar
-        const modal = document.getElementById("myModal")
         // sets the html of the modal
         modal.innerHTML = updateCollectionHtml;
         // initiate cancel button from edit-item-all-modal
-        addItemCancelBtnFunction();
+        cancelBtnFunction();
 
         // get inputs from modal
         const nameInput = document.getElementById("up-name");
         const descripInput = document.getElementById("description");
-
 
         // gets type data preset to button on partial
         const collectionId = id
@@ -27,9 +24,9 @@ const updateCollOptions = async (eTarget, id) => {
         let rawData = await fetch(`/api/collection/${collectionId}`)
         let data = await rawData.json()
 
+        // set values to display saved info to users
         nameInput.value = data.name;
         descripInput.value = data.description;
-
 
         // display the modal
         modal.style.display = "block";
@@ -42,33 +39,39 @@ const updateCollOptions = async (eTarget, id) => {
     }    
 }
 
+// delete collection method
 const deleteColl = async (collectionId) => {
     try{
+        // api call to delete collection
         const response = await fetch(`/api/collection/${collectionId}`, { method: 'DELETE' });
-
+        // result handling
         if (response.ok){
-            updateSuccess();
+            successMsg("Collection deleted!")
         } else {
-            updateFailed();
+            failedMsg("Updated failed!")
         }
     } catch(err){
         console.log(err)
-        updateFailed();
+        failedMsg("Updated failed!")
     }
 }
 
+// update collection data
 const updateCollection = async (event, collectionId) => {
     try{ 
+        // prevent page reload
         event.preventDefault();
-        const nameVal = document.getElementById("up-name").value.trim();
+        // get user input and trim
+        const nameVal = document.getElementById("up-name").value.trim() || null;
         const colldescr = document.getElementById("description").value.trim();
 
+        // create object to be used in PUT path
         const object = {
             name: nameVal,
             description: colldescr
         }
 
-        // Updated data
+        // Updated data route
         const response = await fetch(`/api/collection/${collectionId}`, {
             method: 'PUT',
             body: JSON.stringify(object),
@@ -77,10 +80,11 @@ const updateCollection = async (event, collectionId) => {
             }
         });
         if (response.ok){
-            await uploadCollectionImage(collectionId);
-            addSuccess();
+            await uploadImage("collection", collectionId);
+            successMsg("Collection updated!");
         } else {
-            updateFailed();
+            const data = await response.json()
+            errorHandling(data)
         }
     } catch(err) {
         console.log(err)

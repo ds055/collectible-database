@@ -83,26 +83,11 @@ const updateItem = async (url, id, itemType) => {
 
         // if successfull, updates image if present and send user success message
         if (response.ok) {
-            switch (itemType) {
-                case 'actionfigure':
-                    await uploadFigureImg(id);
-                    successMsg("Update succeeded!");
-                    break;
-                case 'coin':
-                    await uploadCoinImg(id);
-                    successMsg("Update succeeded!");
-                    break;
-                case 'music':
-                    await uploadMusicImg(id);
-                    successMsg("Update succeeded!");
-                    break;
-                case 'card':
-                    await uploadCardImg(id);
-                    successMsg("Update succeeded!");
-                    break;
-            }
+            uploadImage(itemType, id)
+            successMsg("Update success!")
         } else {
-            failedMsg("Update Failed!");
+            const data = await response.json()
+            errorHandling(data)
         }
     } catch(err){
         console.log(err)
@@ -119,11 +104,14 @@ const removeFromColl = async (itemType, itemId) => {
         // gets collectionId from value on page
         const collectionId = document.getElementById("collection-id").value
 
+        console.log(itemType, itemId, collectionId)
+
         // fetch to get through table id
         const rawData = await fetch(`/api/collection/${itemType}/${itemId}/${collectionId}`)
         const data = await rawData.json();
         const throughId = data.id;
 
+        console.log(throughId)
         // using through table id, delete the collectionItem table entry
         response = await fetch(`/api/collection/${itemType}/${throughId}`, { method: 'DELETE' })
 

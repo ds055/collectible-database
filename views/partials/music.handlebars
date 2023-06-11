@@ -4,7 +4,7 @@
         <div>
             <button class="edit-btn z-50" type="button" data-type="music" data-id="{{id}}"><i style="font-size:24px" class="fa text-white object-right-top fixed top-2 right-2 z-40 bg-indigo-800 text-lg hover:bg-white hover:text-indigo-800 rounded-lg p-2 border-2 border-white hover:border-indigo-800">&#xf040;</i></button>
             <button class="add-to-coll z-50" type="button" data-type="Music" data-id="{{id}}"><i style="font-size:24px" class="fa fa-plus text-white object-left-top fixed top-2 left-2 z-40 bg-green-500 text-lg hover:bg-white hover:text-green-500 rounded-lg p-2 border-2 border-white hover:border-green-500"></i></button>
-            {{#if image}}<img class="w-full lg:h-[28rem] h-[20rem] rounded-b-lg border-b-[0.4rem] border-indigo-500 flex content-center z-30" src="{{ image }}" alt="blog">{{else}}<img class="w-full lg:h-[28rem] h-[20rem] rounded-b-lg border-b-[0.4rem] border-indigo-500 flex content-center z-30" src="https://st2.depositphotos.com/2919755/6380/i/950/depositphotos_63800799-stock-photo-blank-gold-coin.jpg" alt="blog">{{/if}}
+            {{#if image}}<img class="w-full lg:h-[28rem] h-[20rem] rounded-b-lg border-b-[0.4rem] border-indigo-500 flex content-center z-30" src="{{ image }}" alt="blog">{{else}}<img class="w-full lg:h-[28rem] h-[20rem] rounded-b-lg border-b-[0.4rem] border-indigo-500 flex object-fit z-30" src="https://cdn.pixabay.com/photo/2014/04/03/00/35/vinyl-308761_1280.png" alt="blog">{{/if}}
         </div>
         <div class="p-6 drop-shadow-2xl">
             <h1 class="text-center title-font text-lg font-bold rounded-lg border-x-[0.4rem] border-indigo-500 text-gray-900 rounded-t-lg bg-white mb-3">{{ album_name }}</h1>
