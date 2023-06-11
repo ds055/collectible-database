@@ -20,7 +20,7 @@ const uploadImg = async (req) => {
 };
 
 // upload an image
-router.post('/collections/:id', upload.single('file'), async (req, res) => {
+router.post('/collection/:id', upload.single('file'), async (req, res) => {
   try {
     const uploadImgUrl = await uploadImg(req);
 

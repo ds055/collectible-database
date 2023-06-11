@@ -8,17 +8,14 @@ let updateCollinit = () => {
 
 const updateCollOptions = async (eTarget, id) => {
     try {
-        // grabs modal dom element from view-all.handlebar
-        const modal = document.getElementById("myModal")
         // sets the html of the modal
         modal.innerHTML = updateCollectionHtml;
         // initiate cancel button from edit-item-all-modal
-        addItemCancelBtnFunction();
+        cancelBtnFunction();
 
         // get inputs from modal
         const nameInput = document.getElementById("up-name");
         const descripInput = document.getElementById("description");
-
 
         // gets type data preset to button on partial
         const collectionId = id
@@ -27,9 +24,9 @@ const updateCollOptions = async (eTarget, id) => {
         let rawData = await fetch(`/api/collection/${collectionId}`)
         let data = await rawData.json()
 
+        // set values to display saved info to users
         nameInput.value = data.name;
         descripInput.value = data.description;
-
 
         // display the modal
         modal.style.display = "block";
@@ -42,33 +39,39 @@ const updateCollOptions = async (eTarget, id) => {
     }    
 }
 
+// delete collection method
 const deleteColl = async (collectionId) => {
     try{
+        // api call to delete collection
         const response = await fetch(`/api/collection/${collectionId}`, { method: 'DELETE' });
-
+        // result handling
         if (response.ok){
-            updateSuccess();
+            successMsg("Collection deleted!")
         } else {
-            updateFailed();
+            failedMsg("Updated failed!")
         }
     } catch(err){
         console.log(err)
-        updateFailed();
+        failedMsg("Updated failed!")
     }
 }
 
+// update collection data
 const updateCollection = async (event, collectionId) => {
     try{ 
+        // prevent page reload
         event.preventDefault();
-        const nameVal = document.getElementById("up-name").value.trim();
+        // get user input and trim
+        const nameVal = document.getElementById("up-name").value.trim() || null;
         const colldescr = document.getElementById("description").value.trim();
 
+        // create object to be used in PUT path
         const object = {
             name: nameVal,
             description: colldescr
         }
 
-        // Updated data
+        // Updated data route
         const response = await fetch(`/api/collection/${collectionId}`, {
             method: 'PUT',
             body: JSON.stringify(object),
@@ -77,10 +80,11 @@ const updateCollection = async (event, collectionId) => {
             }
         });
         if (response.ok){
-            await uploadCollectionImage(collectionId);
-            addSuccess();
+            await uploadImage("collection", collectionId);
+            successMsg("Collection updated!");
         } else {
-            updateFailed();
+            const data = await response.json()
+            errorHandling(data)
         }
     } catch(err) {
         console.log(err)
@@ -88,30 +92,3 @@ const updateCollection = async (event, collectionId) => {
 }
 
 document.addEventListener("load", updateCollinit())
-
-const updateCollectionHtml = `
-<div class="modal-content">
-  <div class="bg-indigo-600">
-      <h2 class="py-3 text-center text-white text-2xl font-extrabold">Update Collection Entry</h2>
-  </div>
-  <form id="update-collection-form" class="flex flex-col items-start p-4">
-      <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 pt-1 font-bold text-lg" for="up-name">Collection Name:</label>
-          <input class="w-52 m-2 p-1.5 rounded-lg" id="up-name" type="required" placeholder="Enter name here"> 
-      </div>
-      <div class="flex flex-row w-full justify-between">
-        <label class="ps-2 pt-1 font-bold text-lg" for="description">Description:</label>
-        <textarea class="w-52 m-2 p-1.5 rounded-lg" id="description" placeholder="Enter name here"> </textarea>
-      </div>
-      <div class="flex flex-row w-full justify-between">
-          <label class="ps-2 pt-1 font-bold text-lg" for="up-collection-photo-input-el">Select Image</label>
-          <input class="w-52 m-2 p-1.5 rounded-lg" id="collection-photo-input-el" type="file" accept="image/png, image/jpeg, image/jpg"> 
-      </div>
-      <div class="flex w-full justify-center mt-7">
-          <input class="cursor-pointer border-2 bg-indigo-500 hover:bg-indigo-600 rounded text-lg transition duration-400 hover:scale-110 text-white p-1 px-2 me-3" type="submit">
-          <button id="close" type="button" class="border-2 bg-indigo-500 hover:bg-indigo-600 rounded text-lg transition duration-400 hover:scale-110 text-white p-1">Cancel</button>
-          <button id="delete-coll-btn" type="button" class="border-2 bg-rose-500 hover:bg-rose-600 rounded text-lg transition duration-400 hover:scale-110 text-white p-1 ms-3">Delete</button>
-      </div>
-  </form>
-</div>
-`

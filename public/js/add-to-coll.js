@@ -7,23 +7,23 @@ let addCollinit = () => {
     }
 }
 
-const addtoCollOptions = async (item_type, id) => {
+// init load
+document.addEventListener("load", addCollinit())
+
+// fills coll modal
+const addtoCollOptions = async (itemType, itemId) => {
     try {
-        // grabs modal dom element from view-all.handlebar
-        const modal = document.getElementById("myModal")
         // sets the html of the modal
         modal.innerHTML = addToCollectionHtml;
         // initiate cancel button from edit-item-all-modal
-        addItemCancelBtnFunction();
+        cancelBtnFunction();
 
         // get select from modal
         const select = document.getElementById("coll-select")
         // gets type data preset to button on partial
-        const type = item_type
-        const itemId = id
 
         // api call to find user collections based on type
-        let rawData = await fetch(`/api/collection/user/${type}`)
+        let rawData = await fetch(`/api/collection/user/${itemType}`)
         let data = await rawData.json()
 
         // for loop to create select options from returned data; one for each collection of matching type
@@ -40,179 +40,54 @@ const addtoCollOptions = async (item_type, id) => {
         modal.style.display = "block";
 
         // add event listener for form submit
-        document.querySelector("#add-to-coll-form").addEventListener("submit", function (event) { addToCollection(event, type, select.value, itemId) })
+        document.querySelector("#add-to-coll-form").addEventListener("submit", function (event) { addToCollection(event, itemType, select.value, itemId) })
     } catch (err) {
         console.log(err)
     }
 }
 
-
-const addToCollection = async (event, type, collectionId, itemId) => {
+// adds item to collection
+const addToCollection = async (event, itemType, collectionId, itemId) => {
+    // prevents reload on submit
     event.preventDefault();
-    switch (type) {
-        case 'Action Figure':
-            figureAddtoColl(collectionId, itemId)
-            break;
-        case 'Coin':
-            coinAddtoColl(collectionId, itemId)
-            break;
-        case 'Music':
-            musicAddtoColl(collectionId, itemId)
-            break;
-        case 'Card':
-            cardAddtoColl(collectionId, itemId)
-            break;
-    }
-}
 
-const figureAddtoColl = async (collectionId, itemId) => {
+    // declare variables for use: urlType used to fill in post url
+    let urlType;
+    let bodyId;
+
     try {
-        const response = await fetch(`/api/collection/fig`, {
+        // based on item, set value for above variables
+        if(itemType === "Action Figure") {
+            urlType = "fig";
+            bodyId = "action_figure_id"
+        } else {
+            urlType = itemType.toLowerCase();
+            bodyId = `${urlType}_id`
+        }
+
+        // create object to be passed into POST route
+        const bodyObj = {
+            [bodyId]: itemId,
+            collection_id: collectionId
+        }
+
+        // api Post call to update item
+        const response = await fetch(`/api/collection/${urlType}`, {
             method: 'POST',
-            body: JSON.stringify({
-                action_figure_id: itemId,
-                collection_id: collectionId
-            }),
+            body: JSON.stringify(bodyObj),
             headers: {
                 'Content-Type': 'application/json'
             }
         })
 
-        const data = await response.json()
-
-        if (data.errors) {
-            if (data.errors[0].type === "unique violation") {
-                generatedAddFail("This item is already in your collection!")
-            }
+        // based on error return, send message to user
+        if (response.ok) {
+            successMsg("Added to collection!");
         } else {
-            updateSuccess();
+            const data = await response.json()
+            errorHandling(data)
         }
-    } catch (err) {
+    } catch(err){
         console.log(err)
     }
 }
-
-const cardAddtoColl = async (collectionId, itemId) => {
-    try {
-        const response = await fetch(`/api/collection/card`, {
-            method: 'POST',
-            body: JSON.stringify({
-                card_id: itemId,
-                collection_id: collectionId
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-
-        const data = await response.json()
-
-        if (data.errors) {
-            if (data.errors[0].type === "unique violation") {
-                generatedAddFail("This item is already in your collection!")
-            }
-        } else {
-            updateSuccess();
-        }
-    } catch (err) {
-        console.log(err)
-    }
-}
-
-const coinAddtoColl = async (collectionId, itemId) => {
-    try {
-        const response = await fetch(`/api/collection/coin`, {
-            method: 'POST',
-            body: JSON.stringify({
-                coin_id: itemId,
-                collection_id: collectionId
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-
-        const data = await response.json()
-
-        if (data.errors) {
-            if (data.errors[0].type === "unique violation") {
-                generatedAddFail("This item is already in your collection!")
-            }
-        } else {
-            updateSuccess();
-        }
-    } catch (err) {
-        console.log(err)
-    }
-}
-
-const musicAddtoColl = async (collectionId, itemId) => {
-    try {
-        const response = await fetch(`/api/collection/music`, {
-            method: 'POST',
-            body: JSON.stringify({
-                music_id: itemId,
-                collection_id: collectionId
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-
-        const data = await response.json()
-
-        if (data.errors) {
-            if (data.errors[0].type === "unique violation") {
-                generatedAddFail("This item is already in your collection!")
-            }
-        } else {
-            updateSuccess();
-        }
-    } catch (err) {
-        console.log(err)
-    }
-}
-
-document.addEventListener("load", addCollinit())
-
-const generatedAddFail = (msg) => {
-    modal.innerHTML = generatedAddFailText(msg);
-    modal.style.display = "block";
-    document.getElementById("close").addEventListener("click", function () { modal.style.display = "none" })
-}
-
-
-const generatedAddFailText = (text) => {
-    return `
-    <div class="bg-indigo-400 m-5">
-    <p class="px-3 pt-3 text-center text-white text-2xl font-extrabold">
-        <span class="text-emerald-300">Bummer!</span>
-        <br>
-        ${text} 
-    </p>
-    <div class="flex justify-center">
-        <button id="close" type="button" class="m-4 border-2 border-black bg-indigo-500 rounded-lg text-white text-xl px-1 ms3 hover:bg-indigo-300 hover:text-black">Sadness!</button>
-    </div>
-  </div>
-    `
-}
-
-
-const addToCollectionHtml = `
-<div class="bg-indigo-400 p-8 m-4 rounded-lg">
-  <p class="px-3 pt-3 m-4 text-center text-white text-2xl font-extrabold">
-      <span class="text-white">Add to which collection?</span>
-  </p>
-  <form id="add-to-coll-form">
-    <div class="flex mt-3 flex-row w-full justify-center">
-            <select id="coll-select" class = "w-52 m-2 p-1.5 rounded-lg" name="type-select">
-
-            </select> 
-        </div>
-    <div class="mt-4 flex justify-center items-center">
-      <input id="submit" type="submit" class="cursor-pointer border-2 bg-indigo-500 hover:bg-indigo-600 rounded text-lg transition duration-400 hover:scale-110 text-white p-1 px-2 me-3"">
-      <button id="close" type="button" class="border-2 bg-indigo-500 hover:bg-indigo-600 rounded text-lg transition duration-400 hover:scale-110 text-white p-1 ms3">Cancel</button>
-  </form>
-  </div>
-</div>
-`

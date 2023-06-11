@@ -162,7 +162,7 @@ router.delete('/card/:id', withAuth, async (req, res) => {
 });
 
 // Get collection-card id
-router.get('/coin/:coinid/:coinid', async (req, res) => {
+router.get('/coin/:coinid/:collid', async (req, res) => {
   try {
     const collectionCoinData = await CollectionCoin.findOne({
       where: {
