@@ -2,7 +2,7 @@
 
 [GitHub Repository](https://github.com/ds055/collectible-database)
 
-[Deployed Link Using Heroku](https://github.com/ds055/collectible-database)
+[Deployed Link Using Heroku](https://blooming-retreat-76948.herokuapp.com/)
 
 
 ## Table of Contents
